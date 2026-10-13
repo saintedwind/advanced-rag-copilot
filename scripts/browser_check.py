@@ -68,6 +68,16 @@ with (ROOT / "reports/browser-server.log").open("w") as log:
             page.get_by_role("button", name="Find evidence").click()
             page.get_by_text("insufficient evidence", exact=True).wait_for()
             assert page.locator("details").count() == 0
+            page.set_viewport_size({"width":1280,"height":960})
+            page.get_by_label('Collection',exact=True).select_option('curl')
+            page.get_by_role('button',name='Build reference index',exact=True).click()
+            page.get_by_text('Indexed 8 documents',exact=False).wait_for()
+            page.get_by_label('QUESTION',exact=True).fill('What certificate format does --cacert require?')
+            page.get_by_role('button',name='Find evidence').click()
+            page.get_by_text('evidence found',exact=True).wait_for(timeout=60000)
+            assert 'PEM' in page.locator('#result').inner_text()
+            page.locator('summary').first.click()
+            page.screenshot(path=str(ROOT/'reports/desk-reference.png'),full_page=True)
             page.get_by_label("QUESTION", exact=True).fill(
                 "What is the Business plan GPU quota?"
             )
