@@ -32,3 +32,9 @@ Regression coverage includes quoted identifier/numeric preservation, option scop
 ## Remaining limitations
 
 The real corpus still falsely abstains on “What HTTP response codes cause --fail errors?” and “Which decimal separator does --connect-timeout require?”. Those failures remain in the raw results. The 8/8 paraphrase challenge is a known regression suite, not general paraphrase quality. Margin 3 and the topic/facet guards are heuristics; no probability, complete entailment, general prompt-injection resistance, multilingual quality or production security claim is made. Conflicting policy versions, unrestricted cross-document reasoning, authentication and multi-tenant access control remain outside this local demo.
+
+## Independent published verification
+
+[GitHub Actions run](https://github.com/saintedwind/advanced-rag-copilot/actions/runs/38456113333) passed all stages in 1m 44s on Ubuntu 24.04 / Python 3.12: 35 tests, synthetic and real-document model checks, actual HTTP, Chromium acceptance and Docker ingestion / provenance. Tested code revision: `4d97210886906b4cd5cf68e141d059cb07490d9b`.
+
+[Evidence bundle](https://github.com/saintedwind/advanced-rag-copilot/actions/runs/38456113333/artifacts/11841969688) includes raw results and v0.4 desktop/mobile/reference screenshots. Artifact ID: 11841969688; ZIP size: 531777 bytes; SHA-256: `2ee92703baa8abb3dd746950a3ae7e15393eaaebffd021e92ad9042eba3b9fd2`. These are hosted CI artifacts with a finite retention period; raw evaluation JSON is also committed in reports. Browser file upload failed during publication, so the new captures are provided in this verified bundle rather than represented by a missing repository image link.
