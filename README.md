@@ -6,7 +6,7 @@ A reproducible document-retrieval portfolio by Peyman Gholamhosseini. Ask questi
 
 ![Actual Chromium desktop capture](reports/desk-desktop.png)
 
-[Mobile capture](reports/desk-mobile.png) | [Verified CI run](https://github.com/saintedwind/advanced-rag-copilot/actions/runs/38380058365)
+[Mobile capture](reports/desk-mobile.png) | [Verified CI run](https://github.com/saintedwind/advanced-rag-copilot/actions/runs/38444286641)
 
 ## What runs
 
@@ -27,7 +27,7 @@ A reproducible document-retrieval portfolio by Peyman Gholamhosseini. Ask questi
 3. Repeat the supported question: inspect the exact-query cache hit. Re-index and verify that the cached result is invalidated.
 4. Restart the service: the persisted vectors and rebuilt lexical index should still be available.
 
-Version 0.3 development checks: 25 behavioral/boundary tests; 11/11 original live extractive checks; 36/36 expanded checks on eight synthetic documents with actual BGE embeddings and loopback HTTP. The optional local Qwen sentence selector also passed the 36-case suite. A further eight-question challenge passed 6/8: two paraphrases were falsely rejected. These cases were inspected and used during development, so none is an untouched holdout or general accuracy estimate. [Measured changes and failures](reports/evidence-validation.md).
+Version 0.3 development checks: 26 behavioral/boundary tests; 11/11 original live extractive checks; 36/36 expanded checks on eight synthetic documents with actual BGE embeddings and loopback HTTP. The optional local Qwen sentence selector also passed the 36-case suite. A further eight-question challenge passed 6/8: two paraphrases were falsely rejected. These cases were inspected and used during development, so none is an untouched holdout or general accuracy estimate. [Measured changes and failures](reports/evidence-validation.md).
 
 ## Pipeline
 
