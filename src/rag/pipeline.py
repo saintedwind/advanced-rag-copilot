@@ -10,6 +10,7 @@ import numpy as np
 from src.app.dependencies import get_settings
 from src.rag.reranker import DocumentReranker
 from src.rag.vectorstore import HybridRetriever
+from src.rag.evidence import evidence_screen, citation
 
 
 class RAGPipeline:
@@ -31,6 +32,7 @@ class RAGPipeline:
         )
 
     def synthesize(self, query, docs):
+        docs, screen = evidence_screen(query, docs)
         base = {
             "answer": "No sufficient evidence was found.",
             "citations": [],
@@ -38,6 +40,7 @@ class RAGPipeline:
             "status": "insufficient_evidence",
             "route_taken": "no_context",
             "generation_mode": self.settings.llm_provider,
+            "evidence_screen": screen,
         }
         if not docs:
             return base
@@ -50,16 +53,13 @@ class RAGPipeline:
             budget += len(doc.page_content)
         if not selected:
             return base
-        citations = [
-            {
-                "index": i,
-                "source": d.metadata["source"],
-                "chunk_id": d.metadata["chunk_id"],
-                "snippet": d.page_content,
-                "score": d.metadata.get("dense_score"),
+        selected, context_screen = evidence_screen(query, selected)
+        if not selected:
+            return {
+                **base,
+                "evidence_screen": {**context_screen, "context_budget_recheck": True},
             }
-            for i, d in enumerate(selected, 1)
-        ]
+        citations = [citation(d, i) for i, d in enumerate(selected, 1)]
         if self.settings.llm_provider == "extractive":
             return {
                 **base,

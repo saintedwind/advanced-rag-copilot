@@ -31,7 +31,8 @@ def load_and_split(source_dir, chunk_size=600, chunk_overlap=100, allowed_root=N
         total += size
         if size > 1_000_000 or total > 10_000_000:
             raise ValueError("Document size budget exceeded")
-        text = path.read_text(encoding="utf-8")
+        raw = path.read_bytes()
+        text = raw.decode("utf-8").replace("\r\n", "\n").replace("\r", "\n")
         if text.strip():
             docs.append(
                 Document(
@@ -40,6 +41,7 @@ def load_and_split(source_dir, chunk_size=600, chunk_overlap=100, allowed_root=N
                         "source": path.relative_to(root).as_posix(),
                         "file_name": path.name,
                         "file_type": path.suffix[1:],
+                        "source_sha256": hashlib.sha256(raw).hexdigest(),
                     },
                 )
             )
@@ -47,7 +49,19 @@ def load_and_split(source_dir, chunk_size=600, chunk_overlap=100, allowed_root=N
         chunk_size=chunk_size, chunk_overlap=chunk_overlap, add_start_index=True
     )
     chunks = splitter.split_documents(docs)
+    originals = {d.metadata["source"]: d.page_content for d in docs}
     for chunk in chunks:
+        original = originals[chunk.metadata["source"]]
+        start = chunk.metadata["start_index"]
+        end = start + len(chunk.page_content)
+        if start < 0 or original[start:end] != chunk.page_content:
+            raise ValueError("Chunk offsets do not match source text")
+        chunk.metadata.update(
+            start_char=start,
+            end_char=end,
+            start_line=original.count("\n", 0, start) + 1,
+            end_line=original.count("\n", 0, end - 1) + 1,
+        )
         key = (
             chunk.metadata["source"]
             + "|"

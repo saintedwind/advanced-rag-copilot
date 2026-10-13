@@ -4,6 +4,8 @@ import re
 import threading
 import unicodedata
 import uuid
+import hashlib
+import json
 
 from langchain_core.documents import Document
 from qdrant_client import QdrantClient, models
@@ -74,6 +76,15 @@ class HybridRetriever:
                 if offset is None:
                     break
         self._docs.sort(key=lambda d: d.metadata["chunk_id"])
+        self.corpus_sha256 = hashlib.sha256(
+            json.dumps(
+                [
+                    (d.metadata["chunk_id"], d.metadata.get("source_sha256"))
+                    for d in self._docs
+                ],
+                separators=(",", ":"),
+            ).encode()
+        ).hexdigest()
         self._bm25 = (
             BM25Okapi([_tokens(d.page_content) for d in self._docs])
             if self._docs
