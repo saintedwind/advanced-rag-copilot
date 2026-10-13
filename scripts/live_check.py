@@ -6,6 +6,7 @@ import socket
 import subprocess
 import sys
 import time
+import sys
 from pathlib import Path
 from urllib.request import ProxyHandler, Request, build_opener
 
@@ -46,12 +47,21 @@ def request(path, body=None):
 
 def main():
     mode = os.environ.get("LLM_PROVIDER", "extractive")
+    evaluation = "--evaluation" in sys.argv
+    cases = CASES
+    if evaluation:
+        from scripts.evidence_benchmark import CASES as evaluation_cases
+
+        cases = evaluation_cases
+        os.environ["SOURCE_ROOT"] = str(ROOT / "data/evaluation_docs")
+        os.environ["QDRANT_PATH"] = str(ROOT / ".runtime/qdrant-evaluation")
+    label = ("evaluation-" if evaluation else "") + mode
     sock = socket.socket()
     try:
         sock.bind(("127.0.0.1", 8000))
     finally:
         sock.close()
-    log_path = ROOT / "reports" / f"live-{mode}.log"
+    log_path = ROOT / "reports" / f"live-{label}.log"
     rows = []
     with log_path.open("w", encoding="utf-8") as log:
         p = subprocess.Popen(
@@ -82,7 +92,7 @@ def main():
                         raise TimeoutError("Startup timed out")
                     time.sleep(1)
             ingestion = request("/ingest", {})
-            for q, source, phrase in CASES:
+            for q, source, phrase in cases:
                 r = request(
                     "/query",
                     {
@@ -93,6 +103,12 @@ def main():
                     },
                 )
                 sources = [c["source"] for c in r["citations"]]
+                for citation in r["citations"]:
+                    stored = request("/evidence/" + citation["chunk_id"])
+                    assert stored["text"] == citation["snippet"]
+                    assert (
+                        stored["metadata"]["source_sha256"] == citation["source_sha256"]
+                    )
                 passed = (
                     (r["status"] == "insufficient_evidence")
                     if source is None
@@ -114,7 +130,7 @@ def main():
             cached = request(
                 "/query",
                 {
-                    "query": CASES[0][0],
+                    "query": cases[0][0],
                     "top_k": 3,
                     "enable_reranking": False,
                     "use_agentic_flow": True,
@@ -133,7 +149,7 @@ def main():
                 "cache_verified": cached["cache_hit"],
                 "cases": rows,
             }
-            (ROOT / "reports" / f"live-{mode}.json").write_text(
+            (ROOT / "reports" / f"live-{label}.json").write_text(
                 json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8"
             )
             print(

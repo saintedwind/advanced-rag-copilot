@@ -1,6 +1,7 @@
 """Isolated Chromium acceptance test; not automation of a user's browser."""
 
 import subprocess
+import json
 import sys
 import time
 from pathlib import Path
@@ -48,6 +49,13 @@ with (ROOT / "reports/browser-server.log").open("w") as log:
             assert page.locator("details").count() > 0
             page.locator("summary").first.click()
             assert "one-hour" in page.locator("#result").inner_text()
+            assert "File SHA-256:" in page.locator("#result").inner_text()
+            assert "lines" in page.locator("summary").first.inner_text()
+            with page.expect_download(timeout=10000) as download:
+                page.get_by_role("button", name="Save evidence record").click()
+            exported = json.loads(Path(download.value.path()).read_text())
+            assert exported["citations"][0]["source_sha256"]
+            assert exported["corpus_sha256"]
             page.screenshot(path=str(ROOT / "reports/desk-desktop.png"), full_page=True)
             page.set_viewport_size({"width": 390, "height": 844})
             assert page.evaluate(
@@ -56,6 +64,12 @@ with (ROOT / "reports/browser-server.log").open("w") as log:
             page.screenshot(path=str(ROOT / "reports/desk-mobile.png"), full_page=True)
             page.get_by_label("QUESTION", exact=True).fill(
                 "What is the capital of Argentina?"
+            )
+            page.get_by_role("button", name="Find evidence").click()
+            page.get_by_text("insufficient evidence", exact=True).wait_for()
+            assert page.locator("details").count() == 0
+            page.get_by_label("QUESTION", exact=True).fill(
+                "What is the Business plan GPU quota?"
             )
             page.get_by_role("button", name="Find evidence").click()
             page.get_by_text("insufficient evidence", exact=True).wait_for()
