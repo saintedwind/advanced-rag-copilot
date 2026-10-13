@@ -2,6 +2,7 @@
 
 import re
 from src.rag.vectorstore import _tokens
+from src.rag.query_normalization import normalize_query
 
 STOP = set(
     "a an the is are was were be been being to of on in at for from with by and or as it its this that these those what which who where when why how do does did can could would should will may must many much often long minimum available used use using provide provides required deadline commitment target format mechanism time take takes after before only own s plan plans integration protocols support supported handles handle happens often quickly receiving should".split()
@@ -42,7 +43,7 @@ ALIASES = {
 
 def topics(text):
     result = set()
-    for token in _tokens(text):
+    for token in _tokens(normalize_query(text)):
         if (
             token in STOP
             or token in {"during", "request", "requests", "run", "runs"}
@@ -74,7 +75,31 @@ def instruction_like(text):
     )
 
 
+def scope_documents(query, docs):
+    flags = set(re.findall(r"--[a-z][a-z0-9-]*", query.lower()))
+    if not flags:
+        return docs
+    selected = []
+    for doc in docs:
+        declared = doc.metadata.get("document_identifiers", [])
+        if declared:
+            matches = flags <= set(declared)
+        else:
+            matches = all(
+                re.search(
+                    r"(?<![\w-])" + re.escape(flag) + r"(?![\w-])",
+                    doc.page_content,
+                    re.I,
+                )
+                for flag in flags
+            )
+        if matches:
+            selected.append(doc)
+    return selected
+
+
 def evidence_screen(query, docs):
+    docs = scope_documents(query, docs)
     safe = [d for d in docs if not instruction_like(d.page_content)]
     needed = topics(query)
     present = set().union(*(topics(d.page_content) for d in safe)) if safe else set()
@@ -109,6 +134,7 @@ def evidence_screen(query, docs):
         "temporal_evidence_required": temporal,
         "instruction_like_chunks_excluded": len(docs) - len(safe),
         "not_semantic_entailment": True,
+        "normalized_query": normalize_query(query),
     }
 
 
@@ -123,6 +149,8 @@ def citation(doc, index):
         **{
             k: metadata.get(k)
             for k in [
+                "upstream_url",
+                "upstream_revision",
                 "source_sha256",
                 "start_char",
                 "end_char",

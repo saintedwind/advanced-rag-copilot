@@ -10,7 +10,9 @@ import numpy as np
 from src.app.dependencies import get_settings
 from src.rag.reranker import DocumentReranker
 from src.rag.vectorstore import HybridRetriever
-from src.rag.evidence import evidence_screen, citation
+from src.rag.evidence import evidence_screen, citation, scope_documents
+from src.rag.query_normalization import normalize_query
+from src.rag.span_reader import SpanReader
 
 
 class RAGPipeline:
@@ -19,9 +21,23 @@ class RAGPipeline:
         self.retriever = retriever or HybridRetriever(self.settings)
         self.reranker = reranker or DocumentReranker(self.settings)
         self.model_lock = threading.Lock()
+        self.reader = SpanReader(
+            self.settings.qa_reader_cache,
+            enabled=self.settings.qa_reader_provider == "onnx",
+        )
+
+    def screen(self, query, docs):
+        selected, screen = evidence_screen(query, docs)
+        if not selected and self.reader.enabled:
+            selected, reader = self.reader.rescue(query, docs, screen)
+            screen["reader"] = reader
+        return selected, screen
 
     def retrieve(self, query, top_k=5, rerank=True):
-        docs = self.retriever.search(query, k=max(top_k, self.settings.top_k_retrieval))
+        docs = self.retriever.search(
+            normalize_query(query), k=max(top_k, self.settings.top_k_retrieval)
+        )
+        docs = scope_documents(query, docs)
         docs = [
             d
             for d in docs
@@ -32,7 +48,7 @@ class RAGPipeline:
         )
 
     def synthesize(self, query, docs):
-        docs, screen = evidence_screen(query, docs)
+        docs, screen = self.screen(query, docs)
         base = {
             "answer": "No sufficient evidence was found.",
             "citations": [],
@@ -53,7 +69,7 @@ class RAGPipeline:
             budget += len(doc.page_content)
         if not selected:
             return base
-        selected, context_screen = evidence_screen(query, selected)
+        selected, context_screen = self.screen(query, selected)
         if not selected:
             return {
                 **base,

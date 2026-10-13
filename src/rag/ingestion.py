@@ -1,6 +1,7 @@
 """Bounded text ingestion with stable content-addressed identities."""
 
 import hashlib
+import re
 from pathlib import Path
 
 from langchain_core.documents import Document
@@ -23,6 +24,7 @@ def load_and_split(source_dir, chunk_size=600, chunk_overlap=100, allowed_root=N
     if len(files) > 200:
         raise ValueError("At most 200 source files are allowed")
     docs = []
+    originals = {}
     total = 0
     for path in files:
         if not path.resolve().is_relative_to(root):
@@ -33,15 +35,25 @@ def load_and_split(source_dir, chunk_size=600, chunk_overlap=100, allowed_root=N
             raise ValueError("Document size budget exceeded")
         raw = path.read_bytes()
         text = raw.decode("utf-8").replace("\r\n", "\n").replace("\r", "\n")
+        source = path.relative_to(root).as_posix()
+        originals[source] = text
+        identifiers = re.findall(r"^#+\s+`(--[a-z0-9-]+)`", text, re.M)
+        body_offset = 0
+        if text.startswith("---\n"):
+            closing = text.find("\n---\n", 4)
+            if closing >= 0 and "SPDX-License-Identifier: curl" in text[:closing]:
+                body_offset = closing + 5
         if text.strip():
             docs.append(
                 Document(
-                    page_content=text,
+                    page_content=text[body_offset:],
                     metadata={
                         "source": path.relative_to(root).as_posix(),
                         "file_name": path.name,
                         "file_type": path.suffix[1:],
                         "source_sha256": hashlib.sha256(raw).hexdigest(),
+                        "document_identifiers": identifiers,
+                        "body_offset": body_offset,
                     },
                 )
             )
@@ -49,10 +61,10 @@ def load_and_split(source_dir, chunk_size=600, chunk_overlap=100, allowed_root=N
         chunk_size=chunk_size, chunk_overlap=chunk_overlap, add_start_index=True
     )
     chunks = splitter.split_documents(docs)
-    originals = {d.metadata["source"]: d.page_content for d in docs}
     for chunk in chunks:
         original = originals[chunk.metadata["source"]]
-        start = chunk.metadata["start_index"]
+        start = chunk.metadata["start_index"] + chunk.metadata["body_offset"]
+        chunk.metadata["start_index"] = start
         end = start + len(chunk.page_content)
         if start < 0 or original[start:end] != chunk.page_content:
             raise ValueError("Chunk offsets do not match source text")
