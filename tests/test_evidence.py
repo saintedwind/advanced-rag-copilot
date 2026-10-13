@@ -10,6 +10,19 @@ from src.app.dependencies import AppSettings
 from src.app.api import create_app
 from src.rag.vectorstore import HybridRetriever
 from tests.test_desk import Embeddings
+from scripts.live_check import ensure_port_available
+
+
+def test_live_probe_refuses_an_existing_listener():
+    import socket
+
+    with socket.socket() as listener:
+        listener.bind(("127.0.0.1", 0))
+        port = listener.getsockname()[1]
+        listener.listen()
+        with pytest.raises(RuntimeError, match="active listener"):
+            ensure_port_available(port)
+    ensure_port_available(port)
 
 
 def doc(text, source="policy.md"):
