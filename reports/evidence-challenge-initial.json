@@ -1,0 +1,240 @@
+{
+  "scope": "authored synthetic English development cases; not a blind holdout or customer accuracy estimate",
+  "embedding": "BAAI/bge-small-en-v1.5",
+  "provider": "extractive",
+  "documents": 8,
+  "source_manifest": {
+    "api.md": "e9b4d1c9912eebfe0fb3d0ed49c581da8565a83ef3f4c08f941af60f0cb66190",
+    "backup.md": "d21c7aa90bb4f6e98bb46eb1d49ecadb57d74dd04baba6b66e8c7f5a51293015",
+    "billing.md": "16113b9058bed6685a45919c5fb150bc6e20bac22433cd16dd9a0c1f15bf8c9b",
+    "incidents.md": "7212413b1c35bd7f64544e0dfd5359970d7ebabfeec3542d5aab4fd934edb95d",
+    "localization.md": "454fde20b9df1697ef92794b1d69b6066459659205d8590ee618c2bdb43b9e07",
+    "privacy.md": "81da302565b516496a5815f4c41ae270c9390ffd85f11a17643ffa47a81cc053",
+    "security.md": "cc5a1e1c4682fab1b543f77112dcfce19792772ddd8cd0d18cc57f7ef15847ae",
+    "untrusted.md": "9bddf59da73194e405d82ead7f3ac5490188286107aca54713143608a1fccff1"
+  },
+  "total": 8,
+  "passed": 3,
+  "supported_passed": 2,
+  "supported_total": 6,
+  "abstention_passed": 1,
+  "abstention_total": 2,
+  "cases": [
+    {
+      "question": "How often are dependency scans run?",
+      "expected_source": "security.md",
+      "expected_phrase": "every merge request",
+      "passed": false,
+      "result": {
+        "answer": "No sufficient evidence was found.",
+        "citations": [],
+        "confidence": "low",
+        "status": "insufficient_evidence",
+        "route_taken": "no_context",
+        "generation_mode": "extractive",
+        "evidence_screen": {
+          "method": "conservative_same_source_topic_coverage",
+          "missing_terms": [
+            "scan"
+          ],
+          "same_source_required": true,
+          "instruction_like_chunks_excluded": 0,
+          "not_semantic_entailment": true
+        }
+      }
+    },
+    {
+      "question": "How long are Standard audit events retained?",
+      "expected_source": "privacy.md",
+      "expected_phrase": "180 days",
+      "passed": true,
+      "result": {
+        "answer": "[1] # Privacy operations \u2014 synthetic evaluation fixture\nWorkspace deletion is completed within 30 days after identity verification.\nDeletion from backup snapshots follows the 35-day snapshot retention period.\nData exports use CSV files and require administrator approval.\nPersonal data is hosted in the EU region. Audit event retention is 180 days for the Standard plan.\nLegal holds suspend deletion until the hold is released by the compliance owner.",
+        "citations": [
+          {
+            "index": 1,
+            "source": "privacy.md",
+            "chunk_id": "cac46d66dae0fede047964ee8bad47b44baa1eb43053da613602e722c6628ccd",
+            "snippet": "# Privacy operations \u2014 synthetic evaluation fixture\nWorkspace deletion is completed within 30 days after identity verification.\nDeletion from backup snapshots follows the 35-day snapshot retention period.\nData exports use CSV files and require administrator approval.\nPersonal data is hosted in the EU region. Audit event retention is 180 days for the Standard plan.\nLegal holds suspend deletion until the hold is released by the compliance owner.",
+            "score": 0.7473800013404504,
+            "source_sha256": "81da302565b516496a5815f4c41ae270c9390ffd85f11a17643ffa47a81cc053",
+            "start_char": 0,
+            "end_char": 447,
+            "start_line": 1,
+            "end_line": 6
+          }
+        ],
+        "confidence": "unverified",
+        "status": "evidence_found",
+        "route_taken": "hybrid_extractive",
+        "generation_mode": "extractive",
+        "evidence_screen": {
+          "method": "conservative_same_source_topic_coverage",
+          "missing_terms": [],
+          "same_source_required": true,
+          "instruction_like_chunks_excluded": 0,
+          "not_semantic_entailment": true
+        }
+      }
+    },
+    {
+      "question": "Who approves refund requests?",
+      "expected_source": "billing.md",
+      "expected_phrase": "billing owner",
+      "passed": false,
+      "result": {
+        "answer": "No sufficient evidence was found.",
+        "citations": [],
+        "confidence": "low",
+        "status": "insufficient_evidence",
+        "route_taken": "no_context",
+        "generation_mode": "extractive",
+        "evidence_screen": {
+          "method": "conservative_same_source_topic_coverage",
+          "missing_terms": [],
+          "same_source_required": true,
+          "instruction_like_chunks_excluded": 0,
+          "not_semantic_entailment": true
+        }
+      }
+    },
+    {
+      "question": "How often are access reviews run?",
+      "expected_source": "security.md",
+      "expected_phrase": "quarterly",
+      "passed": true,
+      "result": {
+        "answer": "[1] # Security controls \u2014 synthetic evaluation fixture\nService connections require TLS 1.2 or later. Stored secrets are encrypted with AES-256.\nProduction access requires hardware security keys and approval from two reviewers.\nSecurity review runs annually. Dependency scanning runs on every merge request.\nAccess reviews run quarterly. The emergency access session expires after 60 minutes.",
+        "citations": [
+          {
+            "index": 1,
+            "source": "security.md",
+            "chunk_id": "d8ae47cdc497b7203d2c3080bb86f5b03b33f08572ef9e1a92d094d101457add",
+            "snippet": "# Security controls \u2014 synthetic evaluation fixture\nService connections require TLS 1.2 or later. Stored secrets are encrypted with AES-256.\nProduction access requires hardware security keys and approval from two reviewers.\nSecurity review runs annually. Dependency scanning runs on every merge request.\nAccess reviews run quarterly. The emergency access session expires after 60 minutes.",
+            "score": 0.6774991021780252,
+            "source_sha256": "cc5a1e1c4682fab1b543f77112dcfce19792772ddd8cd0d18cc57f7ef15847ae",
+            "start_char": 0,
+            "end_char": 387,
+            "start_line": 1,
+            "end_line": 5
+          }
+        ],
+        "confidence": "unverified",
+        "status": "evidence_found",
+        "route_taken": "hybrid_extractive",
+        "generation_mode": "extractive",
+        "evidence_screen": {
+          "method": "conservative_same_source_topic_coverage",
+          "missing_terms": [],
+          "same_source_required": true,
+          "instruction_like_chunks_excluded": 0,
+          "not_semantic_entailment": true
+        }
+      }
+    },
+    {
+      "question": "How frequently are backup copies generated?",
+      "expected_source": "backup.md",
+      "expected_phrase": "six hours",
+      "passed": false,
+      "result": {
+        "answer": "No sufficient evidence was found.",
+        "citations": [],
+        "confidence": "low",
+        "status": "insufficient_evidence",
+        "route_taken": "no_context",
+        "generation_mode": "extractive",
+        "evidence_screen": {
+          "method": "conservative_same_source_topic_coverage",
+          "missing_terms": [
+            "copie",
+            "frequently",
+            "generated"
+          ],
+          "same_source_required": true,
+          "instruction_like_chunks_excluded": 0,
+          "not_semantic_entailment": true
+        }
+      }
+    },
+    {
+      "question": "Who is responsible for escalating an incident?",
+      "expected_source": "incidents.md",
+      "expected_phrase": "incident commander",
+      "passed": false,
+      "result": {
+        "answer": "No sufficient evidence was found.",
+        "citations": [],
+        "confidence": "low",
+        "status": "insufficient_evidence",
+        "route_taken": "no_context",
+        "generation_mode": "extractive",
+        "evidence_screen": {
+          "method": "conservative_same_source_topic_coverage",
+          "missing_terms": [
+            "escalating",
+            "responsible"
+          ],
+          "same_source_required": true,
+          "instruction_like_chunks_excluded": 0,
+          "not_semantic_entailment": true
+        }
+      }
+    },
+    {
+      "question": "How long does refund approval take?",
+      "expected_source": null,
+      "expected_phrase": null,
+      "passed": false,
+      "result": {
+        "answer": "[1] # Billing operations \u2014 synthetic evaluation fixture\nInvoices are issued monthly. The payment deadline is 14 calendar days after invoice issuance.\nDisputed invoices must be reported within seven calendar days.\nRefunds require approval from the billing owner. Trial accounts have no automatic refund entitlement.\nBusiness service credits are capped at 20 percent of the monthly subscription fee.",
+        "citations": [
+          {
+            "index": 1,
+            "source": "billing.md",
+            "chunk_id": "3604ff28816c4eee58210a9477c184272e620db140c043d06096dc67bb501267",
+            "snippet": "# Billing operations \u2014 synthetic evaluation fixture\nInvoices are issued monthly. The payment deadline is 14 calendar days after invoice issuance.\nDisputed invoices must be reported within seven calendar days.\nRefunds require approval from the billing owner. Trial accounts have no automatic refund entitlement.\nBusiness service credits are capped at 20 percent of the monthly subscription fee.",
+            "score": 0.7436381179641018,
+            "source_sha256": "16113b9058bed6685a45919c5fb150bc6e20bac22433cd16dd9a0c1f15bf8c9b",
+            "start_char": 0,
+            "end_char": 393,
+            "start_line": 1,
+            "end_line": 5
+          }
+        ],
+        "confidence": "unverified",
+        "status": "evidence_found",
+        "route_taken": "hybrid_extractive",
+        "generation_mode": "extractive",
+        "evidence_screen": {
+          "method": "conservative_same_source_topic_coverage",
+          "missing_terms": [],
+          "same_source_required": true,
+          "instruction_like_chunks_excluded": 0,
+          "not_semantic_entailment": true
+        }
+      }
+    },
+    {
+      "question": "How long is API token retention?",
+      "expected_source": null,
+      "expected_phrase": null,
+      "passed": true,
+      "result": {
+        "answer": "No sufficient evidence was found.",
+        "citations": [],
+        "confidence": "low",
+        "status": "insufficient_evidence",
+        "route_taken": "no_context",
+        "generation_mode": "extractive",
+        "evidence_screen": {
+          "method": "conservative_same_source_topic_coverage",
+          "missing_terms": [],
+          "same_source_required": true,
+          "instruction_like_chunks_excluded": 0,
+          "not_semantic_entailment": true
+        }
+      }
+    }
+  ]
+}
