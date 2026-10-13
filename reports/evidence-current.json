@@ -34,6 +34,8 @@
             "chunk_id": "4e4d204757d744ba17949affbccbf0a5d506e3a6dd4b6aaee8f66ef3f0d57231",
             "snippet": "# Backup recovery runbook \u2014 synthetic evaluation fixture\nDatabase snapshots are taken every six hours. Snapshot retention is 35 days.\nRestore requests require approval from the on-call database operator.\nThe recovery time objective is four hours; it is an objective rather than a contractual guarantee.\nRestore drills run quarterly in an isolated staging account. Backups are encrypted with AES-256.",
             "score": 0.7576248524568941,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "d21c7aa90bb4f6e98bb46eb1d49ecadb57d74dd04baba6b66e8c7f5a51293015",
             "start_char": 0,
             "end_char": 399,
@@ -51,7 +53,8 @@
           "same_source_required": true,
           "temporal_evidence_required": true,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "How often are database snapshots taken?"
         }
       }
     },
@@ -69,6 +72,8 @@
             "chunk_id": "4e4d204757d744ba17949affbccbf0a5d506e3a6dd4b6aaee8f66ef3f0d57231",
             "snippet": "# Backup recovery runbook \u2014 synthetic evaluation fixture\nDatabase snapshots are taken every six hours. Snapshot retention is 35 days.\nRestore requests require approval from the on-call database operator.\nThe recovery time objective is four hours; it is an objective rather than a contractual guarantee.\nRestore drills run quarterly in an isolated staging account. Backups are encrypted with AES-256.",
             "score": 0.807052645937724,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "d21c7aa90bb4f6e98bb46eb1d49ecadb57d74dd04baba6b66e8c7f5a51293015",
             "start_char": 0,
             "end_char": 399,
@@ -81,6 +86,8 @@
             "chunk_id": "cac46d66dae0fede047964ee8bad47b44baa1eb43053da613602e722c6628ccd",
             "snippet": "# Privacy operations \u2014 synthetic evaluation fixture\nWorkspace deletion is completed within 30 days after identity verification.\nDeletion from backup snapshots follows the 35-day snapshot retention period.\nData exports use CSV files and require administrator approval.\nPersonal data is hosted in the EU region. Audit event retention is 180 days for the Standard plan.\nLegal holds suspend deletion until the hold is released by the compliance owner.",
             "score": 0.7917068179902097,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "81da302565b516496a5815f4c41ae270c9390ffd85f11a17643ffa47a81cc053",
             "start_char": 0,
             "end_char": 447,
@@ -98,7 +105,8 @@
           "same_source_required": true,
           "temporal_evidence_required": true,
           "instruction_like_chunks_excluded": 1,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "How long are snapshots retained?"
         }
       }
     },
@@ -116,6 +124,8 @@
             "chunk_id": "4e4d204757d744ba17949affbccbf0a5d506e3a6dd4b6aaee8f66ef3f0d57231",
             "snippet": "# Backup recovery runbook \u2014 synthetic evaluation fixture\nDatabase snapshots are taken every six hours. Snapshot retention is 35 days.\nRestore requests require approval from the on-call database operator.\nThe recovery time objective is four hours; it is an objective rather than a contractual guarantee.\nRestore drills run quarterly in an isolated staging account. Backups are encrypted with AES-256.",
             "score": 0.6737043605828443,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "d21c7aa90bb4f6e98bb46eb1d49ecadb57d74dd04baba6b66e8c7f5a51293015",
             "start_char": 0,
             "end_char": 399,
@@ -133,7 +143,8 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "Who approves restore requests?"
         }
       }
     },
@@ -151,6 +162,8 @@
             "chunk_id": "4e4d204757d744ba17949affbccbf0a5d506e3a6dd4b6aaee8f66ef3f0d57231",
             "snippet": "# Backup recovery runbook \u2014 synthetic evaluation fixture\nDatabase snapshots are taken every six hours. Snapshot retention is 35 days.\nRestore requests require approval from the on-call database operator.\nThe recovery time objective is four hours; it is an objective rather than a contractual guarantee.\nRestore drills run quarterly in an isolated staging account. Backups are encrypted with AES-256.",
             "score": 0.7483016997845842,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "d21c7aa90bb4f6e98bb46eb1d49ecadb57d74dd04baba6b66e8c7f5a51293015",
             "start_char": 0,
             "end_char": 399,
@@ -168,7 +181,8 @@
           "same_source_required": true,
           "temporal_evidence_required": true,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "What is the recovery time objective?"
         }
       }
     },
@@ -186,6 +200,8 @@
             "chunk_id": "4e4d204757d744ba17949affbccbf0a5d506e3a6dd4b6aaee8f66ef3f0d57231",
             "snippet": "# Backup recovery runbook \u2014 synthetic evaluation fixture\nDatabase snapshots are taken every six hours. Snapshot retention is 35 days.\nRestore requests require approval from the on-call database operator.\nThe recovery time objective is four hours; it is an objective rather than a contractual guarantee.\nRestore drills run quarterly in an isolated staging account. Backups are encrypted with AES-256.",
             "score": 0.7880593029162641,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "d21c7aa90bb4f6e98bb46eb1d49ecadb57d74dd04baba6b66e8c7f5a51293015",
             "start_char": 0,
             "end_char": 399,
@@ -203,7 +219,8 @@
           "same_source_required": true,
           "temporal_evidence_required": true,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "How often are restore drills run?"
         }
       }
     },
@@ -221,6 +238,8 @@
             "chunk_id": "45f779d6fc4b759edb3c3f8a56583bef517cd5664c607952f2b78a83ba95c364",
             "snippet": "# API operations \u2014 synthetic evaluation fixture\nThe Standard API rate limit is 120 requests per minute per token.\nClients receiving HTTP 429 should honor the Retry-After header before retrying.\nIdempotency keys expire after 24 hours. Repeated requests with the same idempotency key reuse the original result.\nAPI tokens can be revoked by workspace administrators. Pagination uses an opaque cursor rather than an offset.",
             "score": 0.8423197531714344,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "e9b4d1c9912eebfe0fb3d0ed49c581da8565a83ef3f4c08f941af60f0cb66190",
             "start_char": 0,
             "end_char": 419,
@@ -238,7 +257,8 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "What is the Standard API rate limit?"
         }
       }
     },
@@ -256,6 +276,8 @@
             "chunk_id": "45f779d6fc4b759edb3c3f8a56583bef517cd5664c607952f2b78a83ba95c364",
             "snippet": "# API operations \u2014 synthetic evaluation fixture\nThe Standard API rate limit is 120 requests per minute per token.\nClients receiving HTTP 429 should honor the Retry-After header before retrying.\nIdempotency keys expire after 24 hours. Repeated requests with the same idempotency key reuse the original result.\nAPI tokens can be revoked by workspace administrators. Pagination uses an opaque cursor rather than an offset.",
             "score": 0.6317876068229138,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "e9b4d1c9912eebfe0fb3d0ed49c581da8565a83ef3f4c08f941af60f0cb66190",
             "start_char": 0,
             "end_char": 419,
@@ -273,7 +295,8 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "Which header should clients honor after HTTP 429?"
         }
       }
     },
@@ -291,6 +314,8 @@
             "chunk_id": "45f779d6fc4b759edb3c3f8a56583bef517cd5664c607952f2b78a83ba95c364",
             "snippet": "# API operations \u2014 synthetic evaluation fixture\nThe Standard API rate limit is 120 requests per minute per token.\nClients receiving HTTP 429 should honor the Retry-After header before retrying.\nIdempotency keys expire after 24 hours. Repeated requests with the same idempotency key reuse the original result.\nAPI tokens can be revoked by workspace administrators. Pagination uses an opaque cursor rather than an offset.",
             "score": 0.7386346168752556,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "e9b4d1c9912eebfe0fb3d0ed49c581da8565a83ef3f4c08f941af60f0cb66190",
             "start_char": 0,
             "end_char": 419,
@@ -308,7 +333,8 @@
           "same_source_required": true,
           "temporal_evidence_required": true,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "When do idempotency keys expire?"
         }
       }
     },
@@ -326,6 +352,8 @@
             "chunk_id": "45f779d6fc4b759edb3c3f8a56583bef517cd5664c607952f2b78a83ba95c364",
             "snippet": "# API operations \u2014 synthetic evaluation fixture\nThe Standard API rate limit is 120 requests per minute per token.\nClients receiving HTTP 429 should honor the Retry-After header before retrying.\nIdempotency keys expire after 24 hours. Repeated requests with the same idempotency key reuse the original result.\nAPI tokens can be revoked by workspace administrators. Pagination uses an opaque cursor rather than an offset.",
             "score": 0.7221739142297916,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "e9b4d1c9912eebfe0fb3d0ed49c581da8565a83ef3f4c08f941af60f0cb66190",
             "start_char": 0,
             "end_char": 419,
@@ -343,7 +371,8 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 1,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "Who can revoke API tokens?"
         }
       }
     },
@@ -361,6 +390,8 @@
             "chunk_id": "45f779d6fc4b759edb3c3f8a56583bef517cd5664c607952f2b78a83ba95c364",
             "snippet": "# API operations \u2014 synthetic evaluation fixture\nThe Standard API rate limit is 120 requests per minute per token.\nClients receiving HTTP 429 should honor the Retry-After header before retrying.\nIdempotency keys expire after 24 hours. Repeated requests with the same idempotency key reuse the original result.\nAPI tokens can be revoked by workspace administrators. Pagination uses an opaque cursor rather than an offset.",
             "score": 0.6488244236344178,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "e9b4d1c9912eebfe0fb3d0ed49c581da8565a83ef3f4c08f941af60f0cb66190",
             "start_char": 0,
             "end_char": 419,
@@ -378,7 +409,8 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "Which mechanism is used for pagination?"
         }
       }
     },
@@ -396,6 +428,8 @@
             "chunk_id": "cac46d66dae0fede047964ee8bad47b44baa1eb43053da613602e722c6628ccd",
             "snippet": "# Privacy operations \u2014 synthetic evaluation fixture\nWorkspace deletion is completed within 30 days after identity verification.\nDeletion from backup snapshots follows the 35-day snapshot retention period.\nData exports use CSV files and require administrator approval.\nPersonal data is hosted in the EU region. Audit event retention is 180 days for the Standard plan.\nLegal holds suspend deletion until the hold is released by the compliance owner.",
             "score": 0.8284437311461259,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "81da302565b516496a5815f4c41ae270c9390ffd85f11a17643ffa47a81cc053",
             "start_char": 0,
             "end_char": 447,
@@ -413,7 +447,8 @@
           "same_source_required": true,
           "temporal_evidence_required": true,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "How long does workspace deletion take?"
         }
       }
     },
@@ -431,6 +466,8 @@
             "chunk_id": "cac46d66dae0fede047964ee8bad47b44baa1eb43053da613602e722c6628ccd",
             "snippet": "# Privacy operations \u2014 synthetic evaluation fixture\nWorkspace deletion is completed within 30 days after identity verification.\nDeletion from backup snapshots follows the 35-day snapshot retention period.\nData exports use CSV files and require administrator approval.\nPersonal data is hosted in the EU region. Audit event retention is 180 days for the Standard plan.\nLegal holds suspend deletion until the hold is released by the compliance owner.",
             "score": 0.5862613212597527,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "81da302565b516496a5815f4c41ae270c9390ffd85f11a17643ffa47a81cc053",
             "start_char": 0,
             "end_char": 447,
@@ -448,7 +485,8 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 1,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "Which format is used for data exports?"
         }
       }
     },
@@ -466,6 +504,8 @@
             "chunk_id": "cac46d66dae0fede047964ee8bad47b44baa1eb43053da613602e722c6628ccd",
             "snippet": "# Privacy operations \u2014 synthetic evaluation fixture\nWorkspace deletion is completed within 30 days after identity verification.\nDeletion from backup snapshots follows the 35-day snapshot retention period.\nData exports use CSV files and require administrator approval.\nPersonal data is hosted in the EU region. Audit event retention is 180 days for the Standard plan.\nLegal holds suspend deletion until the hold is released by the compliance owner.",
             "score": 0.6071624866762002,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "81da302565b516496a5815f4c41ae270c9390ffd85f11a17643ffa47a81cc053",
             "start_char": 0,
             "end_char": 447,
@@ -483,7 +523,8 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "Where is personal data hosted?"
         }
       }
     },
@@ -501,6 +542,8 @@
             "chunk_id": "cac46d66dae0fede047964ee8bad47b44baa1eb43053da613602e722c6628ccd",
             "snippet": "# Privacy operations \u2014 synthetic evaluation fixture\nWorkspace deletion is completed within 30 days after identity verification.\nDeletion from backup snapshots follows the 35-day snapshot retention period.\nData exports use CSV files and require administrator approval.\nPersonal data is hosted in the EU region. Audit event retention is 180 days for the Standard plan.\nLegal holds suspend deletion until the hold is released by the compliance owner.",
             "score": 0.7233448253346717,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "81da302565b516496a5815f4c41ae270c9390ffd85f11a17643ffa47a81cc053",
             "start_char": 0,
             "end_char": 447,
@@ -518,7 +561,8 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "What happens to deletion during legal holds?"
         }
       }
     },
@@ -536,6 +580,8 @@
             "chunk_id": "034a1673c059bff91bc57c74c7f7fdcaad90d244f68b6ab73151a5efd16c5c97",
             "snippet": "# Incident response \u2014 synthetic evaluation fixture\nSeverity-one incidents are acknowledged within 15 minutes by the on-call engineer.\nCustomer status updates are posted every 30 minutes during a severity-one incident.\nPostmortems are delivered within five business days after incident closure.\nThe incident commander owns escalation. Root-cause estimates are preliminary until the postmortem is reviewed.",
             "score": 0.8032314137076972,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "7212413b1c35bd7f64544e0dfd5359970d7ebabfeec3542d5aab4fd934edb95d",
             "start_char": 0,
             "end_char": 404,
@@ -553,7 +599,8 @@
           "same_source_required": true,
           "temporal_evidence_required": true,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "What is the severity-one acknowledgement time?"
         }
       }
     },
@@ -571,6 +618,8 @@
             "chunk_id": "034a1673c059bff91bc57c74c7f7fdcaad90d244f68b6ab73151a5efd16c5c97",
             "snippet": "# Incident response \u2014 synthetic evaluation fixture\nSeverity-one incidents are acknowledged within 15 minutes by the on-call engineer.\nCustomer status updates are posted every 30 minutes during a severity-one incident.\nPostmortems are delivered within five business days after incident closure.\nThe incident commander owns escalation. Root-cause estimates are preliminary until the postmortem is reviewed.",
             "score": 0.7828416777356524,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "7212413b1c35bd7f64544e0dfd5359970d7ebabfeec3542d5aab4fd934edb95d",
             "start_char": 0,
             "end_char": 404,
@@ -588,7 +637,8 @@
           "same_source_required": true,
           "temporal_evidence_required": true,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "How often are incident status updates posted?"
         }
       }
     },
@@ -606,6 +656,8 @@
             "chunk_id": "034a1673c059bff91bc57c74c7f7fdcaad90d244f68b6ab73151a5efd16c5c97",
             "snippet": "# Incident response \u2014 synthetic evaluation fixture\nSeverity-one incidents are acknowledged within 15 minutes by the on-call engineer.\nCustomer status updates are posted every 30 minutes during a severity-one incident.\nPostmortems are delivered within five business days after incident closure.\nThe incident commander owns escalation. Root-cause estimates are preliminary until the postmortem is reviewed.",
             "score": 0.7495615796553557,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "7212413b1c35bd7f64544e0dfd5359970d7ebabfeec3542d5aab4fd934edb95d",
             "start_char": 0,
             "end_char": 404,
@@ -623,7 +675,8 @@
           "same_source_required": true,
           "temporal_evidence_required": true,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "When are postmortems delivered?"
         }
       }
     },
@@ -641,6 +694,8 @@
             "chunk_id": "034a1673c059bff91bc57c74c7f7fdcaad90d244f68b6ab73151a5efd16c5c97",
             "snippet": "# Incident response \u2014 synthetic evaluation fixture\nSeverity-one incidents are acknowledged within 15 minutes by the on-call engineer.\nCustomer status updates are posted every 30 minutes during a severity-one incident.\nPostmortems are delivered within five business days after incident closure.\nThe incident commander owns escalation. Root-cause estimates are preliminary until the postmortem is reviewed.",
             "score": 0.6882496490832095,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "7212413b1c35bd7f64544e0dfd5359970d7ebabfeec3542d5aab4fd934edb95d",
             "start_char": 0,
             "end_char": 404,
@@ -658,7 +713,8 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "Who owns incident escalation?"
         }
       }
     },
@@ -676,6 +732,8 @@
             "chunk_id": "d8ae47cdc497b7203d2c3080bb86f5b03b33f08572ef9e1a92d094d101457add",
             "snippet": "# Security controls \u2014 synthetic evaluation fixture\nService connections require TLS 1.2 or later. Stored secrets are encrypted with AES-256.\nProduction access requires hardware security keys and approval from two reviewers.\nSecurity review runs annually. Dependency scanning runs on every merge request.\nAccess reviews run quarterly. The emergency access session expires after 60 minutes.",
             "score": 0.699575663872771,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "cc5a1e1c4682fab1b543f77112dcfce19792772ddd8cd0d18cc57f7ef15847ae",
             "start_char": 0,
             "end_char": 387,
@@ -693,7 +751,8 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "What is the minimum TLS version?"
         }
       }
     },
@@ -711,6 +770,8 @@
             "chunk_id": "d8ae47cdc497b7203d2c3080bb86f5b03b33f08572ef9e1a92d094d101457add",
             "snippet": "# Security controls \u2014 synthetic evaluation fixture\nService connections require TLS 1.2 or later. Stored secrets are encrypted with AES-256.\nProduction access requires hardware security keys and approval from two reviewers.\nSecurity review runs annually. Dependency scanning runs on every merge request.\nAccess reviews run quarterly. The emergency access session expires after 60 minutes.",
             "score": 0.6534764617664804,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "cc5a1e1c4682fab1b543f77112dcfce19792772ddd8cd0d18cc57f7ef15847ae",
             "start_char": 0,
             "end_char": 387,
@@ -728,7 +789,8 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "How many reviewers approve production access?"
         }
       }
     },
@@ -746,6 +808,8 @@
             "chunk_id": "d8ae47cdc497b7203d2c3080bb86f5b03b33f08572ef9e1a92d094d101457add",
             "snippet": "# Security controls \u2014 synthetic evaluation fixture\nService connections require TLS 1.2 or later. Stored secrets are encrypted with AES-256.\nProduction access requires hardware security keys and approval from two reviewers.\nSecurity review runs annually. Dependency scanning runs on every merge request.\nAccess reviews run quarterly. The emergency access session expires after 60 minutes.",
             "score": 0.6500636416703125,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "cc5a1e1c4682fab1b543f77112dcfce19792772ddd8cd0d18cc57f7ef15847ae",
             "start_char": 0,
             "end_char": 387,
@@ -763,7 +827,8 @@
           "same_source_required": true,
           "temporal_evidence_required": true,
           "instruction_like_chunks_excluded": 1,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "When does an emergency access session expire?"
         }
       }
     },
@@ -781,6 +846,8 @@
             "chunk_id": "3604ff28816c4eee58210a9477c184272e620db140c043d06096dc67bb501267",
             "snippet": "# Billing operations \u2014 synthetic evaluation fixture\nInvoices are issued monthly. The payment deadline is 14 calendar days after invoice issuance.\nDisputed invoices must be reported within seven calendar days.\nRefunds require approval from the billing owner. Trial accounts have no automatic refund entitlement.\nBusiness service credits are capped at 20 percent of the monthly subscription fee.",
             "score": 0.797168170887407,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "16113b9058bed6685a45919c5fb150bc6e20bac22433cd16dd9a0c1f15bf8c9b",
             "start_char": 0,
             "end_char": 393,
@@ -798,7 +865,8 @@
           "same_source_required": true,
           "temporal_evidence_required": true,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "What is the invoice payment deadline?"
         }
       }
     },
@@ -816,6 +884,8 @@
             "chunk_id": "3604ff28816c4eee58210a9477c184272e620db140c043d06096dc67bb501267",
             "snippet": "# Billing operations \u2014 synthetic evaluation fixture\nInvoices are issued monthly. The payment deadline is 14 calendar days after invoice issuance.\nDisputed invoices must be reported within seven calendar days.\nRefunds require approval from the billing owner. Trial accounts have no automatic refund entitlement.\nBusiness service credits are capped at 20 percent of the monthly subscription fee.",
             "score": 0.8150409418368976,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "16113b9058bed6685a45919c5fb150bc6e20bac22433cd16dd9a0c1f15bf8c9b",
             "start_char": 0,
             "end_char": 393,
@@ -833,7 +903,8 @@
           "same_source_required": true,
           "temporal_evidence_required": true,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "What is the invoice dispute deadline?"
         }
       }
     },
@@ -851,6 +922,8 @@
             "chunk_id": "3604ff28816c4eee58210a9477c184272e620db140c043d06096dc67bb501267",
             "snippet": "# Billing operations \u2014 synthetic evaluation fixture\nInvoices are issued monthly. The payment deadline is 14 calendar days after invoice issuance.\nDisputed invoices must be reported within seven calendar days.\nRefunds require approval from the billing owner. Trial accounts have no automatic refund entitlement.\nBusiness service credits are capped at 20 percent of the monthly subscription fee.",
             "score": 0.610542122549362,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "16113b9058bed6685a45919c5fb150bc6e20bac22433cd16dd9a0c1f15bf8c9b",
             "start_char": 0,
             "end_char": 393,
@@ -868,7 +941,8 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "What is the Business service credit cap?"
         }
       }
     },
@@ -886,6 +960,8 @@
             "chunk_id": "5f657749f5c2e451756440158ca444f23c9c28c0cff09f19856f754a376e63e3",
             "snippet": "# Language support \u2014 synthetic evaluation fixture\nThe support desk handles English and French requests. Emergency phone support is available only in English.\nDocumentation translation is reviewed quarterly. Translation requests are submitted to the content owner.\nThe documentation portal supports right-to-left layout; this does not imply retrieval quality for every language.",
             "score": 0.8320636267671941,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "454fde20b9df1697ef92794b1d69b6066459659205d8590ee618c2bdb43b9e07",
             "start_char": 0,
             "end_char": 377,
@@ -903,7 +979,8 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "Which languages does the support desk handle?"
         }
       }
     },
@@ -921,6 +998,8 @@
             "chunk_id": "5f657749f5c2e451756440158ca444f23c9c28c0cff09f19856f754a376e63e3",
             "snippet": "# Language support \u2014 synthetic evaluation fixture\nThe support desk handles English and French requests. Emergency phone support is available only in English.\nDocumentation translation is reviewed quarterly. Translation requests are submitted to the content owner.\nThe documentation portal supports right-to-left layout; this does not imply retrieval quality for every language.",
             "score": 0.8384923944724205,
+            "upstream_url": null,
+            "upstream_revision": null,
             "source_sha256": "454fde20b9df1697ef92794b1d69b6066459659205d8590ee618c2bdb43b9e07",
             "start_char": 0,
             "end_char": 377,
@@ -938,7 +1017,8 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "Which language is emergency phone support available in?"
         }
       }
     },
@@ -963,7 +1043,11 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 1,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "What is the backup storage vendor?",
+          "reader": {
+            "status": "disabled_or_protected_facet"
+          }
         }
       }
     },
@@ -988,7 +1072,11 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "What is the API GPU quota?",
+          "reader": {
+            "status": "disabled_or_protected_facet"
+          }
         }
       }
     },
@@ -1010,7 +1098,12 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "What is the workspace deletion fee?",
+          "reader": {
+            "status": "no_answer_span",
+            "margin_threshold": 3.0
+          }
         }
       }
     },
@@ -1034,7 +1127,11 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "What is the incident commander's salary?",
+          "reader": {
+            "status": "disabled_or_protected_facet"
+          }
         }
       }
     },
@@ -1059,7 +1156,11 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 1,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "What is the hardware security key vendor?",
+          "reader": {
+            "status": "disabled_or_protected_facet"
+          }
         }
       }
     },
@@ -1084,7 +1185,11 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "Which bank account receives invoice payments?",
+          "reader": {
+            "status": "disabled_or_protected_facet"
+          }
         }
       }
     },
@@ -1109,7 +1214,11 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 1,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "What is the administrator password?",
+          "reader": {
+            "status": "disabled_or_protected_facet"
+          }
         }
       }
     },
@@ -1134,7 +1243,11 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "Which languages are supported by the mobile application?",
+          "reader": {
+            "status": "disabled_or_protected_facet"
+          }
         }
       }
     },
@@ -1159,7 +1272,11 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "What is the capital of Argentina?",
+          "reader": {
+            "status": "no_safe_candidates"
+          }
         }
       }
     },
@@ -1185,7 +1302,11 @@
           "same_source_required": true,
           "temporal_evidence_required": false,
           "instruction_like_chunks_excluded": 0,
-          "not_semantic_entailment": true
+          "not_semantic_entailment": true,
+          "normalized_query": "What is the price of Bitcoin today?",
+          "reader": {
+            "status": "disabled_or_protected_facet"
+          }
         }
       }
     }
