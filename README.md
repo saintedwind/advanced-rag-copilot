@@ -4,9 +4,9 @@
 
 A reproducible document-evidence portfolio by Peyman Gholamhosseini. Review synthetic operational policies or a pinned snapshot of real curl documentation, then inspect source passages, line ranges and provenance.
 
-![Actual Chromium desktop capture](reports/desk-desktop.png)
+![Sample-policy desktop capture (v0.3)](reports/desk-desktop.png)
 
-[Mobile capture](reports/desk-mobile.png) | [Verified CI run](https://github.com/saintedwind/advanced-rag-copilot/actions/runs/38444286641)
+[Mobile capture](reports/desk-mobile.png) | [Verified CI run](https://github.com/saintedwind/advanced-rag-copilot/actions/runs/38456113333)
 
 ## What runs
 
@@ -17,7 +17,7 @@ A reproducible document-evidence portfolio by Peyman Gholamhosseini. Review synt
 - A bounded local SQuAD2 reader can rescue candidates rejected by the lexical screen. It selects only a source span, uses a fixed answer-versus-null margin of 3, respects named command-option scope and never generates new text. Its margin is not calibrated confidence. Missing protected facets and recognized instruction-like content are not rescued.
 - Query normalization covers a small, documented set of wording variants and preserves quoted identifiers and numeric values. It is not a universal paraphraser.
 - Citations include source-byte SHA-256, normalized-text character offsets and line ranges. `GET /evidence/{chunk_id}` returns the indexed passage; removed/replaced passages return 404. Every query includes a corpus fingerprint and the desk can export its evidence record.
-- Default **extractive** mode returns source passages without a language-model call. Optional **local** mode asks a loopback llama.cpp model to select numbered source sentences; sentence embeddings rank the candidates, then the server renders those exact sentences and validates indices and completion status.
+- Default **extractive** mode returns source passages without free-form generation or a paid API. Optional **local** mode asks a loopback llama.cpp model to select numbered source sentences; sentence embeddings rank the candidates, then the server renders those exact sentences and validates indices and completion status.
 - LangGraph coordinates a bounded retrieval/normalization retry and synthesis. This is not autonomous reasoning or HyDE.
 - Exact-query in-memory cache (128 entries), invalidated on ingestion. This is **not semantic caching**.
 - Optional FlashRank; disabled by default. If unavailable, retrieval order is used.
@@ -31,7 +31,7 @@ A reproducible document-evidence portfolio by Peyman Gholamhosseini. Review synt
 
 Version 0.4 checks: 35 behavioral/boundary tests; 11/11 original and 36/36 expanded extractive HTTP checks; the known paraphrase challenge improved from 6/8 to 8/8. Real-document evaluation is 30/32 (22/24 supported, 8/8 abstentions) with actual BGE/ONNX inference and loopback HTTP. Optional small-Qwen sentence selection on that real corpus is 26/32; full-passage extractive mode remains the default. These are evidence-presence checks on authored questions, not semantic completeness scores or a customer accuracy estimate. [Current validation and remaining failures](reports/reference-validation-v04.md).
 
-![Actual real-document review](reports/desk-reference.png)
+[Version 0.4 desktop, mobile and real-document screenshots — CI evidence bundle](https://github.com/saintedwind/advanced-rag-copilot/actions/runs/38456113333/artifacts/11841969688)
 
 ## Pipeline
 
