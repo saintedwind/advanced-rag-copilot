@@ -19,7 +19,7 @@
     "status": "success",
     "documents_ingested": 8,
     "chunks_created": 8,
-    "elapsed_seconds": 0.303,
+    "elapsed_seconds": 0.311,
     "corpus_sha256": "277ffeabc449aba17897ece41fb4ab4a569750e8820d92b056bcd98d69d2e9e6"
   },
   "passed": 36,
@@ -177,7 +177,7 @@
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.009,
+      "elapsed_seconds": 0.012,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -215,7 +215,7 @@
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.009,
+      "elapsed_seconds": 0.01,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -253,7 +253,7 @@
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.009,
+      "elapsed_seconds": 0.01,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -291,7 +291,7 @@
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.009,
+      "elapsed_seconds": 0.011,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -329,7 +329,7 @@
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.01,
+      "elapsed_seconds": 0.009,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -481,7 +481,7 @@
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.009,
+      "elapsed_seconds": 0.01,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -519,7 +519,7 @@
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.008,
+      "elapsed_seconds": 0.009,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -633,7 +633,7 @@
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.01,
+      "elapsed_seconds": 0.009,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -709,7 +709,7 @@
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.008,
+      "elapsed_seconds": 0.009,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -747,7 +747,7 @@
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.009,
+      "elapsed_seconds": 0.011,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -785,7 +785,7 @@
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.009,
+      "elapsed_seconds": 0.01,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -823,7 +823,7 @@
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.01,
+      "elapsed_seconds": 0.011,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -861,7 +861,7 @@
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.011,
+      "elapsed_seconds": 0.01,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -937,7 +937,7 @@
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.01,
+      "elapsed_seconds": 0.009,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -975,7 +975,7 @@
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.009,
+      "elapsed_seconds": 0.008,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -1038,7 +1038,7 @@
       "status": "insufficient_evidence",
       "route_taken": "langgraph/no_context",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.009,
+      "elapsed_seconds": 0.008,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -1094,7 +1094,7 @@
       "status": "insufficient_evidence",
       "route_taken": "langgraph/no_context",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.009,
+      "elapsed_seconds": 0.01,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -1119,7 +1119,7 @@
       "status": "insufficient_evidence",
       "route_taken": "langgraph/no_context",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.009,
+      "elapsed_seconds": 0.01,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -1146,7 +1146,7 @@
       "status": "insufficient_evidence",
       "route_taken": "langgraph/no_context",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.009,
+      "elapsed_seconds": 0.01,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -1174,7 +1174,7 @@
       "status": "insufficient_evidence",
       "route_taken": "langgraph/no_context",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.009,
+      "elapsed_seconds": 0.011,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -1202,7 +1202,7 @@
       "status": "insufficient_evidence",
       "route_taken": "langgraph/no_context",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.009,
+      "elapsed_seconds": 0.008,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -1230,7 +1230,7 @@
       "status": "insufficient_evidence",
       "route_taken": "langgraph/no_context",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.009,
+      "elapsed_seconds": 0.01,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -1258,7 +1258,7 @@
       "status": "insufficient_evidence",
       "route_taken": "langgraph/no_context",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.016,
+      "elapsed_seconds": 0.018,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -1286,7 +1286,7 @@
       "status": "insufficient_evidence",
       "route_taken": "langgraph/no_context",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.017,
+      "elapsed_seconds": 0.016,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {

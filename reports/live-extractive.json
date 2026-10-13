@@ -19,7 +19,7 @@
     "status": "success",
     "documents_ingested": 3,
     "chunks_created": 9,
-    "elapsed_seconds": 0.291,
+    "elapsed_seconds": 0.314,
     "corpus_sha256": "c549853b90d18155701ff49ebce943ab97162103ea9f80826b800c99ac2e5ea1"
   },
   "passed": 11,
@@ -63,7 +63,7 @@
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.015,
+      "elapsed_seconds": 0.018,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -113,7 +113,7 @@
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.01,
+      "elapsed_seconds": 0.013,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -163,7 +163,7 @@
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.009,
+      "elapsed_seconds": 0.013,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -275,7 +275,7 @@
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.011,
+      "elapsed_seconds": 0.013,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -325,7 +325,7 @@
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.009,
+      "elapsed_seconds": 0.011,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -462,7 +462,7 @@
       "status": "insufficient_evidence",
       "route_taken": "langgraph/no_context",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.015,
+      "elapsed_seconds": 0.017,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -490,7 +490,7 @@
       "status": "insufficient_evidence",
       "route_taken": "langgraph/no_context",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.016,
+      "elapsed_seconds": 0.02,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -521,7 +521,7 @@
       "status": "insufficient_evidence",
       "route_taken": "langgraph/no_context",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.017,
+      "elapsed_seconds": 0.019,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
