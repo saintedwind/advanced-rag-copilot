@@ -1,0 +1,52 @@
+{
+  "publisher": "curl project",
+  "revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb",
+  "retrieved_at_utc": "2026-10-13T18:30:52.944618+00:00",
+  "license": "curl license; original notice retained in curl-COPYING.txt",
+  "license_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/COPYING",
+  "license_sha256": "82f2f4427d6545ee5aaac4f0b80428da6cc8ba41c2cf5da3a03680ec327b9681",
+  "sources": [
+    {
+      "file": "retry.md",
+      "url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/retry.md",
+      "sha256": "b96669c671c49b930aa5d32c776147b2e7014881db5429921a33c6eb3eff4cb9"
+    },
+    {
+      "file": "retry-delay.md",
+      "url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/retry-delay.md",
+      "sha256": "19d902a433591d5d9c1c05506d694d297578d2fa549487aaa3a42155ad628297"
+    },
+    {
+      "file": "connect-timeout.md",
+      "url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/connect-timeout.md",
+      "sha256": "f0dc4d7cbb253bf57aee6f980b4e3ffa11b7f606acd1e07e9187ddb6732ee05d"
+    },
+    {
+      "file": "max-time.md",
+      "url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/max-time.md",
+      "sha256": "db015af60e67e2effa40de1a7d8bb70611f19674d0e9de52835cece80389b20d"
+    },
+    {
+      "file": "fail.md",
+      "url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/fail.md",
+      "sha256": "1c6ea656161a83257ad346aab0bb6e38d476e7a2785656aa3a24df501fcd0966"
+    },
+    {
+      "file": "location.md",
+      "url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/location.md",
+      "sha256": "7c4d395b257df8fba49ba13024aef568409ba102e0157976242e2aff30c22eb8"
+    },
+    {
+      "file": "cacert.md",
+      "url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/cacert.md",
+      "sha256": "3f6246ec22883f721e1810be3c751ffab985d253bed19448056f78bbb71bf172"
+    },
+    {
+      "file": "head.md",
+      "url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/head.md",
+      "sha256": "867fdcd0f51d02f86cad7b36ca5e014085d44ad70a74f232deef34d98b07bdcf"
+    }
+  ],
+  "transformations": "none; exact UTF-8 Markdown source bytes",
+  "scope": "Real open-source command documentation; not private customer documents or user query logs"
+}
