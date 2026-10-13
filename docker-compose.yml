@@ -1,37 +1,17 @@
-version: '3.8'
-
 services:
   rag-api:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: advanced-rag-copilot-api
+    build: .
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
     environment:
-      - APP_ENV=production
-      - OPENAI_API_KEY=${OPENAI_API_KEY}
-      - QDRANT_URL=http://qdrant:6333
-      - RERANKER_PROVIDER=flashrank
-    depends_on:
-      qdrant:
-        condition: service_healthy
-    restart: unless-stopped
-
-  qdrant:
-    image: qdrant/qdrant:latest
-    container_name: advanced-rag-qdrant
-    ports:
-      - "6333:6333"
-      - "6334:6334"
+      LLM_PROVIDER: extractive
     volumes:
-      - qdrant_data:/qdrant/storage
+      - desk_runtime:/app/.runtime
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:6333/readyz || exit 1"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
-    restart: unless-stopped
-
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health',timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      start_period: 120s
+      retries: 3
 volumes:
-  qdrant_data:
+  desk_runtime:
