@@ -45,6 +45,15 @@ def request(path, body=None):
         return json.load(r)
 
 
+def ensure_port_available(port=8000):
+    # A bind-only probe can reject Linux TIME_WAIT sockets after a prior test.
+    # Refuse an active listener, while leaving socket reuse to uvicorn itself.
+    with socket.socket() as probe:
+        probe.settimeout(1)
+        if probe.connect_ex(("127.0.0.1", port)) == 0:
+            raise RuntimeError("Test port already has an active listener")
+
+
 def main():
     mode = os.environ.get("LLM_PROVIDER", "extractive")
     evaluation = "--evaluation" in sys.argv
@@ -56,11 +65,7 @@ def main():
         os.environ["SOURCE_ROOT"] = str(ROOT / "data/evaluation_docs")
         os.environ["QDRANT_PATH"] = str(ROOT / ".runtime/qdrant-evaluation")
     label = ("evaluation-" if evaluation else "") + mode
-    sock = socket.socket()
-    try:
-        sock.bind(("127.0.0.1", 8000))
-    finally:
-        sock.close()
+    ensure_port_available()
     log_path = ROOT / "reports" / f"live-{label}.log"
     rows = []
     with log_path.open("w", encoding="utf-8") as log:
