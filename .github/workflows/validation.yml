@@ -7,6 +7,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: evidence-desk-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   test:
     runs-on: ubuntu-24.04
@@ -18,11 +21,40 @@ jobs:
           cache: pip
       - run: pip install -e '.[dev]'
       - run: python -m pytest -q
+      - run: python -m scripts.evidence_benchmark current
+      - run: python -m scripts.evidence_benchmark challenge
+      - run: python -m scripts.live_check --evaluation
+      - run: python -c "import json; r=json.load(open('reports/live-evaluation-extractive.json')); assert r['passed']==r['total'], 'Expanded evidence regression'"
       - run: python scripts/live_check.py
       - run: python -c "import json; r=json.load(open('reports/live-extractive.json')); assert r['passed']==r['total'] and r['cache_verified'], 'Live retrieval regression'"
       - run: pip install playwright==1.51.0
       - run: python -m playwright install --with-deps chromium
       - run: python scripts/browser_check.py
+      - run: docker build -t evidence-desk:test .
+      - run: |
+          docker run -d --rm --name evidence-desk-test -p 127.0.0.1:8000:8000 -v "$PWD/.runtime/models:/app/.runtime/models:ro" evidence-desk:test
+          python - <<'PY'
+          import json, time, urllib.request
+          for attempt in range(90):
+              try:
+                  urllib.request.urlopen('http://127.0.0.1:8000/health',timeout=2).close()
+                  break
+              except OSError:
+                  time.sleep(1)
+          else:
+              raise RuntimeError('Container startup failed')
+          def post(path,body):
+              request=urllib.request.Request('http://127.0.0.1:8000'+path,data=json.dumps(body).encode(),headers={'Content-Type':'application/json'})
+              with urllib.request.urlopen(request,timeout=60) as response:
+                  return json.load(response)
+          assert post('/ingest',{})['documents_ingested']==3
+          answer=post('/query',{'query':'uptime','enable_reranking':False})
+          assert answer['status']=='evidence_found' and answer['citations'][0]['source_sha256']
+          assert answer['corpus_sha256']
+          print('Docker ingestion and provenance query passed')
+          PY
+      - if: always()
+        run: docker stop evidence-desk-test || true
       - uses: actions/upload-artifact@v7
         if: always()
         with:
