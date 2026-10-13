@@ -1,0 +1,2 @@
+data/curl_docs/*.md -text
+data/curl-COPYING.txt -text
