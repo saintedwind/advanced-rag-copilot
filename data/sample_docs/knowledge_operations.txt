@@ -1,0 +1,7 @@
+Knowledge Operations Playbook
+
+Document ingestion accepts UTF-8 Markdown and plain-text documents. Files are split into overlapping semantic chunks with source and filename metadata. The default chunk size is 600 characters with 100 characters of overlap. For best retrieval quality, use descriptive headings, keep each section focused on one topic, and remove outdated or duplicate policies before ingestion.
+
+Search combines semantic embeddings with BM25 lexical ranking using reciprocal-rank fusion. A cross-encoder reranker may reorder candidates for relevance. If a query has no strong evidence in the indexed knowledge base, the assistant should state that limitation rather than invent an answer. Answers should cite retrieved source chunks.
+
+The platform team reviews evaluation scores weekly. Faithfulness and answer relevancy are tracked alongside context precision. Any deployment change that reduces a key metric by more than five percentage points requires a retrieval or prompt review before release.
