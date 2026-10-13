@@ -1,49 +1,53 @@
-"""Data transfer objects and Pydantic validation models."""
-
-from typing import List, Optional, Dict, Any
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 
-class IngestionRequest(BaseModel):
-    source_dir: Optional[str] = Field(default="data/sample_docs", description="Directory path containing documents to ingest")
-    chunk_size: Optional[int] = Field(default=600, ge=100, le=4000)
-    chunk_overlap: Optional[int] = Field(default=100, ge=0, le=1000)
+class StrictModel(BaseModel):
+    model_config = ConfigDict(extra="forbid")
 
 
-class IngestionResponse(BaseModel):
-    status: str
-    documents_ingested: int
-    chunks_created: int
-    collection_name: str
-    elapsed_seconds: float
+class IngestionRequest(StrictModel):
+    source_dir: str | None = None
+    chunk_size: int = Field(default=600, ge=100, le=4000)
+    chunk_overlap: int = Field(default=100, ge=0, le=1000)
+
+    @model_validator(mode="after")
+    def overlap(self):
+        if self.chunk_overlap >= self.chunk_size:
+            raise ValueError("Overlap must be smaller than chunk size")
+        return self
 
 
-class QueryRequest(BaseModel):
-    query: str = Field(..., min_length=2, example="What are the key SLA tiers and guaranteed uptimes?")
-    top_k: int = Field(default=5, ge=1, le=20, description="Number of final context chunks after reranking")
-    enable_reranking: bool = Field(default=True)
-    use_agentic_flow: bool = Field(default=True, description="Whether to invoke LangGraph self-corrective workflow")
+class QueryRequest(StrictModel):
+    query: str = Field(min_length=2, max_length=400)
+    top_k: int = Field(default=4, ge=1, le=10)
+    enable_reranking: bool = True
+    use_agentic_flow: bool = True
+
+    @field_validator("query")
+    @classmethod
+    def clean(cls, value):
+        value = value.strip()
+        if len(value) < 2:
+            raise ValueError("Question is too short")
+        return value
 
 
 class CitationItem(BaseModel):
+    index: int
     source: str
-    page: Optional[int] = None
-    chunk_id: Optional[str] = None
+    chunk_id: str
     snippet: str
-    score: Optional[float] = None
+    score: float | None = None
 
 
 class QueryResponse(BaseModel):
     query: str
     answer: str
-    citations: List[CitationItem] = []
-    confidence: Optional[str] = "high"
-    route_taken: Optional[str] = "retrieval_synthesized"
-    elapsed_seconds: float
-
-
-class HealthResponse(BaseModel):
+    citations: list[CitationItem] = Field(default_factory=list)
+    confidence: str
     status: str
-    version: str
-    vector_db_connected: bool
-    reranker_ready: bool
+    route_taken: str
+    generation_mode: str
+    elapsed_seconds: float
+    cache_hit: bool = False
+    usage: dict = Field(default_factory=dict)
