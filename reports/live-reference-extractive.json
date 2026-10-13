@@ -1,0 +1,1560 @@
+{
+  "date": "2026-10-13",
+  "mode": "extractive",
+  "transport": "actual loopback HTTP / uvicorn",
+  "embedding": "actual FastEmbed BAAI/bge-small-en-v1.5",
+  "synthetic_corpus": false,
+  "health": {
+    "status": "ready",
+    "version": "0.4.0",
+    "vector_db_connected": true,
+    "chunks": 18,
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "generation_mode": "extractive",
+    "reranker_ready": false,
+    "cache": "exact_query_bounded_128",
+    "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b",
+    "qa_reader_provider": "onnx",
+    "qa_reader_ready": false,
+    "source_kind": "attributed_reference"
+  },
+  "ingestion": {
+    "status": "success",
+    "documents_ingested": 8,
+    "chunks_created": 18,
+    "elapsed_seconds": 1.181,
+    "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+  },
+  "passed": 30,
+  "total": 32,
+  "cache_verified": true,
+  "cases": [
+    {
+      "question": "What does --head fetch?",
+      "expected_source": "head.md",
+      "expected_phrase": "headers only",
+      "passed": true,
+      "query": "What does --head fetch?",
+      "answer": "[1] # `--head`\n\nFetch the headers only. HTTP-servers feature the command HEAD which this uses\nto get nothing but the header of a document. When used on an FTP or FILE URL,\ncurl displays the file size and last modification time only.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "head.md",
+          "chunk_id": "1a522dfbbc0d39044b2c9580581a47eb05a6543bfa302d1c0aa9c4e9e9371621",
+          "snippet": "# `--head`\n\nFetch the headers only. HTTP-servers feature the command HEAD which this uses\nto get nothing but the header of a document. When used on an FTP or FILE URL,\ncurl displays the file size and last modification time only.",
+          "score": 0.7295283829537482,
+          "source_sha256": "867fdcd0f51d02f86cad7b36ca5e014085d44ad70a74f232deef34d98b07bdcf",
+          "start_char": 300,
+          "end_char": 528,
+          "start_line": 19,
+          "end_line": 23,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/head.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.017,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "What does --head fetch?"
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "Which HTTP command does --head use?",
+      "expected_source": "head.md",
+      "expected_phrase": "HEAD",
+      "passed": true,
+      "query": "Which HTTP command does --head use?",
+      "answer": "[1] # `--head`\n\nFetch the headers only. HTTP-servers feature the command HEAD which this uses\nto get nothing but the header of a document. When used on an FTP or FILE URL,\ncurl displays the file size and last modification time only.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "head.md",
+          "chunk_id": "1a522dfbbc0d39044b2c9580581a47eb05a6543bfa302d1c0aa9c4e9e9371621",
+          "snippet": "# `--head`\n\nFetch the headers only. HTTP-servers feature the command HEAD which this uses\nto get nothing but the header of a document. When used on an FTP or FILE URL,\ncurl displays the file size and last modification time only.",
+          "score": 0.8166585177197689,
+          "source_sha256": "867fdcd0f51d02f86cad7b36ca5e014085d44ad70a74f232deef34d98b07bdcf",
+          "start_char": 300,
+          "end_char": 528,
+          "start_line": 19,
+          "end_line": 23,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/head.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.009,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "Which HTTP command does --head use?"
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "What does --head display for an FTP URL?",
+      "expected_source": "head.md",
+      "expected_phrase": "file size",
+      "passed": true,
+      "query": "What does --head display for an FTP URL?",
+      "answer": "[1] # `--head`\n\nFetch the headers only. HTTP-servers feature the command HEAD which this uses\nto get nothing but the header of a document. When used on an FTP or FILE URL,\ncurl displays the file size and last modification time only.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "head.md",
+          "chunk_id": "1a522dfbbc0d39044b2c9580581a47eb05a6543bfa302d1c0aa9c4e9e9371621",
+          "snippet": "# `--head`\n\nFetch the headers only. HTTP-servers feature the command HEAD which this uses\nto get nothing but the header of a document. When used on an FTP or FILE URL,\ncurl displays the file size and last modification time only.",
+          "score": 0.7765390077204699,
+          "source_sha256": "867fdcd0f51d02f86cad7b36ca5e014085d44ad70a74f232deef34d98b07bdcf",
+          "start_char": 300,
+          "end_char": 528,
+          "start_line": 19,
+          "end_line": 23,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/head.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.012,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "What does --head display for an FTP URL?"
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "What does --fail return for HTTP errors?",
+      "expected_source": "fail.md",
+      "expected_phrase": "22",
+      "passed": true,
+      "query": "What does --fail return for HTTP errors?",
+      "answer": "[1] # `--fail`\n\nFail with error code 22 and with no response body output at all for HTTP\ntransfers returning HTTP response codes at 400 or greater.\n\nIn normal cases when an HTTP server fails to deliver a document, it returns a\nbody of text stating so (which often also describes why and more) and a 4xx\nHTTP response code. This command line option prevents curl from outputting\nthat data and instead returns error 22 early. By default, curl does not\nconsider HTTP response codes to indicate failure.\n\nTo get both the error code and also save the content, use --fail-with-body\ninstead.\n\n[2] To get both the error code and also save the content, use --fail-with-body\ninstead.\n\nThis method is not fail-safe and there are occasions where non-successful\nresponse codes slip through, especially when authentication is involved\n(response codes 401 and 407).",
+      "citations": [
+        {
+          "index": 1,
+          "source": "fail.md",
+          "chunk_id": "9790d31c8b7e292a0e71bef9f7df92e855013f328a25c2a168d1c58a4d224185",
+          "snippet": "# `--fail`\n\nFail with error code 22 and with no response body output at all for HTTP\ntransfers returning HTTP response codes at 400 or greater.\n\nIn normal cases when an HTTP server fails to deliver a document, it returns a\nbody of text stating so (which often also describes why and more) and a 4xx\nHTTP response code. This command line option prevents curl from outputting\nthat data and instead returns error 22 early. By default, curl does not\nconsider HTTP response codes to indicate failure.\n\nTo get both the error code and also save the content, use --fail-with-body\ninstead.",
+          "score": 0.8183697144608806,
+          "source_sha256": "1c6ea656161a83257ad346aab0bb6e38d476e7a2785656aa3a24df501fcd0966",
+          "start_char": 324,
+          "end_char": 904,
+          "start_line": 19,
+          "end_line": 31,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/fail.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        },
+        {
+          "index": 2,
+          "source": "fail.md",
+          "chunk_id": "f062e97e8f02e2518c2a7e48b8caae9cd224cf487c39164eba7ce8c050618f50",
+          "snippet": "To get both the error code and also save the content, use --fail-with-body\ninstead.\n\nThis method is not fail-safe and there are occasions where non-successful\nresponse codes slip through, especially when authentication is involved\n(response codes 401 and 407).",
+          "score": 0.7447447820401426,
+          "source_sha256": "1c6ea656161a83257ad346aab0bb6e38d476e7a2785656aa3a24df501fcd0966",
+          "start_char": 821,
+          "end_char": 1081,
+          "start_line": 30,
+          "end_line": 35,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/fail.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.011,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "What does --fail return for HTTP errors?"
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "Does --fail output the response body?",
+      "expected_source": "fail.md",
+      "expected_phrase": "no response body",
+      "passed": true,
+      "query": "Does --fail output the response body?",
+      "answer": "[1] # `--fail`\n\nFail with error code 22 and with no response body output at all for HTTP\ntransfers returning HTTP response codes at 400 or greater.\n\nIn normal cases when an HTTP server fails to deliver a document, it returns a\nbody of text stating so (which often also describes why and more) and a 4xx\nHTTP response code. This command line option prevents curl from outputting\nthat data and instead returns error 22 early. By default, curl does not\nconsider HTTP response codes to indicate failure.\n\nTo get both the error code and also save the content, use --fail-with-body\ninstead.\n\n[2] To get both the error code and also save the content, use --fail-with-body\ninstead.\n\nThis method is not fail-safe and there are occasions where non-successful\nresponse codes slip through, especially when authentication is involved\n(response codes 401 and 407).",
+      "citations": [
+        {
+          "index": 1,
+          "source": "fail.md",
+          "chunk_id": "9790d31c8b7e292a0e71bef9f7df92e855013f328a25c2a168d1c58a4d224185",
+          "snippet": "# `--fail`\n\nFail with error code 22 and with no response body output at all for HTTP\ntransfers returning HTTP response codes at 400 or greater.\n\nIn normal cases when an HTTP server fails to deliver a document, it returns a\nbody of text stating so (which often also describes why and more) and a 4xx\nHTTP response code. This command line option prevents curl from outputting\nthat data and instead returns error 22 early. By default, curl does not\nconsider HTTP response codes to indicate failure.\n\nTo get both the error code and also save the content, use --fail-with-body\ninstead.",
+          "score": 0.7983060183956843,
+          "source_sha256": "1c6ea656161a83257ad346aab0bb6e38d476e7a2785656aa3a24df501fcd0966",
+          "start_char": 324,
+          "end_char": 904,
+          "start_line": 19,
+          "end_line": 31,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/fail.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        },
+        {
+          "index": 2,
+          "source": "fail.md",
+          "chunk_id": "f062e97e8f02e2518c2a7e48b8caae9cd224cf487c39164eba7ce8c050618f50",
+          "snippet": "To get both the error code and also save the content, use --fail-with-body\ninstead.\n\nThis method is not fail-safe and there are occasions where non-successful\nresponse codes slip through, especially when authentication is involved\n(response codes 401 and 407).",
+          "score": 0.7537430710419978,
+          "source_sha256": "1c6ea656161a83257ad346aab0bb6e38d476e7a2785656aa3a24df501fcd0966",
+          "start_char": 821,
+          "end_char": 1081,
+          "start_line": 30,
+          "end_line": 35,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/fail.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.01,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "Does --fail output the response body?"
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "What HTTP response codes cause --fail errors?",
+      "expected_source": "fail.md",
+      "expected_phrase": "400 or greater",
+      "passed": false,
+      "query": "What HTTP response codes cause --fail errors?",
+      "answer": "No sufficient evidence was found.",
+      "citations": [],
+      "confidence": "low",
+      "status": "insufficient_evidence",
+      "route_taken": "langgraph/no_context",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.454,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [
+          "cause"
+        ],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "What HTTP response codes cause --fail errors?",
+        "reader": {
+          "status": "no_answer_span",
+          "margin_threshold": 3.0
+        }
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "Which option saves content along with the error code?",
+      "expected_source": "fail.md",
+      "expected_phrase": "--fail-with-body",
+      "passed": true,
+      "query": "Which option saves content along with the error code?",
+      "answer": "[1] To get both the error code and also save the content, use --fail-with-body\ninstead.\n\nThis method is not fail-safe and there are occasions where non-successful\nresponse codes slip through, especially when authentication is involved\n(response codes 401 and 407).",
+      "citations": [
+        {
+          "index": 1,
+          "source": "fail.md",
+          "chunk_id": "f062e97e8f02e2518c2a7e48b8caae9cd224cf487c39164eba7ce8c050618f50",
+          "snippet": "To get both the error code and also save the content, use --fail-with-body\ninstead.\n\nThis method is not fail-safe and there are occasions where non-successful\nresponse codes slip through, especially when authentication is involved\n(response codes 401 and 407).",
+          "score": 0.7461423204454531,
+          "source_sha256": "1c6ea656161a83257ad346aab0bb6e38d476e7a2785656aa3a24df501fcd0966",
+          "start_char": 821,
+          "end_char": 1081,
+          "start_line": 30,
+          "end_line": 35,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/fail.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.199,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [
+          "along"
+        ],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "Which option saves content along with the error code?",
+        "reader": {
+          "status": "span_evidence_found",
+          "model": "onnx-community/tinyroberta-squad2-ONNX",
+          "revision": "7c9f69b7e6228375169a4553bcfa6639152e3a69",
+          "margin_threshold": 3.0,
+          "prediction": {
+            "margin": 6.8802714347839355,
+            "start_char": 58,
+            "end_char": 74,
+            "text": "--fail-with-body",
+            "chunk_id": "f062e97e8f02e2518c2a7e48b8caae9cd224cf487c39164eba7ce8c050618f50"
+          },
+          "not_calibrated_confidence": true
+        }
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "What certificate format does --cacert require?",
+      "expected_source": "cacert.md",
+      "expected_phrase": "PEM",
+      "passed": true,
+      "query": "What certificate format does --cacert require?",
+      "answer": "[1] # `--cacert`\n\nUse the specified certificate file to verify the peer. The file may contain\nmultiple CA certificates. The certificate(s) must be in PEM format. Normally\ncurl is built to use a default file for this, so this option is typically used\nto alter that default file.\n\ncurl recognizes the environment variable named 'CURL_CA_BUNDLE' if it is set\nand the TLS backend is not Schannel, and uses the given path as a path to a CA\ncert bundle. This option overrides that variable.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "cacert.md",
+          "chunk_id": "520fdcfe13131879110624629bcf2d5888cb05d639ecaa71fed65879162960e2",
+          "snippet": "# `--cacert`\n\nUse the specified certificate file to verify the peer. The file may contain\nmultiple CA certificates. The certificate(s) must be in PEM format. Normally\ncurl is built to use a default file for this, so this option is typically used\nto alter that default file.\n\ncurl recognizes the environment variable named 'CURL_CA_BUNDLE' if it is set\nand the TLS backend is not Schannel, and uses the given path as a path to a CA\ncert bundle. This option overrides that variable.",
+          "score": 0.8220673023490804,
+          "source_sha256": "3f6246ec22883f721e1810be3c751ffab985d253bed19448056f78bbb71bf172",
+          "start_char": 312,
+          "end_char": 792,
+          "start_line": 19,
+          "end_line": 28,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/cacert.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.223,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [
+          "require"
+        ],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "What certificate format does --cacert require?",
+        "reader": {
+          "status": "span_evidence_found",
+          "model": "onnx-community/tinyroberta-squad2-ONNX",
+          "revision": "7c9f69b7e6228375169a4553bcfa6639152e3a69",
+          "margin_threshold": 3.0,
+          "prediction": {
+            "margin": 11.59870195388794,
+            "start_char": 146,
+            "end_char": 149,
+            "text": "PEM",
+            "chunk_id": "520fdcfe13131879110624629bcf2d5888cb05d639ecaa71fed65879162960e2"
+          },
+          "not_calibrated_confidence": true
+        }
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "Does --cacert support multiple CA certificates?",
+      "expected_source": "cacert.md",
+      "expected_phrase": "multiple CA certificates",
+      "passed": true,
+      "query": "Does --cacert support multiple CA certificates?",
+      "answer": "[1] # `--cacert`\n\nUse the specified certificate file to verify the peer. The file may contain\nmultiple CA certificates. The certificate(s) must be in PEM format. Normally\ncurl is built to use a default file for this, so this option is typically used\nto alter that default file.\n\ncurl recognizes the environment variable named 'CURL_CA_BUNDLE' if it is set\nand the TLS backend is not Schannel, and uses the given path as a path to a CA\ncert bundle. This option overrides that variable.\n\n[2] (Windows) curl automatically looks for a CA certs file named\n'curl-ca-bundle.crt', either in the same directory as curl.exe, or in the\nCurrent Working Directory, or in any folder along your PATH.\n\ncurl 8.11.0 added a build-time option to disable this search behavior, and\nanother option to restrict search to the application's directory.\n\n[3] (Schannel) This option is supported for Schannel in Windows 7 or later (added\nin 7.60.0). This option is supported for backward compatibility with other SSL\nengines; instead it is recommended to use Windows' store of root certificates\n(the default for Schannel).",
+      "citations": [
+        {
+          "index": 1,
+          "source": "cacert.md",
+          "chunk_id": "520fdcfe13131879110624629bcf2d5888cb05d639ecaa71fed65879162960e2",
+          "snippet": "# `--cacert`\n\nUse the specified certificate file to verify the peer. The file may contain\nmultiple CA certificates. The certificate(s) must be in PEM format. Normally\ncurl is built to use a default file for this, so this option is typically used\nto alter that default file.\n\ncurl recognizes the environment variable named 'CURL_CA_BUNDLE' if it is set\nand the TLS backend is not Schannel, and uses the given path as a path to a CA\ncert bundle. This option overrides that variable.",
+          "score": 0.8177958160899287,
+          "source_sha256": "3f6246ec22883f721e1810be3c751ffab985d253bed19448056f78bbb71bf172",
+          "start_char": 312,
+          "end_char": 792,
+          "start_line": 19,
+          "end_line": 28,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/cacert.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        },
+        {
+          "index": 2,
+          "source": "cacert.md",
+          "chunk_id": "6195f1f8dd157313ce25ac68ab4541927fc28e9f9a99991b7877a7b7100c9696",
+          "snippet": "(Windows) curl automatically looks for a CA certs file named\n'curl-ca-bundle.crt', either in the same directory as curl.exe, or in the\nCurrent Working Directory, or in any folder along your PATH.\n\ncurl 8.11.0 added a build-time option to disable this search behavior, and\nanother option to restrict search to the application's directory.",
+          "score": 0.7230490764476977,
+          "source_sha256": "3f6246ec22883f721e1810be3c751ffab985d253bed19448056f78bbb71bf172",
+          "start_char": 794,
+          "end_char": 1131,
+          "start_line": 30,
+          "end_line": 35,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/cacert.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        },
+        {
+          "index": 3,
+          "source": "cacert.md",
+          "chunk_id": "c415dd03b1f583a9befaf00038ddba78729af386099bca39fb6109c1f6129f2c",
+          "snippet": "(Schannel) This option is supported for Schannel in Windows 7 or later (added\nin 7.60.0). This option is supported for backward compatibility with other SSL\nengines; instead it is recommended to use Windows' store of root certificates\n(the default for Schannel).",
+          "score": 0.6651659326628477,
+          "source_sha256": "3f6246ec22883f721e1810be3c751ffab985d253bed19448056f78bbb71bf172",
+          "start_char": 1133,
+          "end_char": 1395,
+          "start_line": 37,
+          "end_line": 40,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/cacert.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.012,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "Does --cacert support multiple CA certificates?"
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "Which environment variable does --cacert override?",
+      "expected_source": "cacert.md",
+      "expected_phrase": "CURL_CA_BUNDLE",
+      "passed": true,
+      "query": "Which environment variable does --cacert override?",
+      "answer": "[1] # `--cacert`\n\nUse the specified certificate file to verify the peer. The file may contain\nmultiple CA certificates. The certificate(s) must be in PEM format. Normally\ncurl is built to use a default file for this, so this option is typically used\nto alter that default file.\n\ncurl recognizes the environment variable named 'CURL_CA_BUNDLE' if it is set\nand the TLS backend is not Schannel, and uses the given path as a path to a CA\ncert bundle. This option overrides that variable.\n\n[2] (Windows) curl automatically looks for a CA certs file named\n'curl-ca-bundle.crt', either in the same directory as curl.exe, or in the\nCurrent Working Directory, or in any folder along your PATH.\n\ncurl 8.11.0 added a build-time option to disable this search behavior, and\nanother option to restrict search to the application's directory.\n\n[3] (Schannel) This option is supported for Schannel in Windows 7 or later (added\nin 7.60.0). This option is supported for backward compatibility with other SSL\nengines; instead it is recommended to use Windows' store of root certificates\n(the default for Schannel).",
+      "citations": [
+        {
+          "index": 1,
+          "source": "cacert.md",
+          "chunk_id": "520fdcfe13131879110624629bcf2d5888cb05d639ecaa71fed65879162960e2",
+          "snippet": "# `--cacert`\n\nUse the specified certificate file to verify the peer. The file may contain\nmultiple CA certificates. The certificate(s) must be in PEM format. Normally\ncurl is built to use a default file for this, so this option is typically used\nto alter that default file.\n\ncurl recognizes the environment variable named 'CURL_CA_BUNDLE' if it is set\nand the TLS backend is not Schannel, and uses the given path as a path to a CA\ncert bundle. This option overrides that variable.",
+          "score": 0.7482182367406258,
+          "source_sha256": "3f6246ec22883f721e1810be3c751ffab985d253bed19448056f78bbb71bf172",
+          "start_char": 312,
+          "end_char": 792,
+          "start_line": 19,
+          "end_line": 28,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/cacert.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        },
+        {
+          "index": 2,
+          "source": "cacert.md",
+          "chunk_id": "6195f1f8dd157313ce25ac68ab4541927fc28e9f9a99991b7877a7b7100c9696",
+          "snippet": "(Windows) curl automatically looks for a CA certs file named\n'curl-ca-bundle.crt', either in the same directory as curl.exe, or in the\nCurrent Working Directory, or in any folder along your PATH.\n\ncurl 8.11.0 added a build-time option to disable this search behavior, and\nanother option to restrict search to the application's directory.",
+          "score": 0.707526775777215,
+          "source_sha256": "3f6246ec22883f721e1810be3c751ffab985d253bed19448056f78bbb71bf172",
+          "start_char": 794,
+          "end_char": 1131,
+          "start_line": 30,
+          "end_line": 35,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/cacert.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        },
+        {
+          "index": 3,
+          "source": "cacert.md",
+          "chunk_id": "c415dd03b1f583a9befaf00038ddba78729af386099bca39fb6109c1f6129f2c",
+          "snippet": "(Schannel) This option is supported for Schannel in Windows 7 or later (added\nin 7.60.0). This option is supported for backward compatibility with other SSL\nengines; instead it is recommended to use Windows' store of root certificates\n(the default for Schannel).",
+          "score": 0.5775514979389176,
+          "source_sha256": "3f6246ec22883f721e1810be3c751ffab985d253bed19448056f78bbb71bf172",
+          "start_char": 1133,
+          "end_char": 1395,
+          "start_line": 37,
+          "end_line": 40,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/cacert.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.014,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "Which environment variable does --cacert override?"
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "What does --connect-timeout limit?",
+      "expected_source": "connect-timeout.md",
+      "expected_phrase": "connection phase",
+      "passed": true,
+      "query": "What does --connect-timeout limit?",
+      "answer": "[1] # `--connect-timeout`\n\nMaximum time in seconds that you allow curl's connection to take. This only\nlimits the connection phase, so if curl connects within the given period it\ncontinues - if not it exits.\n\nThis option accepts decimal values (added in 7.32.0). The decimal value needs\nto be provided using a dot (.) as decimal separator - not the local version\neven if it might be using another separator.\n\nThe connection phase is considered complete when the DNS lookup and requested\nTCP, TLS or QUIC handshakes are done.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "connect-timeout.md",
+          "chunk_id": "e0066398c4f80b98e2037916e224681ce0dcd51e55c3be5de6931468d9dc30d0",
+          "snippet": "# `--connect-timeout`\n\nMaximum time in seconds that you allow curl's connection to take. This only\nlimits the connection phase, so if curl connects within the given period it\ncontinues - if not it exits.\n\nThis option accepts decimal values (added in 7.32.0). The decimal value needs\nto be provided using a dot (.) as decimal separator - not the local version\neven if it might be using another separator.\n\nThe connection phase is considered complete when the DNS lookup and requested\nTCP, TLS or QUIC handshakes are done.",
+          "score": 0.7768843299133963,
+          "source_sha256": "f0dc4d7cbb253bf57aee6f980b4e3ffa11b7f606acd1e07e9187ddb6732ee05d",
+          "start_char": 321,
+          "end_char": 841,
+          "start_line": 17,
+          "end_line": 28,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/connect-timeout.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.01,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "What does --connect-timeout limit?"
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "Does --connect-timeout accept decimal values?",
+      "expected_source": "connect-timeout.md",
+      "expected_phrase": "decimal values",
+      "passed": true,
+      "query": "Does --connect-timeout accept decimal values?",
+      "answer": "[1] # `--connect-timeout`\n\nMaximum time in seconds that you allow curl's connection to take. This only\nlimits the connection phase, so if curl connects within the given period it\ncontinues - if not it exits.\n\nThis option accepts decimal values (added in 7.32.0). The decimal value needs\nto be provided using a dot (.) as decimal separator - not the local version\neven if it might be using another separator.\n\nThe connection phase is considered complete when the DNS lookup and requested\nTCP, TLS or QUIC handshakes are done.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "connect-timeout.md",
+          "chunk_id": "e0066398c4f80b98e2037916e224681ce0dcd51e55c3be5de6931468d9dc30d0",
+          "snippet": "# `--connect-timeout`\n\nMaximum time in seconds that you allow curl's connection to take. This only\nlimits the connection phase, so if curl connects within the given period it\ncontinues - if not it exits.\n\nThis option accepts decimal values (added in 7.32.0). The decimal value needs\nto be provided using a dot (.) as decimal separator - not the local version\neven if it might be using another separator.\n\nThe connection phase is considered complete when the DNS lookup and requested\nTCP, TLS or QUIC handshakes are done.",
+          "score": 0.8022597313773927,
+          "source_sha256": "f0dc4d7cbb253bf57aee6f980b4e3ffa11b7f606acd1e07e9187ddb6732ee05d",
+          "start_char": 321,
+          "end_char": 841,
+          "start_line": 17,
+          "end_line": 28,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/connect-timeout.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.011,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "Does --connect-timeout accept decimal values?"
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "Which handshakes complete the connection phase?",
+      "expected_source": "connect-timeout.md",
+      "expected_phrase": "TCP, TLS or QUIC",
+      "passed": true,
+      "query": "Which handshakes complete the connection phase?",
+      "answer": "[1] # `--connect-timeout`\n\nMaximum time in seconds that you allow curl's connection to take. This only\nlimits the connection phase, so if curl connects within the given period it\ncontinues - if not it exits.\n\nThis option accepts decimal values (added in 7.32.0). The decimal value needs\nto be provided using a dot (.) as decimal separator - not the local version\neven if it might be using another separator.\n\nThe connection phase is considered complete when the DNS lookup and requested\nTCP, TLS or QUIC handshakes are done.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "connect-timeout.md",
+          "chunk_id": "e0066398c4f80b98e2037916e224681ce0dcd51e55c3be5de6931468d9dc30d0",
+          "snippet": "# `--connect-timeout`\n\nMaximum time in seconds that you allow curl's connection to take. This only\nlimits the connection phase, so if curl connects within the given period it\ncontinues - if not it exits.\n\nThis option accepts decimal values (added in 7.32.0). The decimal value needs\nto be provided using a dot (.) as decimal separator - not the local version\neven if it might be using another separator.\n\nThe connection phase is considered complete when the DNS lookup and requested\nTCP, TLS or QUIC handshakes are done.",
+          "score": 0.6870579263724194,
+          "source_sha256": "f0dc4d7cbb253bf57aee6f980b4e3ffa11b7f606acd1e07e9187ddb6732ee05d",
+          "start_char": 321,
+          "end_char": 841,
+          "start_line": 17,
+          "end_line": 28,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/connect-timeout.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.011,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "Which handshakes complete the connection phase?"
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "Which decimal separator does --connect-timeout require?",
+      "expected_source": "connect-timeout.md",
+      "expected_phrase": "dot",
+      "passed": false,
+      "query": "Which decimal separator does --connect-timeout require?",
+      "answer": "No sufficient evidence was found.",
+      "citations": [],
+      "confidence": "low",
+      "status": "insufficient_evidence",
+      "route_taken": "langgraph/no_context",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.079,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [
+          "require"
+        ],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "Which decimal separator does --connect-timeout require?",
+        "reader": {
+          "status": "no_answer_span",
+          "margin_threshold": 3.0
+        }
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "What does --max-time limit?",
+      "expected_source": "max-time.md",
+      "expected_phrase": "each transfer",
+      "passed": true,
+      "query": "What does --max-time limit?",
+      "answer": "[1] # `--max-time`\n\nSet the maximum time in seconds that you allow each transfer to take. Prevents\nyour batch jobs from hanging for hours due to slow networks or links going\ndown. This option accepts decimal values (added in 7.32.0).\n\nIf you enable retrying the transfer (--retry) then the maximum time counter is\nreset each time the transfer is retried. You can use --retry-max-time to limit\nthe retry time.\n\nThe decimal value needs to be provided using a dot (.) as decimal separator -\nnot the local version even if it might be using another separator.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "max-time.md",
+          "chunk_id": "6f3e3a18b7e73c061462676512987c7047016415b4116ae572aded8e52812d94",
+          "snippet": "# `--max-time`\n\nSet the maximum time in seconds that you allow each transfer to take. Prevents\nyour batch jobs from hanging for hours due to slow networks or links going\ndown. This option accepts decimal values (added in 7.32.0).\n\nIf you enable retrying the transfer (--retry) then the maximum time counter is\nreset each time the transfer is retried. You can use --retry-max-time to limit\nthe retry time.\n\nThe decimal value needs to be provided using a dot (.) as decimal separator -\nnot the local version even if it might be using another separator.",
+          "score": 0.7811589085693513,
+          "source_sha256": "db015af60e67e2effa40de1a7d8bb70611f19674d0e9de52835cece80389b20d",
+          "start_char": 337,
+          "end_char": 887,
+          "start_line": 19,
+          "end_line": 30,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/max-time.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.009,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "What does --max-time limit?"
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "Does --max-time accept decimal values?",
+      "expected_source": "max-time.md",
+      "expected_phrase": "decimal values",
+      "passed": true,
+      "query": "Does --max-time accept decimal values?",
+      "answer": "[1] # `--max-time`\n\nSet the maximum time in seconds that you allow each transfer to take. Prevents\nyour batch jobs from hanging for hours due to slow networks or links going\ndown. This option accepts decimal values (added in 7.32.0).\n\nIf you enable retrying the transfer (--retry) then the maximum time counter is\nreset each time the transfer is retried. You can use --retry-max-time to limit\nthe retry time.\n\nThe decimal value needs to be provided using a dot (.) as decimal separator -\nnot the local version even if it might be using another separator.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "max-time.md",
+          "chunk_id": "6f3e3a18b7e73c061462676512987c7047016415b4116ae572aded8e52812d94",
+          "snippet": "# `--max-time`\n\nSet the maximum time in seconds that you allow each transfer to take. Prevents\nyour batch jobs from hanging for hours due to slow networks or links going\ndown. This option accepts decimal values (added in 7.32.0).\n\nIf you enable retrying the transfer (--retry) then the maximum time counter is\nreset each time the transfer is retried. You can use --retry-max-time to limit\nthe retry time.\n\nThe decimal value needs to be provided using a dot (.) as decimal separator -\nnot the local version even if it might be using another separator.",
+          "score": 0.761328395903456,
+          "source_sha256": "db015af60e67e2effa40de1a7d8bb70611f19674d0e9de52835cece80389b20d",
+          "start_char": 337,
+          "end_char": 887,
+          "start_line": 19,
+          "end_line": 30,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/max-time.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.011,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "Does --max-time accept decimal values?"
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "When is the maximum time counter reset during retries?",
+      "expected_source": "max-time.md",
+      "expected_phrase": "reset each time",
+      "passed": true,
+      "query": "When is the maximum time counter reset during retries?",
+      "answer": "[1] # `--max-time`\n\nSet the maximum time in seconds that you allow each transfer to take. Prevents\nyour batch jobs from hanging for hours due to slow networks or links going\ndown. This option accepts decimal values (added in 7.32.0).\n\nIf you enable retrying the transfer (--retry) then the maximum time counter is\nreset each time the transfer is retried. You can use --retry-max-time to limit\nthe retry time.\n\nThe decimal value needs to be provided using a dot (.) as decimal separator -\nnot the local version even if it might be using another separator.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "max-time.md",
+          "chunk_id": "6f3e3a18b7e73c061462676512987c7047016415b4116ae572aded8e52812d94",
+          "snippet": "# `--max-time`\n\nSet the maximum time in seconds that you allow each transfer to take. Prevents\nyour batch jobs from hanging for hours due to slow networks or links going\ndown. This option accepts decimal values (added in 7.32.0).\n\nIf you enable retrying the transfer (--retry) then the maximum time counter is\nreset each time the transfer is retried. You can use --retry-max-time to limit\nthe retry time.\n\nThe decimal value needs to be provided using a dot (.) as decimal separator -\nnot the local version even if it might be using another separator.",
+          "score": 0.8100654716420881,
+          "source_sha256": "db015af60e67e2effa40de1a7d8bb70611f19674d0e9de52835cece80389b20d",
+          "start_char": 337,
+          "end_char": 887,
+          "start_line": 19,
+          "end_line": 30,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/max-time.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.256,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [],
+        "same_source_required": true,
+        "temporal_evidence_required": true,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "When is the maximum time counter reset during retries?",
+        "reader": {
+          "status": "span_evidence_found",
+          "model": "onnx-community/tinyroberta-squad2-ONNX",
+          "revision": "7c9f69b7e6228375169a4553bcfa6639152e3a69",
+          "margin_threshold": 3.0,
+          "prediction": {
+            "margin": 7.540407657623291,
+            "start_char": 316,
+            "end_char": 349,
+            "text": "each time the transfer is retried",
+            "chunk_id": "6f3e3a18b7e73c061462676512987c7047016415b4116ae572aded8e52812d94"
+          },
+          "not_calibrated_confidence": true
+        }
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "Which option follows redirects?",
+      "expected_source": "location.md",
+      "expected_phrase": "--location",
+      "passed": true,
+      "query": "Which option follows redirects?",
+      "answer": "[1] Limit the amount of redirects to follow by using the --max-redirs option.\n\nWhen curl follows a redirect and if the request is a POST, it sends the\nfollowing request with a GET if the HTTP response was 301, 302, or 303. If the\nresponse code was any other 3xx code, curl resends the following request using\nthe same unmodified method.\n\nYou can tell curl to not change POST requests to GET after a 30x response by\nusing the dedicated options for that: --post301, --post302 and --post303.\n\nThe method set with --request overrides the method curl would otherwise select\nto use.\n\n[2] When authentication is provided on the command line (for example --user or\n--oauth2-bearer), or when sending a cookie with `-H Cookie:`, curl only sends\nits credentials to the initial host. If a redirect takes curl to a different\nhost, it does not get the credentials passed on. See --location-trusted on how\nto change this. When --netrc is used in combination with this option,\ncredentials for the followed-to hosts may also be selected from that file.\n\nLimit the amount of redirects to follow by using the --max-redirs option.\n\n[3] The method set with --request overrides the method curl would otherwise select\nto use.\n\nRestrict which protocols a redirect is accepted to follow with --proto-redir.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "location.md",
+          "chunk_id": "6c9c1196198754b6772e05845713af493aea4b5d05511972829b22e27633d837",
+          "snippet": "Limit the amount of redirects to follow by using the --max-redirs option.\n\nWhen curl follows a redirect and if the request is a POST, it sends the\nfollowing request with a GET if the HTTP response was 301, 302, or 303. If the\nresponse code was any other 3xx code, curl resends the following request using\nthe same unmodified method.\n\nYou can tell curl to not change POST requests to GET after a 30x response by\nusing the dedicated options for that: --post301, --post302 and --post303.\n\nThe method set with --request overrides the method curl would otherwise select\nto use.",
+          "score": 0.729904125715386,
+          "source_sha256": "7c4d395b257df8fba49ba13024aef568409ba102e0157976242e2aff30c22eb8",
+          "start_char": 1062,
+          "end_char": 1634,
+          "start_line": 35,
+          "end_line": 46,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/location.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        },
+        {
+          "index": 2,
+          "source": "location.md",
+          "chunk_id": "70b217555c7a1368418ae17a20167eaffc0123945be3fa873423157292cfae15",
+          "snippet": "When authentication is provided on the command line (for example --user or\n--oauth2-bearer), or when sending a cookie with `-H Cookie:`, curl only sends\nits credentials to the initial host. If a redirect takes curl to a different\nhost, it does not get the credentials passed on. See --location-trusted on how\nto change this. When --netrc is used in combination with this option,\ncredentials for the followed-to hosts may also be selected from that file.\n\nLimit the amount of redirects to follow by using the --max-redirs option.",
+          "score": 0.6864128875070398,
+          "source_sha256": "7c4d395b257df8fba49ba13024aef568409ba102e0157976242e2aff30c22eb8",
+          "start_char": 607,
+          "end_char": 1135,
+          "start_line": 28,
+          "end_line": 35,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/location.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        },
+        {
+          "index": 3,
+          "source": "location.md",
+          "chunk_id": "354f5a4e2d5d53fd0328f7273470d3599f34ba7da3e326ef249dfc3d76c98825",
+          "snippet": "The method set with --request overrides the method curl would otherwise select\nto use.\n\nRestrict which protocols a redirect is accepted to follow with --proto-redir.",
+          "score": 0.6694743057524676,
+          "source_sha256": "7c4d395b257df8fba49ba13024aef568409ba102e0157976242e2aff30c22eb8",
+          "start_char": 1548,
+          "end_char": 1713,
+          "start_line": 45,
+          "end_line": 48,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/location.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.011,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "Which option follows redirects?"
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "Which response codes change a POST to GET with --location?",
+      "expected_source": "location.md",
+      "expected_phrase": "301, 302, or 303",
+      "passed": true,
+      "query": "Which response codes change a POST to GET with --location?",
+      "answer": "[1] Limit the amount of redirects to follow by using the --max-redirs option.\n\nWhen curl follows a redirect and if the request is a POST, it sends the\nfollowing request with a GET if the HTTP response was 301, 302, or 303. If the\nresponse code was any other 3xx code, curl resends the following request using\nthe same unmodified method.\n\nYou can tell curl to not change POST requests to GET after a 30x response by\nusing the dedicated options for that: --post301, --post302 and --post303.\n\nThe method set with --request overrides the method curl would otherwise select\nto use.\n\n[2] # `--location`\n\nIf the server reports that the requested page has moved to a different\nlocation (indicated with a Location: header and a 3XX response code), this\noption makes curl redo the request to the new place. If used together with\n--show-headers or --head, headers from all requested pages are shown.\n\n[3] When authentication is provided on the command line (for example --user or\n--oauth2-bearer), or when sending a cookie with `-H Cookie:`, curl only sends\nits credentials to the initial host. If a redirect takes curl to a different\nhost, it does not get the credentials passed on. See --location-trusted on how\nto change this. When --netrc is used in combination with this option,\ncredentials for the followed-to hosts may also be selected from that file.\n\nLimit the amount of redirects to follow by using the --max-redirs option.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "location.md",
+          "chunk_id": "6c9c1196198754b6772e05845713af493aea4b5d05511972829b22e27633d837",
+          "snippet": "Limit the amount of redirects to follow by using the --max-redirs option.\n\nWhen curl follows a redirect and if the request is a POST, it sends the\nfollowing request with a GET if the HTTP response was 301, 302, or 303. If the\nresponse code was any other 3xx code, curl resends the following request using\nthe same unmodified method.\n\nYou can tell curl to not change POST requests to GET after a 30x response by\nusing the dedicated options for that: --post301, --post302 and --post303.\n\nThe method set with --request overrides the method curl would otherwise select\nto use.",
+          "score": 0.7152416961355423,
+          "source_sha256": "7c4d395b257df8fba49ba13024aef568409ba102e0157976242e2aff30c22eb8",
+          "start_char": 1062,
+          "end_char": 1634,
+          "start_line": 35,
+          "end_line": 46,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/location.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        },
+        {
+          "index": 2,
+          "source": "location.md",
+          "chunk_id": "882d00e99d7dfbddebd69bce221118369999d98fbb74b6bd6d73a23182581087",
+          "snippet": "# `--location`\n\nIf the server reports that the requested page has moved to a different\nlocation (indicated with a Location: header and a 3XX response code), this\noption makes curl redo the request to the new place. If used together with\n--show-headers or --head, headers from all requested pages are shown.",
+          "score": 0.7768082321003345,
+          "source_sha256": "7c4d395b257df8fba49ba13024aef568409ba102e0157976242e2aff30c22eb8",
+          "start_char": 299,
+          "end_char": 605,
+          "start_line": 21,
+          "end_line": 26,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/location.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        },
+        {
+          "index": 3,
+          "source": "location.md",
+          "chunk_id": "70b217555c7a1368418ae17a20167eaffc0123945be3fa873423157292cfae15",
+          "snippet": "When authentication is provided on the command line (for example --user or\n--oauth2-bearer), or when sending a cookie with `-H Cookie:`, curl only sends\nits credentials to the initial host. If a redirect takes curl to a different\nhost, it does not get the credentials passed on. See --location-trusted on how\nto change this. When --netrc is used in combination with this option,\ncredentials for the followed-to hosts may also be selected from that file.\n\nLimit the amount of redirects to follow by using the --max-redirs option.",
+          "score": 0.6421874299761587,
+          "source_sha256": "7c4d395b257df8fba49ba13024aef568409ba102e0157976242e2aff30c22eb8",
+          "start_char": 607,
+          "end_char": 1135,
+          "start_line": 28,
+          "end_line": 35,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/location.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.013,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "Which response codes change a POST to GET with --location?"
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "Which option limits the amount of redirects?",
+      "expected_source": "location.md",
+      "expected_phrase": "--max-redirs",
+      "passed": true,
+      "query": "Which option limits the amount of redirects?",
+      "answer": "[1] Limit the amount of redirects to follow by using the --max-redirs option.\n\nWhen curl follows a redirect and if the request is a POST, it sends the\nfollowing request with a GET if the HTTP response was 301, 302, or 303. If the\nresponse code was any other 3xx code, curl resends the following request using\nthe same unmodified method.\n\nYou can tell curl to not change POST requests to GET after a 30x response by\nusing the dedicated options for that: --post301, --post302 and --post303.\n\nThe method set with --request overrides the method curl would otherwise select\nto use.\n\n[2] When authentication is provided on the command line (for example --user or\n--oauth2-bearer), or when sending a cookie with `-H Cookie:`, curl only sends\nits credentials to the initial host. If a redirect takes curl to a different\nhost, it does not get the credentials passed on. See --location-trusted on how\nto change this. When --netrc is used in combination with this option,\ncredentials for the followed-to hosts may also be selected from that file.\n\nLimit the amount of redirects to follow by using the --max-redirs option.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "location.md",
+          "chunk_id": "6c9c1196198754b6772e05845713af493aea4b5d05511972829b22e27633d837",
+          "snippet": "Limit the amount of redirects to follow by using the --max-redirs option.\n\nWhen curl follows a redirect and if the request is a POST, it sends the\nfollowing request with a GET if the HTTP response was 301, 302, or 303. If the\nresponse code was any other 3xx code, curl resends the following request using\nthe same unmodified method.\n\nYou can tell curl to not change POST requests to GET after a 30x response by\nusing the dedicated options for that: --post301, --post302 and --post303.\n\nThe method set with --request overrides the method curl would otherwise select\nto use.",
+          "score": 0.7613238432691074,
+          "source_sha256": "7c4d395b257df8fba49ba13024aef568409ba102e0157976242e2aff30c22eb8",
+          "start_char": 1062,
+          "end_char": 1634,
+          "start_line": 35,
+          "end_line": 46,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/location.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        },
+        {
+          "index": 2,
+          "source": "location.md",
+          "chunk_id": "70b217555c7a1368418ae17a20167eaffc0123945be3fa873423157292cfae15",
+          "snippet": "When authentication is provided on the command line (for example --user or\n--oauth2-bearer), or when sending a cookie with `-H Cookie:`, curl only sends\nits credentials to the initial host. If a redirect takes curl to a different\nhost, it does not get the credentials passed on. See --location-trusted on how\nto change this. When --netrc is used in combination with this option,\ncredentials for the followed-to hosts may also be selected from that file.\n\nLimit the amount of redirects to follow by using the --max-redirs option.",
+          "score": 0.6920638103643939,
+          "source_sha256": "7c4d395b257df8fba49ba13024aef568409ba102e0157976242e2aff30c22eb8",
+          "start_char": 607,
+          "end_char": 1135,
+          "start_line": 28,
+          "end_line": 35,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/location.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.01,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "Which option limits the amount of redirects?"
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "What is the default number of retries?",
+      "expected_source": "retry.md",
+      "expected_phrase": "0",
+      "passed": true,
+      "query": "What is the default number of retries?",
+      "answer": "[1] # `--retry`\n\nIf a transient error is returned when curl tries to perform a transfer, it\nretries this number of times before giving up. Setting the number to 0 makes\ncurl do no retries (which is the default). Transient error means either: a\ntimeout, an FTP 4xx response code or an HTTP 408, 429, 500, 502, 503, 504, 522\nor 524 response code.\n\n[2] By default, curl uses an exponentially increasing timeout between retries.\n\nStarting in curl 8.16.0, this option accepts a time as decimal number for parts\nof seconds. The decimal value needs to be provided using a dot (.) as decimal\nseparator - not the local version even if it might be using another separator.\n\n[3] # `--retry-delay`\n\nMake curl sleep this amount of time before each retry when a transfer has\nfailed with a transient error (it changes the default backoff time algorithm\nbetween retries). This option is only interesting if --retry is also\nused. Setting this delay to zero makes curl use the default backoff time.\n\nBy default, curl uses an exponentially increasing timeout between retries.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "retry.md",
+          "chunk_id": "fa32eb19f9fd46ad0e3069f5596af298a2782a2cd1bf00a603d08fa4a1f0614b",
+          "snippet": "# `--retry`\n\nIf a transient error is returned when curl tries to perform a transfer, it\nretries this number of times before giving up. Setting the number to 0 makes\ncurl do no retries (which is the default). Transient error means either: a\ntimeout, an FTP 4xx response code or an HTTP 408, 429, 500, 502, 503, 504, 522\nor 524 response code.",
+          "score": 0.6616398361458338,
+          "source_sha256": "b96669c671c49b930aa5d32c776147b2e7014881db5429921a33c6eb3eff4cb9",
+          "start_char": 307,
+          "end_char": 647,
+          "start_line": 18,
+          "end_line": 24,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/retry.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        },
+        {
+          "index": 2,
+          "source": "retry-delay.md",
+          "chunk_id": "5085bcbbe13dea9816946782179e479a7b71bb0f2967145846adc76ad980df93",
+          "snippet": "By default, curl uses an exponentially increasing timeout between retries.\n\nStarting in curl 8.16.0, this option accepts a time as decimal number for parts\nof seconds. The decimal value needs to be provided using a dot (.) as decimal\nseparator - not the local version even if it might be using another separator.",
+          "score": 0.643246296225286,
+          "source_sha256": "19d902a433591d5d9c1c05506d694d297578d2fa549487aaa3a42155ad628297",
+          "start_char": 611,
+          "end_char": 923,
+          "start_line": 24,
+          "end_line": 28,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/retry-delay.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        },
+        {
+          "index": 3,
+          "source": "retry-delay.md",
+          "chunk_id": "5f46c32e955a561744f170b88a41240a3698f52129fbdb8b18c7fdab3af8a8da",
+          "snippet": "# `--retry-delay`\n\nMake curl sleep this amount of time before each retry when a transfer has\nfailed with a transient error (it changes the default backoff time algorithm\nbetween retries). This option is only interesting if --retry is also\nused. Setting this delay to zero makes curl use the default backoff time.\n\nBy default, curl uses an exponentially increasing timeout between retries.",
+          "score": 0.6436100009170332,
+          "source_sha256": "19d902a433591d5d9c1c05506d694d297578d2fa549487aaa3a42155ad628297",
+          "start_char": 297,
+          "end_char": 685,
+          "start_line": 17,
+          "end_line": 24,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/retry-delay.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.01,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "What is the default number of retries?"
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "What is the initial wait before curl retries?",
+      "expected_source": "retry.md",
+      "expected_phrase": "one second",
+      "passed": true,
+      "query": "What is the initial wait before curl retries?",
+      "answer": "[1] When curl is about to retry a transfer, it first waits one second and then for\nall forthcoming retries it doubles the waiting time until it reaches 10\nminutes, which then remains the set fixed delay time between the rest of the\nretries. By using --retry-delay you disable this exponential backoff\nalgorithm. See also --retry-max-time to limit the total time allowed for\nretries.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "retry.md",
+          "chunk_id": "8a0ed342e65694ecea0d8f90d59e7bdb14c33a00e8e031819f52c4e23458dc39",
+          "snippet": "When curl is about to retry a transfer, it first waits one second and then for\nall forthcoming retries it doubles the waiting time until it reaches 10\nminutes, which then remains the set fixed delay time between the rest of the\nretries. By using --retry-delay you disable this exponential backoff\nalgorithm. See also --retry-max-time to limit the total time allowed for\nretries.",
+          "score": 0.8441093696330918,
+          "source_sha256": "b96669c671c49b930aa5d32c776147b2e7014881db5429921a33c6eb3eff4cb9",
+          "start_char": 649,
+          "end_char": 1027,
+          "start_line": 26,
+          "end_line": 31,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/retry.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.206,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [
+          "initial"
+        ],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "What is the initial wait before curl retries?",
+        "reader": {
+          "status": "span_evidence_found",
+          "model": "onnx-community/tinyroberta-squad2-ONNX",
+          "revision": "7c9f69b7e6228375169a4553bcfa6639152e3a69",
+          "margin_threshold": 3.0,
+          "prediction": {
+            "margin": 11.663115501403809,
+            "start_char": 55,
+            "end_char": 65,
+            "text": "one second",
+            "chunk_id": "8a0ed342e65694ecea0d8f90d59e7bdb14c33a00e8e031819f52c4e23458dc39"
+          },
+          "not_calibrated_confidence": true
+        }
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "How does --retry-delay change the backoff algorithm?",
+      "expected_source": "retry-delay.md",
+      "expected_phrase": "default backoff",
+      "passed": true,
+      "query": "How does --retry-delay change the backoff algorithm?",
+      "answer": "[1] # `--retry-delay`\n\nMake curl sleep this amount of time before each retry when a transfer has\nfailed with a transient error (it changes the default backoff time algorithm\nbetween retries). This option is only interesting if --retry is also\nused. Setting this delay to zero makes curl use the default backoff time.\n\nBy default, curl uses an exponentially increasing timeout between retries.\n\n[2] curl complies with the Retry-After: response header if one was present to know\nwhen to issue the next retry (added in 7.66.0). That means the server can\noverride the retry delay. To handle server retry delays that may be longer\nthan expected, you can use --retry-max-time to limit the total retry time.\n\n[3] By default, curl uses an exponentially increasing timeout between retries.\n\nStarting in curl 8.16.0, this option accepts a time as decimal number for parts\nof seconds. The decimal value needs to be provided using a dot (.) as decimal\nseparator - not the local version even if it might be using another separator.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "retry-delay.md",
+          "chunk_id": "5f46c32e955a561744f170b88a41240a3698f52129fbdb8b18c7fdab3af8a8da",
+          "snippet": "# `--retry-delay`\n\nMake curl sleep this amount of time before each retry when a transfer has\nfailed with a transient error (it changes the default backoff time algorithm\nbetween retries). This option is only interesting if --retry is also\nused. Setting this delay to zero makes curl use the default backoff time.\n\nBy default, curl uses an exponentially increasing timeout between retries.",
+          "score": 0.7768400213217221,
+          "source_sha256": "19d902a433591d5d9c1c05506d694d297578d2fa549487aaa3a42155ad628297",
+          "start_char": 297,
+          "end_char": 685,
+          "start_line": 17,
+          "end_line": 24,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/retry-delay.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        },
+        {
+          "index": 2,
+          "source": "retry-delay.md",
+          "chunk_id": "4e8a7f9964f8fd8aee3b19dc7b19197a67e311da273b6f1e762f4c42a052c524",
+          "snippet": "curl complies with the Retry-After: response header if one was present to know\nwhen to issue the next retry (added in 7.66.0). That means the server can\noverride the retry delay. To handle server retry delays that may be longer\nthan expected, you can use --retry-max-time to limit the total retry time.",
+          "score": 0.713295730305826,
+          "source_sha256": "19d902a433591d5d9c1c05506d694d297578d2fa549487aaa3a42155ad628297",
+          "start_char": 925,
+          "end_char": 1227,
+          "start_line": 30,
+          "end_line": 33,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/retry-delay.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        },
+        {
+          "index": 3,
+          "source": "retry-delay.md",
+          "chunk_id": "5085bcbbe13dea9816946782179e479a7b71bb0f2967145846adc76ad980df93",
+          "snippet": "By default, curl uses an exponentially increasing timeout between retries.\n\nStarting in curl 8.16.0, this option accepts a time as decimal number for parts\nof seconds. The decimal value needs to be provided using a dot (.) as decimal\nseparator - not the local version even if it might be using another separator.",
+          "score": 0.6587154566608568,
+          "source_sha256": "19d902a433591d5d9c1c05506d694d297578d2fa549487aaa3a42155ad628297",
+          "start_char": 611,
+          "end_char": 923,
+          "start_line": 24,
+          "end_line": 28,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/retry-delay.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.012,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "How does --retry-delay change the backoff algorithm?"
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "Which header can override the retry delay?",
+      "expected_source": "retry-delay.md",
+      "expected_phrase": "Retry-After",
+      "passed": true,
+      "query": "Which header can override the retry delay?",
+      "answer": "[1] curl complies with the Retry-After: response header if one was present to know\nwhen to issue the next retry (added in 7.66.0). That means the server can\noverride the retry delay. To handle server retry delays that may be longer\nthan expected, you can use --retry-max-time to limit the total retry time.\n\n[2] curl complies with the Retry-After: response header if one was present to know\nwhen to issue the next retry (added in 7.66.0). That means the server can\noverride the retry delay. To handle server retry delays that may be longer\nthan expected, you can use --retry-max-time to limit the total retry time.\n\n[3] When curl is about to retry a transfer, it first waits one second and then for\nall forthcoming retries it doubles the waiting time until it reaches 10\nminutes, which then remains the set fixed delay time between the rest of the\nretries. By using --retry-delay you disable this exponential backoff\nalgorithm. See also --retry-max-time to limit the total time allowed for\nretries.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "retry-delay.md",
+          "chunk_id": "4e8a7f9964f8fd8aee3b19dc7b19197a67e311da273b6f1e762f4c42a052c524",
+          "snippet": "curl complies with the Retry-After: response header if one was present to know\nwhen to issue the next retry (added in 7.66.0). That means the server can\noverride the retry delay. To handle server retry delays that may be longer\nthan expected, you can use --retry-max-time to limit the total retry time.",
+          "score": 0.8089261846896005,
+          "source_sha256": "19d902a433591d5d9c1c05506d694d297578d2fa549487aaa3a42155ad628297",
+          "start_char": 925,
+          "end_char": 1227,
+          "start_line": 30,
+          "end_line": 33,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/retry-delay.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        },
+        {
+          "index": 2,
+          "source": "retry.md",
+          "chunk_id": "ff3cdfa53ea7be6ca1516ccec480426c86312189f5cf3eddef3ee5a6dd288c2d",
+          "snippet": "curl complies with the Retry-After: response header if one was present to know\nwhen to issue the next retry (added in 7.66.0). That means the server can\noverride the retry delay. To handle server retry delays that may be longer\nthan expected, you can use --retry-max-time to limit the total retry time.",
+          "score": 0.8089261846896013,
+          "source_sha256": "b96669c671c49b930aa5d32c776147b2e7014881db5429921a33c6eb3eff4cb9",
+          "start_char": 1029,
+          "end_char": 1331,
+          "start_line": 33,
+          "end_line": 36,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/retry.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        },
+        {
+          "index": 3,
+          "source": "retry.md",
+          "chunk_id": "8a0ed342e65694ecea0d8f90d59e7bdb14c33a00e8e031819f52c4e23458dc39",
+          "snippet": "When curl is about to retry a transfer, it first waits one second and then for\nall forthcoming retries it doubles the waiting time until it reaches 10\nminutes, which then remains the set fixed delay time between the rest of the\nretries. By using --retry-delay you disable this exponential backoff\nalgorithm. See also --retry-max-time to limit the total time allowed for\nretries.",
+          "score": 0.7528111196751154,
+          "source_sha256": "b96669c671c49b930aa5d32c776147b2e7014881db5429921a33c6eb3eff4cb9",
+          "start_char": 649,
+          "end_char": 1027,
+          "start_line": 26,
+          "end_line": 31,
+          "upstream_url": "https://raw.githubusercontent.com/curl/curl/2b348649c68c1cd8cc1d055487f2fb2b59a353cb/docs/cmdline-opts/retry.md",
+          "upstream_revision": "2b348649c68c1cd8cc1d055487f2fb2b59a353cb"
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.011,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "Which header can override the retry delay?"
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "Which vendor sells the --cacert certificate file?",
+      "expected_source": null,
+      "expected_phrase": null,
+      "passed": true,
+      "query": "Which vendor sells the --cacert certificate file?",
+      "answer": "No sufficient evidence was found.",
+      "citations": [],
+      "confidence": "low",
+      "status": "insufficient_evidence",
+      "route_taken": "langgraph/no_context",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.012,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [
+          "sell",
+          "vendor"
+        ],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "Which vendor sells the --cacert certificate file?",
+        "reader": {
+          "status": "disabled_or_protected_facet"
+        }
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "What is the monthly subscription price of --retry?",
+      "expected_source": null,
+      "expected_phrase": null,
+      "passed": true,
+      "query": "What is the monthly subscription price of --retry?",
+      "answer": "No sufficient evidence was found.",
+      "citations": [],
+      "confidence": "low",
+      "status": "insufficient_evidence",
+      "route_taken": "langgraph/no_context",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.011,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [
+          "monthly",
+          "price",
+          "subscription"
+        ],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "What is the monthly subscription price of --retry?",
+        "reader": {
+          "status": "disabled_or_protected_facet"
+        }
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "What is the --head API GPU quota?",
+      "expected_source": null,
+      "expected_phrase": null,
+      "passed": true,
+      "query": "What is the --head API GPU quota?",
+      "answer": "No sufficient evidence was found.",
+      "citations": [],
+      "confidence": "low",
+      "status": "insufficient_evidence",
+      "route_taken": "langgraph/no_context",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.011,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [
+          "api",
+          "gpu",
+          "quota"
+        ],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "What is the --head API GPU quota?",
+        "reader": {
+          "status": "disabled_or_protected_facet"
+        }
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "Which bank account receives curl payments?",
+      "expected_source": null,
+      "expected_phrase": null,
+      "passed": true,
+      "query": "Which bank account receives curl payments?",
+      "answer": "No sufficient evidence was found.",
+      "citations": [],
+      "confidence": "low",
+      "status": "insufficient_evidence",
+      "route_taken": "langgraph/no_context",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.009,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [
+          "account",
+          "bank",
+          "payment",
+          "receive"
+        ],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "Which bank account receives curl payments?",
+        "reader": {
+          "status": "disabled_or_protected_facet"
+        }
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "What is the --connect-timeout storage retention period?",
+      "expected_source": null,
+      "expected_phrase": null,
+      "passed": true,
+      "query": "What is the --connect-timeout storage retention period?",
+      "answer": "No sufficient evidence was found.",
+      "citations": [],
+      "confidence": "low",
+      "status": "insufficient_evidence",
+      "route_taken": "langgraph/no_context",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.079,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [
+          "retain",
+          "storage"
+        ],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "What is the --connect-timeout storage retention period?",
+        "reader": {
+          "status": "no_answer_span",
+          "margin_threshold": 3.0
+        }
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "What is the --location user password?",
+      "expected_source": null,
+      "expected_phrase": null,
+      "passed": true,
+      "query": "What is the --location user password?",
+      "answer": "No sufficient evidence was found.",
+      "citations": [],
+      "confidence": "low",
+      "status": "insufficient_evidence",
+      "route_taken": "langgraph/no_context",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.009,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [
+          "password"
+        ],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "What is the --location user password?",
+        "reader": {
+          "status": "disabled_or_protected_facet"
+        }
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "What is the capital of Argentina?",
+      "expected_source": null,
+      "expected_phrase": null,
+      "passed": true,
+      "query": "What is the capital of Argentina?",
+      "answer": "No sufficient evidence was found.",
+      "citations": [],
+      "confidence": "low",
+      "status": "insufficient_evidence",
+      "route_taken": "langgraph/no_context",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.016,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [
+          "argentina",
+          "capital"
+        ],
+        "same_source_required": true,
+        "temporal_evidence_required": false,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "What is the capital of Argentina?",
+        "reader": {
+          "status": "no_safe_candidates"
+        }
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    },
+    {
+      "question": "How long does --fail refund approval take?",
+      "expected_source": null,
+      "expected_phrase": null,
+      "passed": true,
+      "query": "How long does --fail refund approval take?",
+      "answer": "No sufficient evidence was found.",
+      "citations": [],
+      "confidence": "low",
+      "status": "insufficient_evidence",
+      "route_taken": "langgraph/no_context",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.116,
+      "cache_hit": false,
+      "usage": {},
+      "evidence_screen": {
+        "method": "conservative_same_source_topic_coverage",
+        "missing_terms": [
+          "approval",
+          "refund"
+        ],
+        "same_source_required": true,
+        "temporal_evidence_required": true,
+        "instruction_like_chunks_excluded": 0,
+        "not_semantic_entailment": true,
+        "normalized_query": "How long does --fail refund approval take?",
+        "reader": {
+          "status": "no_answer_span",
+          "margin_threshold": 3.0
+        }
+      },
+      "corpus_sha256": "6c406ab31265ae3ade6654f53b0980563b70a41840eb2778e2b8577ce2cc357b"
+    }
+  ]
+}
