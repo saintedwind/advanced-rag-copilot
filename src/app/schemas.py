@@ -1,4 +1,5 @@
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+from typing import Literal
 
 
 class StrictModel(BaseModel):
@@ -6,12 +7,17 @@ class StrictModel(BaseModel):
 
 
 class IngestionRequest(StrictModel):
+    collection: Literal["sample", "curl"] | None = None
     source_dir: str | None = None
     chunk_size: int = Field(default=600, ge=100, le=4000)
     chunk_overlap: int = Field(default=100, ge=0, le=1000)
 
     @model_validator(mode="after")
     def overlap(self):
+        if self.collection is not None and self.source_dir is not None:
+            raise ValueError(
+                "Choose a named collection or a source directory, not both"
+            )
         if self.chunk_overlap >= self.chunk_size:
             raise ValueError("Overlap must be smaller than chunk size")
         return self
@@ -43,6 +49,8 @@ class CitationItem(BaseModel):
     end_char: int | None = None
     start_line: int | None = None
     end_line: int | None = None
+    upstream_url: str | None = None
+    upstream_revision: str | None = None
 
 
 class QueryResponse(BaseModel):
