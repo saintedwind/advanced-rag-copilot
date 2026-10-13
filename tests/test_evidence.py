@@ -79,7 +79,7 @@ def test_duration_is_not_inferred_from_unrelated_invoice_deadline():
 
 
 def test_context_budget_cannot_drop_required_evidence():
-    settings = AppSettings(max_context_chars=35)
+    settings = AppSettings(max_context_chars=35, qa_reader_provider="none")
     pipeline = RAGPipeline(retriever=SimpleNamespace(), settings=settings)
     result = pipeline.synthesize(
         "audit retention", [doc("Audit event policy."), doc("Retention is 365 days.")]
@@ -92,7 +92,11 @@ def test_snapshot_endpoint_and_version_change(tmp_path):
     root = tmp_path / "docs"
     root.mkdir()
     (root / "sla.md").write_text("Business uptime is 99.95 percent.", encoding="utf-8")
-    settings = AppSettings(source_root=str(root), qdrant_path=str(tmp_path / "db"))
+    settings = AppSettings(
+        source_root=str(root),
+        qdrant_path=str(tmp_path / "db"),
+        qa_reader_provider="none",
+    )
     retriever = HybridRetriever(settings, embedder=Embeddings())
     try:
         with TestClient(
