@@ -6,20 +6,22 @@
   "synthetic_corpus": true,
   "health": {
     "status": "ready",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "vector_db_connected": true,
     "chunks": 9,
     "embedding_model": "BAAI/bge-small-en-v1.5",
     "generation_mode": "extractive",
     "reranker_ready": false,
     "cache": "exact_query_bounded_128",
-    "corpus_sha256": "c549853b90d18155701ff49ebce943ab97162103ea9f80826b800c99ac2e5ea1"
+    "corpus_sha256": "c549853b90d18155701ff49ebce943ab97162103ea9f80826b800c99ac2e5ea1",
+    "qa_reader_provider": "onnx",
+    "qa_reader_ready": false
   },
   "ingestion": {
     "status": "success",
     "documents_ingested": 3,
     "chunks_created": 9,
-    "elapsed_seconds": 0.314,
+    "elapsed_seconds": 0.323,
     "corpus_sha256": "c549853b90d18155701ff49ebce943ab97162103ea9f80826b800c99ac2e5ea1"
   },
   "passed": 11,
@@ -44,7 +46,9 @@
           "start_char": 0,
           "end_char": 456,
           "start_line": 1,
-          "end_line": 4
+          "end_line": 4,
+          "upstream_url": null,
+          "upstream_revision": null
         },
         {
           "index": 2,
@@ -56,14 +60,16 @@
           "start_char": 458,
           "end_char": 867,
           "start_line": 6,
-          "end_line": 7
+          "end_line": 7,
+          "upstream_url": null,
+          "upstream_revision": null
         }
       ],
       "confidence": "unverified",
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.018,
+      "elapsed_seconds": 0.016,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -72,7 +78,8 @@
         "same_source_required": true,
         "temporal_evidence_required": false,
         "instruction_like_chunks_excluded": 0,
-        "not_semantic_entailment": true
+        "not_semantic_entailment": true,
+        "normalized_query": "What uptime commitment does the Business plan provide?"
       },
       "corpus_sha256": "c549853b90d18155701ff49ebce943ab97162103ea9f80826b800c99ac2e5ea1"
     },
@@ -94,7 +101,9 @@
           "start_char": 0,
           "end_char": 456,
           "start_line": 1,
-          "end_line": 4
+          "end_line": 4,
+          "upstream_url": null,
+          "upstream_revision": null
         },
         {
           "index": 2,
@@ -106,14 +115,16 @@
           "start_char": 458,
           "end_char": 867,
           "start_line": 6,
-          "end_line": 7
+          "end_line": 7,
+          "upstream_url": null,
+          "upstream_revision": null
         }
       ],
       "confidence": "unverified",
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.013,
+      "elapsed_seconds": 0.01,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -122,7 +133,8 @@
         "same_source_required": true,
         "temporal_evidence_required": false,
         "instruction_like_chunks_excluded": 0,
-        "not_semantic_entailment": true
+        "not_semantic_entailment": true,
+        "normalized_query": "How much notice is required for scheduled maintenance?"
       },
       "corpus_sha256": "c549853b90d18155701ff49ebce943ab97162103ea9f80826b800c99ac2e5ea1"
     },
@@ -144,7 +156,9 @@
           "start_char": 322,
           "end_char": 619,
           "start_line": 6,
-          "end_line": 7
+          "end_line": 7,
+          "upstream_url": null,
+          "upstream_revision": null
         },
         {
           "index": 2,
@@ -156,14 +170,16 @@
           "start_char": 621,
           "end_char": 926,
           "start_line": 9,
-          "end_line": 10
+          "end_line": 10,
+          "upstream_url": null,
+          "upstream_revision": null
         }
       ],
       "confidence": "unverified",
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.013,
+      "elapsed_seconds": 0.012,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -172,7 +188,8 @@
         "same_source_required": true,
         "temporal_evidence_required": true,
         "instruction_like_chunks_excluded": 0,
-        "not_semantic_entailment": true
+        "not_semantic_entailment": true,
+        "normalized_query": "How long are audit logs retained on Business plans?"
       },
       "corpus_sha256": "c549853b90d18155701ff49ebce943ab97162103ea9f80826b800c99ac2e5ea1"
     },
@@ -194,7 +211,9 @@
           "start_char": 621,
           "end_char": 926,
           "start_line": 9,
-          "end_line": 10
+          "end_line": 10,
+          "upstream_url": null,
+          "upstream_revision": null
         },
         {
           "index": 2,
@@ -206,14 +225,16 @@
           "start_char": 322,
           "end_char": 619,
           "start_line": 6,
-          "end_line": 7
+          "end_line": 7,
+          "upstream_url": null,
+          "upstream_revision": null
         }
       ],
       "confidence": "unverified",
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.01,
+      "elapsed_seconds": 0.009,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -222,7 +243,8 @@
         "same_source_required": true,
         "temporal_evidence_required": false,
         "instruction_like_chunks_excluded": 0,
-        "not_semantic_entailment": true
+        "not_semantic_entailment": true,
+        "normalized_query": "Which format is available for exported audit logs?"
       },
       "corpus_sha256": "c549853b90d18155701ff49ebce943ab97162103ea9f80826b800c99ac2e5ea1"
     },
@@ -244,7 +266,9 @@
           "start_char": 322,
           "end_char": 619,
           "start_line": 6,
-          "end_line": 7
+          "end_line": 7,
+          "upstream_url": null,
+          "upstream_revision": null
         },
         {
           "index": 2,
@@ -256,7 +280,9 @@
           "start_char": 0,
           "end_char": 320,
           "start_line": 1,
-          "end_line": 4
+          "end_line": 4,
+          "upstream_url": null,
+          "upstream_revision": null
         },
         {
           "index": 3,
@@ -268,14 +294,16 @@
           "start_char": 621,
           "end_char": 926,
           "start_line": 9,
-          "end_line": 10
+          "end_line": 10,
+          "upstream_url": null,
+          "upstream_revision": null
         }
       ],
       "confidence": "unverified",
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.013,
+      "elapsed_seconds": 0.01,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -284,7 +312,8 @@
         "same_source_required": true,
         "temporal_evidence_required": false,
         "instruction_like_chunks_excluded": 0,
-        "not_semantic_entailment": true
+        "not_semantic_entailment": true,
+        "normalized_query": "What protocols support enterprise identity integration?"
       },
       "corpus_sha256": "c549853b90d18155701ff49ebce943ab97162103ea9f80826b800c99ac2e5ea1"
     },
@@ -306,7 +335,9 @@
           "start_char": 0,
           "end_char": 320,
           "start_line": 1,
-          "end_line": 4
+          "end_line": 4,
+          "upstream_url": null,
+          "upstream_revision": null
         },
         {
           "index": 2,
@@ -318,7 +349,9 @@
           "start_char": 322,
           "end_char": 619,
           "start_line": 6,
-          "end_line": 7
+          "end_line": 7,
+          "upstream_url": null,
+          "upstream_revision": null
         }
       ],
       "confidence": "unverified",
@@ -334,7 +367,8 @@
         "same_source_required": true,
         "temporal_evidence_required": true,
         "instruction_like_chunks_excluded": 0,
-        "not_semantic_entailment": true
+        "not_semantic_entailment": true,
+        "normalized_query": "How often are enterprise encryption keys rotated?"
       },
       "corpus_sha256": "c549853b90d18155701ff49ebce943ab97162103ea9f80826b800c99ac2e5ea1"
     },
@@ -356,7 +390,9 @@
           "start_char": 458,
           "end_char": 867,
           "start_line": 6,
-          "end_line": 7
+          "end_line": 7,
+          "upstream_url": null,
+          "upstream_revision": null
         },
         {
           "index": 2,
@@ -368,7 +404,9 @@
           "start_char": 0,
           "end_char": 456,
           "start_line": 1,
-          "end_line": 4
+          "end_line": 4,
+          "upstream_url": null,
+          "upstream_revision": null
         },
         {
           "index": 3,
@@ -380,14 +418,16 @@
           "start_char": 869,
           "end_char": 1169,
           "start_line": 9,
-          "end_line": 10
+          "end_line": 10,
+          "upstream_url": null,
+          "upstream_revision": null
         }
       ],
       "confidence": "unverified",
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.011,
+      "elapsed_seconds": 0.013,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -396,7 +436,8 @@
         "same_source_required": true,
         "temporal_evidence_required": true,
         "instruction_like_chunks_excluded": 0,
-        "not_semantic_entailment": true
+        "not_semantic_entailment": true,
+        "normalized_query": "What is the deadline to submit a service credit request?"
       },
       "corpus_sha256": "c549853b90d18155701ff49ebce943ab97162103ea9f80826b800c99ac2e5ea1"
     },
@@ -418,7 +459,9 @@
           "start_char": 869,
           "end_char": 1169,
           "start_line": 9,
-          "end_line": 10
+          "end_line": 10,
+          "upstream_url": null,
+          "upstream_revision": null
         },
         {
           "index": 2,
@@ -430,14 +473,16 @@
           "start_char": 458,
           "end_char": 867,
           "start_line": 6,
-          "end_line": 7
+          "end_line": 7,
+          "upstream_url": null,
+          "upstream_revision": null
         }
       ],
       "confidence": "unverified",
       "status": "evidence_found",
       "route_taken": "langgraph/hybrid_extractive",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.012,
+      "elapsed_seconds": 0.011,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -446,7 +491,8 @@
         "same_source_required": true,
         "temporal_evidence_required": false,
         "instruction_like_chunks_excluded": 0,
-        "not_semantic_entailment": true
+        "not_semantic_entailment": true,
+        "normalized_query": "What is the critical incident support response for the Business plan?"
       },
       "corpus_sha256": "c549853b90d18155701ff49ebce943ab97162103ea9f80826b800c99ac2e5ea1"
     },
@@ -474,7 +520,11 @@
         "same_source_required": true,
         "temporal_evidence_required": false,
         "instruction_like_chunks_excluded": 0,
-        "not_semantic_entailment": true
+        "not_semantic_entailment": true,
+        "normalized_query": "What is the capital of Argentina?",
+        "reader": {
+          "status": "no_safe_candidates"
+        }
       },
       "corpus_sha256": "c549853b90d18155701ff49ebce943ab97162103ea9f80826b800c99ac2e5ea1"
     },
@@ -490,7 +540,7 @@
       "status": "insufficient_evidence",
       "route_taken": "langgraph/no_context",
       "generation_mode": "extractive",
-      "elapsed_seconds": 0.02,
+      "elapsed_seconds": 0.017,
       "cache_hit": false,
       "usage": {},
       "evidence_screen": {
@@ -505,7 +555,11 @@
         "same_source_required": true,
         "temporal_evidence_required": false,
         "instruction_like_chunks_excluded": 0,
-        "not_semantic_entailment": true
+        "not_semantic_entailment": true,
+        "normalized_query": "What is the CEO personal bank account number?",
+        "reader": {
+          "status": "disabled_or_protected_facet"
+        }
       },
       "corpus_sha256": "c549853b90d18155701ff49ebce943ab97162103ea9f80826b800c99ac2e5ea1"
     },
@@ -534,7 +588,11 @@
         "same_source_required": true,
         "temporal_evidence_required": false,
         "instruction_like_chunks_excluded": 0,
-        "not_semantic_entailment": true
+        "not_semantic_entailment": true,
+        "normalized_query": "What is the price of a Bitcoin today?",
+        "reader": {
+          "status": "disabled_or_protected_facet"
+        }
       },
       "corpus_sha256": "c549853b90d18155701ff49ebce943ab97162103ea9f80826b800c99ac2e5ea1"
     }
