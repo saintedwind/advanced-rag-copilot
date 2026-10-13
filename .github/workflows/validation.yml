@@ -23,6 +23,9 @@ jobs:
       - run: python -m pytest -q
       - run: python -m scripts.evidence_benchmark current
       - run: python -m scripts.evidence_benchmark challenge
+      - run: python -m scripts.reference_benchmark
+      - run: python -m scripts.live_check --reference
+      - run: python -c "import json; r=json.load(open('reports/live-reference-extractive.json')); assert r['passed']>=30 and r['synthetic_corpus'] is False, 'Real-document retrieval regression'"
       - run: python -m scripts.live_check --evaluation
       - run: python -c "import json; r=json.load(open('reports/live-evaluation-extractive.json')); assert r['passed']==r['total'], 'Expanded evidence regression'"
       - run: python scripts/live_check.py
@@ -51,6 +54,11 @@ jobs:
           answer=post('/query',{'query':'uptime','enable_reranking':False})
           assert answer['status']=='evidence_found' and answer['citations'][0]['source_sha256']
           assert answer['corpus_sha256']
+          assert post('/ingest',{'collection':'curl'})['documents_ingested']==8
+          answer=post('/query',{'query':'What certificate format does --cacert require?','enable_reranking':False})
+          assert answer['status']=='evidence_found' and 'PEM' in answer['answer']
+          assert answer['citations'][0]['upstream_revision']
+          assert answer['evidence_screen']['reader']['status']=='span_evidence_found'
           print('Docker ingestion and provenance query passed')
           PY
       - if: always()
