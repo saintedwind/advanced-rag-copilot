@@ -1,0 +1,380 @@
+{
+  "date": "2026-10-13",
+  "mode": "extractive",
+  "transport": "actual loopback HTTP / uvicorn",
+  "embedding": "actual FastEmbed BAAI/bge-small-en-v1.5",
+  "synthetic_corpus": true,
+  "health": {
+    "status": "ready",
+    "version": "0.2.0",
+    "vector_db_connected": true,
+    "chunks": 9,
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "generation_mode": "extractive",
+    "reranker_ready": false,
+    "cache": "exact_query_bounded_128"
+  },
+  "ingestion": {
+    "status": "success",
+    "documents_ingested": 3,
+    "chunks_created": 9,
+    "elapsed_seconds": 0.308
+  },
+  "passed": 11,
+  "total": 11,
+  "cache_verified": true,
+  "cases": [
+    {
+      "question": "What uptime commitment does the Business plan provide?",
+      "expected_source": "cloud_sla.md",
+      "expected_phrase": "99.95",
+      "passed": true,
+      "query": "What uptime commitment does the Business plan provide?",
+      "answer": "[1] # Northstar Cloud Platform — Service Levels\n\n## Availability commitments\nNorthstar Cloud publishes monthly service availability measured across the customer-facing control plane and managed data plane. The Standard tier has a 99.9% monthly uptime commitment, while the Business tier guarantees 99.95%. The Mission Critical tier guarantees 99.99% monthly uptime. Scheduled maintenance announced at least 72 hours in advance is excluded from the calculation.\n\n[2] ## Service credits\nIf monthly availability falls below a tier commitment, customers may request service credits within 30 days of the incident. Standard credits are 10% of the affected monthly service fee for availability between 99.0% and the commitment, and 25% below 99.0%. Business customers receive 15% and 30% credits in equivalent bands. Credits are applied to future invoices and are not cash refunds.\n\n[3] ## Identity and access\nThe platform supports SAML 2.0 single sign-on, SCIM user provisioning, and role-based access control. Administrative roles should require multi-factor authentication. Audit events are retained for 365 days on Business and Mission Critical plans, and for 90 days on Standard.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "cloud_sla.md",
+          "chunk_id": "30554e4e4399ba220d5c44fb38dd39f3a985ba12ce0ffbc45d17809f549ead04",
+          "snippet": "# Northstar Cloud Platform — Service Levels\n\n## Availability commitments\nNorthstar Cloud publishes monthly service availability measured across the customer-facing control plane and managed data plane. The Standard tier has a 99.9% monthly uptime commitment, while the Business tier guarantees 99.95%. The Mission Critical tier guarantees 99.99% monthly uptime. Scheduled maintenance announced at least 72 hours in advance is excluded from the calculation.",
+          "score": 0.681185374194449
+        },
+        {
+          "index": 2,
+          "source": "cloud_sla.md",
+          "chunk_id": "2717cafd75c79b4702b6552d214293915d93428d3771908a667976e20584de68",
+          "snippet": "## Service credits\nIf monthly availability falls below a tier commitment, customers may request service credits within 30 days of the incident. Standard credits are 10% of the affected monthly service fee for availability between 99.0% and the commitment, and 25% below 99.0%. Business customers receive 15% and 30% credits in equivalent bands. Credits are applied to future invoices and are not cash refunds.",
+          "score": 0.6259194717512588
+        },
+        {
+          "index": 3,
+          "source": "security_guide.md",
+          "chunk_id": "181c884864da14e730a78081187ae060a0e81d2fac8e82276d03193aad5c5f57",
+          "snippet": "## Identity and access\nThe platform supports SAML 2.0 single sign-on, SCIM user provisioning, and role-based access control. Administrative roles should require multi-factor authentication. Audit events are retained for 365 days on Business and Mission Critical plans, and for 90 days on Standard.",
+          "score": 0.6108522652475153
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.014,
+      "cache_hit": false,
+      "usage": {}
+    },
+    {
+      "question": "How much notice is required for scheduled maintenance?",
+      "expected_source": "cloud_sla.md",
+      "expected_phrase": "72",
+      "passed": true,
+      "query": "How much notice is required for scheduled maintenance?",
+      "answer": "[1] # Northstar Cloud Platform — Service Levels\n\n## Availability commitments\nNorthstar Cloud publishes monthly service availability measured across the customer-facing control plane and managed data plane. The Standard tier has a 99.9% monthly uptime commitment, while the Business tier guarantees 99.95%. The Mission Critical tier guarantees 99.99% monthly uptime. Scheduled maintenance announced at least 72 hours in advance is excluded from the calculation.\n\n[2] ## Incident communication\nFor a confirmed security incident affecting customer data, Northstar notifies the designated security contact without undue delay and provides regular updates while investigation is ongoing. Customers can export audit logs through the administration console in JSON Lines format.\n\n[3] ## Service credits\nIf monthly availability falls below a tier commitment, customers may request service credits within 30 days of the incident. Standard credits are 10% of the affected monthly service fee for availability between 99.0% and the commitment, and 25% below 99.0%. Business customers receive 15% and 30% credits in equivalent bands. Credits are applied to future invoices and are not cash refunds.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "cloud_sla.md",
+          "chunk_id": "30554e4e4399ba220d5c44fb38dd39f3a985ba12ce0ffbc45d17809f549ead04",
+          "snippet": "# Northstar Cloud Platform — Service Levels\n\n## Availability commitments\nNorthstar Cloud publishes monthly service availability measured across the customer-facing control plane and managed data plane. The Standard tier has a 99.9% monthly uptime commitment, while the Business tier guarantees 99.95%. The Mission Critical tier guarantees 99.99% monthly uptime. Scheduled maintenance announced at least 72 hours in advance is excluded from the calculation.",
+          "score": 0.5919761762585838
+        },
+        {
+          "index": 2,
+          "source": "security_guide.md",
+          "chunk_id": "c086fe9b07d890e6974ad6281ced70aac1fa5d01cf587afb12cc30606996f24a",
+          "snippet": "## Incident communication\nFor a confirmed security incident affecting customer data, Northstar notifies the designated security contact without undue delay and provides regular updates while investigation is ongoing. Customers can export audit logs through the administration console in JSON Lines format.",
+          "score": 0.5644813424329926
+        },
+        {
+          "index": 3,
+          "source": "cloud_sla.md",
+          "chunk_id": "2717cafd75c79b4702b6552d214293915d93428d3771908a667976e20584de68",
+          "snippet": "## Service credits\nIf monthly availability falls below a tier commitment, customers may request service credits within 30 days of the incident. Standard credits are 10% of the affected monthly service fee for availability between 99.0% and the commitment, and 25% below 99.0%. Business customers receive 15% and 30% credits in equivalent bands. Credits are applied to future invoices and are not cash refunds.",
+          "score": 0.6184038272044262
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.009,
+      "cache_hit": false,
+      "usage": {}
+    },
+    {
+      "question": "How long are audit logs retained on Business plans?",
+      "expected_source": "security_guide.md",
+      "expected_phrase": "365",
+      "passed": true,
+      "query": "How long are audit logs retained on Business plans?",
+      "answer": "[1] ## Identity and access\nThe platform supports SAML 2.0 single sign-on, SCIM user provisioning, and role-based access control. Administrative roles should require multi-factor authentication. Audit events are retained for 365 days on Business and Mission Critical plans, and for 90 days on Standard.\n\n[2] ## Incident communication\nFor a confirmed security incident affecting customer data, Northstar notifies the designated security contact without undue delay and provides regular updates while investigation is ongoing. Customers can export audit logs through the administration console in JSON Lines format.\n\n[3] ## Support response targets\nStandard support responds to critical incidents within four hours. Business support has a one-hour critical response target. Mission Critical customers receive a 15-minute response target and a named incident commander. Response targets are not resolution-time guarantees.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "security_guide.md",
+          "chunk_id": "181c884864da14e730a78081187ae060a0e81d2fac8e82276d03193aad5c5f57",
+          "snippet": "## Identity and access\nThe platform supports SAML 2.0 single sign-on, SCIM user provisioning, and role-based access control. Administrative roles should require multi-factor authentication. Audit events are retained for 365 days on Business and Mission Critical plans, and for 90 days on Standard.",
+          "score": 0.7054735889874608
+        },
+        {
+          "index": 2,
+          "source": "security_guide.md",
+          "chunk_id": "c086fe9b07d890e6974ad6281ced70aac1fa5d01cf587afb12cc30606996f24a",
+          "snippet": "## Incident communication\nFor a confirmed security incident affecting customer data, Northstar notifies the designated security contact without undue delay and provides regular updates while investigation is ongoing. Customers can export audit logs through the administration console in JSON Lines format.",
+          "score": 0.6041799865350815
+        },
+        {
+          "index": 3,
+          "source": "cloud_sla.md",
+          "chunk_id": "573f8b35e16ec60f11003633092b1283c22b12bf3f5364b41a0d1864f42f2a8d",
+          "snippet": "## Support response targets\nStandard support responds to critical incidents within four hours. Business support has a one-hour critical response target. Mission Critical customers receive a 15-minute response target and a named incident commander. Response targets are not resolution-time guarantees.",
+          "score": 0.6075926462067716
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.009,
+      "cache_hit": false,
+      "usage": {}
+    },
+    {
+      "question": "Which format is available for exported audit logs?",
+      "expected_source": "security_guide.md",
+      "expected_phrase": "JSON",
+      "passed": true,
+      "query": "Which format is available for exported audit logs?",
+      "answer": "[1] ## Incident communication\nFor a confirmed security incident affecting customer data, Northstar notifies the designated security contact without undue delay and provides regular updates while investigation is ongoing. Customers can export audit logs through the administration console in JSON Lines format.\n\n[2] ## Identity and access\nThe platform supports SAML 2.0 single sign-on, SCIM user provisioning, and role-based access control. Administrative roles should require multi-factor authentication. Audit events are retained for 365 days on Business and Mission Critical plans, and for 90 days on Standard.\n\n[3] Knowledge Operations Playbook\n\nDocument ingestion accepts UTF-8 Markdown and plain-text documents. Files are split into overlapping semantic chunks with source and filename metadata. The default chunk size is 600 characters with 100 characters of overlap. For best retrieval quality, use descriptive headings, keep each section focused on one topic, and remove outdated or duplicate policies before ingestion.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "security_guide.md",
+          "chunk_id": "c086fe9b07d890e6974ad6281ced70aac1fa5d01cf587afb12cc30606996f24a",
+          "snippet": "## Incident communication\nFor a confirmed security incident affecting customer data, Northstar notifies the designated security contact without undue delay and provides regular updates while investigation is ongoing. Customers can export audit logs through the administration console in JSON Lines format.",
+          "score": 0.6587490499625434
+        },
+        {
+          "index": 2,
+          "source": "security_guide.md",
+          "chunk_id": "181c884864da14e730a78081187ae060a0e81d2fac8e82276d03193aad5c5f57",
+          "snippet": "## Identity and access\nThe platform supports SAML 2.0 single sign-on, SCIM user provisioning, and role-based access control. Administrative roles should require multi-factor authentication. Audit events are retained for 365 days on Business and Mission Critical plans, and for 90 days on Standard.",
+          "score": 0.6167699542486988
+        },
+        {
+          "index": 3,
+          "source": "knowledge_operations.txt",
+          "chunk_id": "0ab5b7a7c652b826d96a48ee0dd9c249140b7603b7ae15803915d38fe7398911",
+          "snippet": "Knowledge Operations Playbook\n\nDocument ingestion accepts UTF-8 Markdown and plain-text documents. Files are split into overlapping semantic chunks with source and filename metadata. The default chunk size is 600 characters with 100 characters of overlap. For best retrieval quality, use descriptive headings, keep each section focused on one topic, and remove outdated or duplicate policies before ingestion.",
+          "score": 0.6086872609451129
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.009,
+      "cache_hit": false,
+      "usage": {}
+    },
+    {
+      "question": "What protocols support enterprise identity integration?",
+      "expected_source": "security_guide.md",
+      "expected_phrase": "SAML",
+      "passed": true,
+      "query": "What protocols support enterprise identity integration?",
+      "answer": "[1] ## Identity and access\nThe platform supports SAML 2.0 single sign-on, SCIM user provisioning, and role-based access control. Administrative roles should require multi-factor authentication. Audit events are retained for 365 days on Business and Mission Critical plans, and for 90 days on Standard.\n\n[2] # Security and Data Handling Guide\n\n## Encryption\nCustomer data is encrypted in transit using TLS 1.2 or newer and at rest using AES-256. Encryption keys are managed through a dedicated key-management service. Enterprise customers can rotate their own keys every 90 days; the default managed rotation period is 180 days.\n\n[3] ## Incident communication\nFor a confirmed security incident affecting customer data, Northstar notifies the designated security contact without undue delay and provides regular updates while investigation is ongoing. Customers can export audit logs through the administration console in JSON Lines format.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "security_guide.md",
+          "chunk_id": "181c884864da14e730a78081187ae060a0e81d2fac8e82276d03193aad5c5f57",
+          "snippet": "## Identity and access\nThe platform supports SAML 2.0 single sign-on, SCIM user provisioning, and role-based access control. Administrative roles should require multi-factor authentication. Audit events are retained for 365 days on Business and Mission Critical plans, and for 90 days on Standard.",
+          "score": 0.6342261498134221
+        },
+        {
+          "index": 2,
+          "source": "security_guide.md",
+          "chunk_id": "4e0667bffe9b21947e05c0a07f8bc0e4e18d7942d4bc2737c5e444daa644ab67",
+          "snippet": "# Security and Data Handling Guide\n\n## Encryption\nCustomer data is encrypted in transit using TLS 1.2 or newer and at rest using AES-256. Encryption keys are managed through a dedicated key-management service. Enterprise customers can rotate their own keys every 90 days; the default managed rotation period is 180 days.",
+          "score": 0.6075961409726618
+        },
+        {
+          "index": 3,
+          "source": "security_guide.md",
+          "chunk_id": "c086fe9b07d890e6974ad6281ced70aac1fa5d01cf587afb12cc30606996f24a",
+          "snippet": "## Incident communication\nFor a confirmed security incident affecting customer data, Northstar notifies the designated security contact without undue delay and provides regular updates while investigation is ongoing. Customers can export audit logs through the administration console in JSON Lines format.",
+          "score": 0.5752673366317405
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.008,
+      "cache_hit": false,
+      "usage": {}
+    },
+    {
+      "question": "How often are enterprise encryption keys rotated?",
+      "expected_source": "security_guide.md",
+      "expected_phrase": "90",
+      "passed": true,
+      "query": "How often are enterprise encryption keys rotated?",
+      "answer": "[1] # Security and Data Handling Guide\n\n## Encryption\nCustomer data is encrypted in transit using TLS 1.2 or newer and at rest using AES-256. Encryption keys are managed through a dedicated key-management service. Enterprise customers can rotate their own keys every 90 days; the default managed rotation period is 180 days.\n\n[2] ## Identity and access\nThe platform supports SAML 2.0 single sign-on, SCIM user provisioning, and role-based access control. Administrative roles should require multi-factor authentication. Audit events are retained for 365 days on Business and Mission Critical plans, and for 90 days on Standard.\n\n[3] The platform team reviews evaluation scores weekly. Faithfulness and answer relevancy are tracked alongside context precision. Any deployment change that reduces a key metric by more than five percentage points requires a retrieval or prompt review before release.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "security_guide.md",
+          "chunk_id": "4e0667bffe9b21947e05c0a07f8bc0e4e18d7942d4bc2737c5e444daa644ab67",
+          "snippet": "# Security and Data Handling Guide\n\n## Encryption\nCustomer data is encrypted in transit using TLS 1.2 or newer and at rest using AES-256. Encryption keys are managed through a dedicated key-management service. Enterprise customers can rotate their own keys every 90 days; the default managed rotation period is 180 days.",
+          "score": 0.8379529385053139
+        },
+        {
+          "index": 2,
+          "source": "security_guide.md",
+          "chunk_id": "181c884864da14e730a78081187ae060a0e81d2fac8e82276d03193aad5c5f57",
+          "snippet": "## Identity and access\nThe platform supports SAML 2.0 single sign-on, SCIM user provisioning, and role-based access control. Administrative roles should require multi-factor authentication. Audit events are retained for 365 days on Business and Mission Critical plans, and for 90 days on Standard.",
+          "score": 0.6360555666891348
+        },
+        {
+          "index": 3,
+          "source": "knowledge_operations.txt",
+          "chunk_id": "30dff65cd7b12b4d7ae856a0a5f94147ef389132de61e481717462c1e45d87ce",
+          "snippet": "The platform team reviews evaluation scores weekly. Faithfulness and answer relevancy are tracked alongside context precision. Any deployment change that reduces a key metric by more than five percentage points requires a retrieval or prompt review before release.",
+          "score": 0.558522857112812
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.008,
+      "cache_hit": false,
+      "usage": {}
+    },
+    {
+      "question": "What is the deadline to submit a service credit request?",
+      "expected_source": "cloud_sla.md",
+      "expected_phrase": "30",
+      "passed": true,
+      "query": "What is the deadline to submit a service credit request?",
+      "answer": "[1] ## Service credits\nIf monthly availability falls below a tier commitment, customers may request service credits within 30 days of the incident. Standard credits are 10% of the affected monthly service fee for availability between 99.0% and the commitment, and 25% below 99.0%. Business customers receive 15% and 30% credits in equivalent bands. Credits are applied to future invoices and are not cash refunds.\n\n[2] # Northstar Cloud Platform — Service Levels\n\n## Availability commitments\nNorthstar Cloud publishes monthly service availability measured across the customer-facing control plane and managed data plane. The Standard tier has a 99.9% monthly uptime commitment, while the Business tier guarantees 99.95%. The Mission Critical tier guarantees 99.99% monthly uptime. Scheduled maintenance announced at least 72 hours in advance is excluded from the calculation.\n\n[3] ## Support response targets\nStandard support responds to critical incidents within four hours. Business support has a one-hour critical response target. Mission Critical customers receive a 15-minute response target and a named incident commander. Response targets are not resolution-time guarantees.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "cloud_sla.md",
+          "chunk_id": "2717cafd75c79b4702b6552d214293915d93428d3771908a667976e20584de68",
+          "snippet": "## Service credits\nIf monthly availability falls below a tier commitment, customers may request service credits within 30 days of the incident. Standard credits are 10% of the affected monthly service fee for availability between 99.0% and the commitment, and 25% below 99.0%. Business customers receive 15% and 30% credits in equivalent bands. Credits are applied to future invoices and are not cash refunds.",
+          "score": 0.7708290425075154
+        },
+        {
+          "index": 2,
+          "source": "cloud_sla.md",
+          "chunk_id": "30554e4e4399ba220d5c44fb38dd39f3a985ba12ce0ffbc45d17809f549ead04",
+          "snippet": "# Northstar Cloud Platform — Service Levels\n\n## Availability commitments\nNorthstar Cloud publishes monthly service availability measured across the customer-facing control plane and managed data plane. The Standard tier has a 99.9% monthly uptime commitment, while the Business tier guarantees 99.95%. The Mission Critical tier guarantees 99.99% monthly uptime. Scheduled maintenance announced at least 72 hours in advance is excluded from the calculation.",
+          "score": 0.5764806901216712
+        },
+        {
+          "index": 3,
+          "source": "cloud_sla.md",
+          "chunk_id": "573f8b35e16ec60f11003633092b1283c22b12bf3f5364b41a0d1864f42f2a8d",
+          "snippet": "## Support response targets\nStandard support responds to critical incidents within four hours. Business support has a one-hour critical response target. Mission Critical customers receive a 15-minute response target and a named incident commander. Response targets are not resolution-time guarantees.",
+          "score": 0.6082295291967976
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.01,
+      "cache_hit": false,
+      "usage": {}
+    },
+    {
+      "question": "What is the critical incident support response for the Business plan?",
+      "expected_source": "cloud_sla.md",
+      "expected_phrase": "one-hour",
+      "passed": true,
+      "query": "What is the critical incident support response for the Business plan?",
+      "answer": "[1] ## Support response targets\nStandard support responds to critical incidents within four hours. Business support has a one-hour critical response target. Mission Critical customers receive a 15-minute response target and a named incident commander. Response targets are not resolution-time guarantees.\n\n[2] ## Incident communication\nFor a confirmed security incident affecting customer data, Northstar notifies the designated security contact without undue delay and provides regular updates while investigation is ongoing. Customers can export audit logs through the administration console in JSON Lines format.\n\n[3] ## Service credits\nIf monthly availability falls below a tier commitment, customers may request service credits within 30 days of the incident. Standard credits are 10% of the affected monthly service fee for availability between 99.0% and the commitment, and 25% below 99.0%. Business customers receive 15% and 30% credits in equivalent bands. Credits are applied to future invoices and are not cash refunds.",
+      "citations": [
+        {
+          "index": 1,
+          "source": "cloud_sla.md",
+          "chunk_id": "573f8b35e16ec60f11003633092b1283c22b12bf3f5364b41a0d1864f42f2a8d",
+          "snippet": "## Support response targets\nStandard support responds to critical incidents within four hours. Business support has a one-hour critical response target. Mission Critical customers receive a 15-minute response target and a named incident commander. Response targets are not resolution-time guarantees.",
+          "score": 0.8097440585855886
+        },
+        {
+          "index": 2,
+          "source": "security_guide.md",
+          "chunk_id": "c086fe9b07d890e6974ad6281ced70aac1fa5d01cf587afb12cc30606996f24a",
+          "snippet": "## Incident communication\nFor a confirmed security incident affecting customer data, Northstar notifies the designated security contact without undue delay and provides regular updates while investigation is ongoing. Customers can export audit logs through the administration console in JSON Lines format.",
+          "score": 0.6466776418952709
+        },
+        {
+          "index": 3,
+          "source": "cloud_sla.md",
+          "chunk_id": "2717cafd75c79b4702b6552d214293915d93428d3771908a667976e20584de68",
+          "snippet": "## Service credits\nIf monthly availability falls below a tier commitment, customers may request service credits within 30 days of the incident. Standard credits are 10% of the affected monthly service fee for availability between 99.0% and the commitment, and 25% below 99.0%. Business customers receive 15% and 30% credits in equivalent bands. Credits are applied to future invoices and are not cash refunds.",
+          "score": 0.6026879891194982
+        }
+      ],
+      "confidence": "unverified",
+      "status": "evidence_found",
+      "route_taken": "langgraph/hybrid_extractive",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.01,
+      "cache_hit": false,
+      "usage": {}
+    },
+    {
+      "question": "What is the capital of Argentina?",
+      "expected_source": null,
+      "expected_phrase": null,
+      "passed": true,
+      "query": "What is the capital of Argentina?",
+      "answer": "No sufficient evidence was found.",
+      "citations": [],
+      "confidence": "low",
+      "status": "insufficient_evidence",
+      "route_taken": "langgraph/no_context",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.016,
+      "cache_hit": false,
+      "usage": {}
+    },
+    {
+      "question": "What is the CEO personal bank account number?",
+      "expected_source": null,
+      "expected_phrase": null,
+      "passed": true,
+      "query": "What is the CEO personal bank account number?",
+      "answer": "No sufficient evidence was found.",
+      "citations": [],
+      "confidence": "low",
+      "status": "insufficient_evidence",
+      "route_taken": "langgraph/no_context",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.016,
+      "cache_hit": false,
+      "usage": {}
+    },
+    {
+      "question": "What is the price of a Bitcoin today?",
+      "expected_source": null,
+      "expected_phrase": null,
+      "passed": true,
+      "query": "What is the price of a Bitcoin today?",
+      "answer": "No sufficient evidence was found.",
+      "citations": [],
+      "confidence": "low",
+      "status": "insufficient_evidence",
+      "route_taken": "langgraph/no_context",
+      "generation_mode": "extractive",
+      "elapsed_seconds": 0.017,
+      "cache_hit": false,
+      "usage": {}
+    }
+  ]
+}
