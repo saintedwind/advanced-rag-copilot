@@ -44,7 +44,10 @@ def setup(tmp_path):
         "Audit logs are retained for 365 days.", encoding="utf-8"
     )
     s = AppSettings(
-        source_root=str(docs), qdrant_path=str(tmp_path / "db"), evidence_threshold=0.8
+        qa_reader_provider="none",
+        source_root=str(docs),
+        qdrant_path=str(tmp_path / "db"),
+        evidence_threshold=0.8,
     )
     r = HybridRetriever(s, embedder=Embeddings())
     yield s, r, docs
