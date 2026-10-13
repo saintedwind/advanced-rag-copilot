@@ -2,7 +2,7 @@
 
 [![Validation](https://github.com/saintedwind/advanced-rag-copilot/actions/workflows/validation.yml/badge.svg)](https://github.com/saintedwind/advanced-rag-copilot/actions/workflows/validation.yml)
 
-A reproducible document-retrieval portfolio by Peyman Gholamhosseini. Ask questions about service commitments and inspect the source passages behind the result.
+A reproducible document-evidence portfolio by Peyman Gholamhosseini. Review synthetic operational policies or a pinned snapshot of real curl documentation, then inspect source passages, line ranges and provenance.
 
 ![Actual Chromium desktop capture](reports/desk-desktop.png)
 
@@ -14,6 +14,8 @@ A reproducible document-retrieval portfolio by Peyman Gholamhosseini. Ask questi
 - Stable content-derived chunk IDs; re-ingestion replaces the selected corpus and removes stale chunks. BM25 is rebuilt from persisted payloads after restart.
 - A cosine threshold gates retrieval. Its value is a heuristic, **not calibrated confidence**.
 - A conservative same-source topic screen rejects missing question facets and recognized instruction-like source text. Time questions also require a relevant time expression. This is a lexical safeguard, not semantic entailment; unfamiliar paraphrases can be rejected.
+- A bounded local SQuAD2 reader can rescue candidates rejected by the lexical screen. It selects only a source span, uses a fixed answer-versus-null margin of 3, respects named command-option scope and never generates new text. Its margin is not calibrated confidence. Missing protected facets and recognized instruction-like content are not rescued.
+- Query normalization covers a small, documented set of wording variants and preserves quoted identifiers and numeric values. It is not a universal paraphraser.
 - Citations include source-byte SHA-256, normalized-text character offsets and line ranges. `GET /evidence/{chunk_id}` returns the indexed passage; removed/replaced passages return 404. Every query includes a corpus fingerprint and the desk can export its evidence record.
 - Default **extractive** mode returns source passages without a language-model call. Optional **local** mode asks a loopback llama.cpp model to select numbered source sentences; sentence embeddings rank the candidates, then the server renders those exact sentences and validates indices and completion status.
 - LangGraph coordinates a bounded retrieval/normalization retry and synthesis. This is not autonomous reasoning or HyDE.
@@ -27,7 +29,9 @@ A reproducible document-retrieval portfolio by Peyman Gholamhosseini. Ask questi
 3. Repeat the supported question: inspect the exact-query cache hit. Re-index and verify that the cached result is invalidated.
 4. Restart the service: the persisted vectors and rebuilt lexical index should still be available.
 
-Version 0.3 development checks: 26 behavioral/boundary tests; 11/11 original live extractive checks; 36/36 expanded checks on eight synthetic documents with actual BGE embeddings and loopback HTTP. The optional local Qwen sentence selector also passed the 36-case suite. A further eight-question challenge passed 6/8: two paraphrases were falsely rejected. These cases were inspected and used during development, so none is an untouched holdout or general accuracy estimate. [Measured changes and failures](reports/evidence-validation.md).
+Version 0.4 checks: 35 behavioral/boundary tests; 11/11 original and 36/36 expanded extractive HTTP checks; the known paraphrase challenge improved from 6/8 to 8/8. Real-document evaluation is 30/32 (22/24 supported, 8/8 abstentions) with actual BGE/ONNX inference and loopback HTTP. Optional small-Qwen sentence selection on that real corpus is 26/32; full-passage extractive mode remains the default. These are evidence-presence checks on authored questions, not semantic completeness scores or a customer accuracy estimate. [Current validation and remaining failures](reports/reference-validation-v04.md).
+
+![Actual real-document review](reports/desk-reference.png)
 
 ## Pipeline
 
@@ -55,6 +59,7 @@ uvicorn src.app.api:app --host 127.0.0.1 --port 8000
 ```
 
 Open http://127.0.0.1:8000 and select **Build sample index**. API documentation: `/docs`.
+Choose **Real curl documentation / pinned snapshot**, select **Build reference index**, and ask **What certificate format does --cacert require?** This demonstrates local reader rescue and upstream citations. Indexing replaces the active collection. API: `POST /ingest` with `{"collection":"curl"}`; arbitrary source paths cannot be combined with named collections.
 
 ```sh
 curl -X POST http://127.0.0.1:8000/ingest -H "Content-Type: application/json" -d '{}'
@@ -63,6 +68,8 @@ python -m pytest -q
 python -m scripts.evidence_benchmark current
 python -m scripts.evidence_benchmark challenge
 python -m scripts.live_check --evaluation
+python -m scripts.reference_benchmark
+python -m scripts.live_check --reference
 ```
 
 Docker: `docker compose up --build` uses local Qdrant persistence and binds the host port to loopback. Allow time for the initial model download.
@@ -74,6 +81,10 @@ Start an OpenAI-compatible llama.cpp server on **127.0.0.1:8081**, with a model 
 ## Boundaries and evidence
 
 The three default documents and eight separate evaluation documents are **synthetic**, not customer policies. The evaluation set covers backups, API operations, privacy, incidents, billing, security, languages and untrusted archived content. The default embedding model is English-oriented; Persian token normalization is implemented but Persian retrieval quality is not claimed. This is a local single-process demonstration, not a hardened multi-tenant production service. No authentication, distributed cache or audited access control is included. Do not expose the service publicly or index confidential data without adding these controls.
+
+The additional eight curl documents are actual upstream Markdown, pinned at commit `2b348649c68c1cd8cc1d055487f2fb2b59a353cb`. [Source manifest](data/curl_manifest.json) records exact byte digests; the [upstream license notice](data/curl-COPYING.txt) is retained. Indexing excludes curl build frontmatter but keeps line/character offsets into the unmodified file. Named `--options` are matched to declared document headings, so a neighboring option that merely mentions the name cannot substitute for its documentation. This intentionally limits cross-option synthesis. The `.gitattributes` rules preserve reference bytes across platforms. Refresh only explicitly with `python -m scripts.import_curl`.
+
+The default reader is quantized tinyroberta-squad2 from deepset / ONNX Community, pinned and hash-verified; [model attribution and CC BY 4.0 notice](data/QA_MODEL_NOTICE.md). First needed use downloads approximately 82 MB of weights plus a 3.6 MB tokenizer into the ignored cache. CPU only, two inference threads, 384 input tokens and 48 answer tokens maximum; no generated tokens or paid API. Set `QA_READER_PROVIDER=none` for conservative-only mode. Reader failure falls back explicitly and is not cached as a permanent negative answer.
 
 Ingestion is restricted to `SOURCE_ROOT`, UTF-8 Markdown/text, 200 files, 1 MB per file and 10 MB total. Ingestion replaces the corpus, rather than appending to it. A failed database write can leave a partial index; rebuild from the source directory. The exact-query cache is not persisted. Changing the embedding model requires a new collection/index.
 
