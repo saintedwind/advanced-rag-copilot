@@ -38,6 +38,11 @@ class CitationItem(BaseModel):
     chunk_id: str
     snippet: str
     score: float | None = None
+    source_sha256: str | None = None
+    start_char: int | None = None
+    end_char: int | None = None
+    start_line: int | None = None
+    end_line: int | None = None
 
 
 class QueryResponse(BaseModel):
@@ -51,3 +56,5 @@ class QueryResponse(BaseModel):
     elapsed_seconds: float
     cache_hit: bool = False
     usage: dict = Field(default_factory=dict)
+    evidence_screen: dict = Field(default_factory=dict)
+    corpus_sha256: str | None = None

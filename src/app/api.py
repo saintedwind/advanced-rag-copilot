@@ -31,7 +31,7 @@ def create_app(pipeline=None, settings=None):
         if pipeline is None:
             app.state.pipeline.retriever.close()
 
-    app = FastAPI(title="Knowledge Evidence Desk", version="0.2.0", lifespan=lifespan)
+    app = FastAPI(title="Knowledge Evidence Desk", version="0.3.0", lifespan=lifespan)
 
     @app.get("/")
     def home():
@@ -51,13 +51,14 @@ def create_app(pipeline=None, settings=None):
             else "empty"
             if connected
             else "degraded",
-            "version": "0.2.0",
+            "version": "0.3.0",
             "vector_db_connected": connected,
             "chunks": len(p.retriever._docs),
             "embedding_model": settings.embedding_model,
             "generation_mode": settings.llm_provider,
             "reranker_ready": p.reranker.ready,
             "cache": "exact_query_bounded_128",
+            "corpus_sha256": p.retriever.corpus_sha256,
         }
 
     @app.post("/ingest")
@@ -87,6 +88,7 @@ def create_app(pipeline=None, settings=None):
             "documents_ingested": count,
             "chunks_created": len(chunks),
             "elapsed_seconds": round(time.perf_counter() - t, 3),
+            "corpus_sha256": app.state.pipeline.retriever.corpus_sha256,
         }
 
     @app.post("/query", response_model=QueryResponse)
@@ -130,6 +132,7 @@ def create_app(pipeline=None, settings=None):
             result.update(
                 query=payload.query, elapsed_seconds=round(time.perf_counter() - t, 3)
             )
+            result["corpus_sha256"] = app.state.pipeline.retriever.corpus_sha256
             if result["status"] in {"evidence_found", "insufficient_evidence"}:
                 app.state.cache[key] = copy.deepcopy(result)
                 while len(app.state.cache) > 128:
@@ -137,6 +140,21 @@ def create_app(pipeline=None, settings=None):
             return result
 
     app.add_api_route("/chat", query, methods=["POST"], response_model=QueryResponse)
+
+    @app.get("/evidence/{chunk_id}")
+    def evidence(chunk_id: str):
+        with app.state.lock:
+            for doc in app.state.pipeline.retriever._docs:
+                if doc.metadata["chunk_id"] == chunk_id:
+                    return {
+                        "text": doc.page_content,
+                        "metadata": doc.metadata,
+                        "corpus_sha256": app.state.pipeline.retriever.corpus_sha256,
+                    }
+        raise HTTPException(
+            404, "Indexed passage not found; the corpus may have changed"
+        )
+
     return app
 
 
