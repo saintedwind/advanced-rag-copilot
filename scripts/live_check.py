@@ -57,6 +57,7 @@ def ensure_port_available(port=8000):
 def main():
     mode = os.environ.get("LLM_PROVIDER", "extractive")
     evaluation = "--evaluation" in sys.argv
+    reference = "--reference" in sys.argv
     cases = CASES
     if evaluation:
         from scripts.evidence_benchmark import CASES as evaluation_cases
@@ -64,7 +65,13 @@ def main():
         cases = evaluation_cases
         os.environ["SOURCE_ROOT"] = str(ROOT / "data/evaluation_docs")
         os.environ["QDRANT_PATH"] = str(ROOT / ".runtime/qdrant-evaluation")
-    label = ("evaluation-" if evaluation else "") + mode
+    if reference:
+        from scripts.reference_benchmark import CASES as reference_cases
+
+        cases = reference_cases
+        os.environ["SOURCE_ROOT"] = str(ROOT / "data/curl_docs")
+        os.environ["QDRANT_PATH"] = str(ROOT / ".runtime/qdrant-reference")
+    label = ("reference-" if reference else "evaluation-" if evaluation else "") + mode
     ensure_port_available()
     log_path = ROOT / "reports" / f"live-{label}.log"
     rows = []
@@ -96,7 +103,7 @@ def main():
                     if time.monotonic() > deadline:
                         raise TimeoutError("Startup timed out")
                     time.sleep(1)
-            ingestion = request("/ingest", {})
+            ingestion = request("/ingest", {"collection": "curl"} if reference else {})
             for q, source, phrase in cases:
                 r = request(
                     "/query",
@@ -146,7 +153,7 @@ def main():
                 "mode": mode,
                 "transport": "actual loopback HTTP / uvicorn",
                 "embedding": "actual FastEmbed BAAI/bge-small-en-v1.5",
-                "synthetic_corpus": True,
+                "synthetic_corpus": not reference,
                 "health": health,
                 "ingestion": ingestion,
                 "passed": sum(r["passed"] for r in rows),
