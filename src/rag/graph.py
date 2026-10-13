@@ -1,51 +1,51 @@
-"""Self-corrective retrieval graph using LangGraph."""
+"""Bounded retrieval graph; synthesis uses exactly the selected documents."""
+
 from typing import TypedDict
-from langchain_core.documents import Document
-from langgraph.graph import StateGraph, END
-from src.rag.pipeline import RAGPipeline
+
+from langgraph.graph import END, StateGraph
 
 
-class GraphState(TypedDict):
+class GraphState(TypedDict, total=False):
     question: str
-    documents: list[Document]
-    answer: str
-    citations: list[dict]
-    needs_rewrite: bool
+    original_question: str
+    documents: list
+    result: dict
     iterations: int
+    top_k: int
+    rerank: bool
 
 
-def build_rag_graph(pipeline: RAGPipeline | None = None):
-    p = pipeline or RAGPipeline()
+def build_rag_graph(pipeline):
+    def retrieve(state):
+        return {
+            "documents": pipeline.retrieve(
+                state["question"], state["top_k"], state["rerank"]
+            ),
+            "iterations": state.get("iterations", 0) + 1,
+        }
 
-    def retrieve_node(state: GraphState) -> GraphState:
-        docs = p.retrieve(state["question"], top_k=4, rerank=True)
-        return {**state, "documents": docs, "iterations": state.get("iterations", 0) + 1}
+    def rewrite(state):
+        return {"question": " ".join(state["question"].replace("?", " ").split())}
 
-    def grade_node(state: GraphState) -> GraphState:
-        q_terms = set(state["question"].lower().split())
-        relevant = [d for d in state["documents"] if any(t in d.page_content.lower() for t in q_terms if len(t) > 3)]
-        docs = relevant or state["documents"]
-        return {**state, "documents": docs, "needs_rewrite": len(docs) == 0 and state.get("iterations", 0) < 2}
+    def generate(state):
+        return {
+            "result": pipeline.synthesize(
+                state["original_question"], state["documents"]
+            )
+        }
 
-    def rewrite_node(state: GraphState) -> GraphState:
-        terms = [t for t in state["question"].replace("?", "").split() if len(t) > 2]
-        return {**state, "question": " ".join(terms)}
-
-    def generate_node(state: GraphState) -> GraphState:
-        res = p.answer(state["question"], top_k=len(state["documents"]) or 4, rerank=False)
-        return {**state, "answer": res["answer"], "citations": res["citations"]}
-
-    def route_decision(state: GraphState) -> str:
-        return "rewrite" if state.get("needs_rewrite") else "generate"
-
-    workflow = StateGraph(GraphState)
-    workflow.add_node("retrieve", retrieve_node)
-    workflow.add_node("grade", grade_node)
-    workflow.add_node("rewrite", rewrite_node)
-    workflow.add_node("generate", generate_node)
-    workflow.set_entry_point("retrieve")
-    workflow.add_edge("retrieve", "grade")
-    workflow.add_conditional_edges("grade", route_decision, {"rewrite": "rewrite", "generate": "generate"})
-    workflow.add_edge("rewrite", "retrieve")
-    workflow.add_edge("generate", END)
-    return workflow.compile()
+    graph = StateGraph(GraphState)
+    graph.add_node("retrieve", retrieve)
+    graph.add_node("rewrite", rewrite)
+    graph.add_node("generate", generate)
+    graph.set_entry_point("retrieve")
+    graph.add_conditional_edges(
+        "retrieve",
+        lambda s: (
+            "rewrite" if not s["documents"] and s["iterations"] < 2 else "generate"
+        ),
+        {"rewrite": "rewrite", "generate": "generate"},
+    )
+    graph.add_edge("rewrite", "retrieve")
+    graph.add_edge("generate", END)
+    return graph.compile()
