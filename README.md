@@ -1,5 +1,7 @@
 # Knowledge Evidence Desk
 
+[![Validation](https://github.com/saintedwind/advanced-rag-copilot/actions/workflows/validation.yml/badge.svg)](https://github.com/saintedwind/advanced-rag-copilot/actions/workflows/validation.yml)
+
 A reproducible document-retrieval portfolio by Peyman Gholamhosseini. Ask questions about service commitments and inspect the source passages behind the result.
 
 ## What runs
@@ -11,6 +13,29 @@ A reproducible document-retrieval portfolio by Peyman Gholamhosseini. Ask questi
 - LangGraph coordinates a bounded retrieval/normalization retry and synthesis. This is not autonomous reasoning or HyDE.
 - Exact-query in-memory cache (128 entries), invalidated on ingestion. This is **not semantic caching**.
 - Optional FlashRank; disabled by default. If unavailable, retrieval order is used.
+
+## A two-minute review
+
+1. Build the sample index and ask: **What is the Business plan critical response target?** Inspect the source's one-hour target and its distinction from resolution guarantees.
+2. Ask: **What is the capital of Argentina?** The desk should abstain instead of treating an unrelated policy as an answer.
+3. Repeat the supported question: inspect the exact-query cache hit. Re-index and verify that the cached result is invalidated.
+4. Restart the service: the persisted vectors and rebuilt lexical index should still be available.
+
+Measured development checks: 19 behavioral/boundary tests; 11/11 live extractive checks; 10/11 optional small-local-model checks. These are synthetic smoke checks, not general accuracy claims. [Full evidence and remaining limits](reports/validation.md).
+
+## Pipeline
+
+```mermaid
+flowchart LR
+    D[Bounded UTF-8 documents] --> I[Stable chunks]
+    I --> V[Persistent Qdrant + rebuilt BM25]
+    Q[Question] --> V
+    V --> R[Rank fusion + evidence gate]
+    R --> E[Exact source passages]
+    R --> L[Optional local sentence selection]
+    E --> C[Inspectable citations]
+    L --> C
+```
 
 ## Run locally
 
