@@ -97,3 +97,7 @@ The project prioritizes inspectable evidence over polished unsupported answers. 
 File hashes identify bytes, not publisher authority or policy validity. Character offsets refer to UTF-8 text with CRLF/CR normalized to LF; they are not byte offsets. Indexed passages are retained snapshots and can differ from edited files until re-ingestion. Re-index older collections to populate provenance metadata. Same-source term coverage and time expressions cannot establish all relationships, resolve policy conflicts or ensure a complete answer. The instruction-like-text screen detects a narrow pattern family and is not a general prompt-injection defense.
 
 MIT license. Embedding weights and optional runtime/model licenses remain their respective authors' licenses.
+
+## Publication audit — 2026-11-01
+
+See [source/evidence review and retained limitations](reports/PUBLICATION_2026-11-01.md). Historical experiments retain their original dates; the publication check does not establish new model accuracy or deployment evidence.
