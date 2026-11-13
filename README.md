@@ -11,7 +11,7 @@ A reproducible document-evidence portfolio by Peyman Gholamhosseini. Review synt
 ## What runs
 
 - FastAPI desk and API, Qdrant local persistence, FastEmbed dense retrieval and Unicode BM25, combined with weighted reciprocal rank fusion.
-- Stable content-derived chunk IDs; re-ingestion replaces the selected corpus and removes stale chunks. BM25 is rebuilt from persisted payloads after restart.
+- Stable content-derived chunk IDs. Re-ingestion writes and verifies a separate Qdrant collection before activating it. BM25 is built from the same verified payloads and rebuilt on restart.
 - A cosine threshold gates retrieval. Its value is a heuristic, **not calibrated confidence**.
 - A conservative same-source topic screen rejects missing question facets and recognized instruction-like source text. Time questions also require a relevant time expression. This is a lexical safeguard, not semantic entailment; unfamiliar paraphrases can be rejected.
 - A bounded local SQuAD2 reader can rescue candidates rejected by the lexical screen. It selects only a source span, uses a fixed answer-versus-null margin of 3, respects named command-option scope and never generates new text. Its margin is not calibrated confidence. Missing protected facets and recognized instruction-like content are not rescued.
@@ -86,7 +86,7 @@ The additional eight curl documents are actual upstream Markdown, pinned at comm
 
 The default reader is quantized tinyroberta-squad2 from deepset / ONNX Community, pinned and hash-verified; [model attribution and CC BY 4.0 notice](data/QA_MODEL_NOTICE.md). First needed use downloads approximately 82 MB of weights plus a 3.6 MB tokenizer into the ignored cache. CPU only, two inference threads, 384 input tokens and 48 answer tokens maximum; no generated tokens or paid API. Set `QA_READER_PROVIDER=none` for conservative-only mode. Reader failure falls back explicitly and is not cached as a permanent negative answer.
 
-Ingestion is restricted to `SOURCE_ROOT`, UTF-8 Markdown/text, 200 files, 1 MB per file and 10 MB total. Ingestion replaces the corpus, rather than appending to it. A failed database write can leave a partial index; rebuild from the source directory. The exact-query cache is not persisted. Changing the embedding model requires a new collection/index.
+Ingestion is restricted to `SOURCE_ROOT`, UTF-8 Markdown/text, 200 files, 1 MB per file and 10 MB total. A failed write to the staging collection leaves the active corpus available. A successful replacement switches a Qdrant alias, publishes the matching lexical index and invalidates cached queries. During replacement, the single API process serializes reads and writes and needs space for two copies. A pre-0.4.1 collection can still be opened by the upgraded service and is retained on its first successful replacement. After an interrupted or unconfirmed activation, a restart loads the collection identified by the saved alias. The exact-query cache lives in memory. Changing the embedding model requires a new collection/index. [Recovery and validation details](reports/index-replacement-v041.md).
 
 See `reports/validation.md` for measured results and remaining limits. Unit tests use deterministic embeddings and must not be reported as neural retrieval evaluation. Real embedding and live HTTP checks are recorded separately.
 

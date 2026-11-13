@@ -11,12 +11,15 @@ from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 
+from src import __version__
 from src.app.dependencies import get_settings
 from src.app.schemas import IngestionRequest, QueryRequest, QueryResponse
+from src.rag.corpora import ROOT, verify_curl
 from src.rag.graph import build_rag_graph
 from src.rag.ingestion import load_and_split
 from src.rag.pipeline import RAGPipeline
-from src.rag.corpora import ROOT, verify_curl
+
+logger = logging.getLogger(__name__)
 
 
 def create_app(pipeline=None, settings=None):
@@ -32,7 +35,9 @@ def create_app(pipeline=None, settings=None):
         if pipeline is None:
             app.state.pipeline.retriever.close()
 
-    app = FastAPI(title="Knowledge Evidence Desk", version="0.4.0", lifespan=lifespan)
+    app = FastAPI(
+        title="Knowledge Evidence Desk", version=__version__, lifespan=lifespan
+    )
 
     @app.get("/")
     def home():
@@ -40,11 +45,16 @@ def create_app(pipeline=None, settings=None):
 
     @app.get("/health")
     def health():
+        with app.state.lock:
+            return health_snapshot()
+
+    def health_snapshot():
         p = app.state.pipeline
         try:
             p.retriever.client.get_collections()
             connected = True
         except Exception:
+            logger.exception("Qdrant health check failed")
             connected = False
         return {
             "status": "ready"
@@ -52,7 +62,7 @@ def create_app(pipeline=None, settings=None):
             else "empty"
             if connected
             else "degraded",
-            "version": "0.4.0",
+            "version": __version__,
             "vector_db_connected": connected,
             "chunks": len(p.retriever._docs),
             "embedding_model": settings.embedding_model,
@@ -101,7 +111,7 @@ def create_app(pipeline=None, settings=None):
         except (ValueError, UnicodeError) as error:
             raise HTTPException(400, detail=str(error))
         except Exception:
-            logging.exception("Indexing failed")
+            logger.exception("Indexing failed")
             raise HTTPException(
                 503, detail="Indexing unavailable; inspect service diagnostics"
             )
@@ -149,7 +159,7 @@ def create_app(pipeline=None, settings=None):
                         payload.query, payload.top_k, payload.enable_reranking
                     )
             except Exception:
-                logging.exception("Query failed")
+                logger.exception("Query failed")
                 raise HTTPException(503, detail="Query processing unavailable")
             result.update(
                 query=payload.query, elapsed_seconds=round(time.perf_counter() - t, 3)

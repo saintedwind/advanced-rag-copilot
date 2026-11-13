@@ -1,17 +1,20 @@
 """Persistent Qdrant vectors and rebuilt BM25 with weighted rank fusion."""
 
+import hashlib
+import json
+import logging
 import re
 import threading
 import unicodedata
 import uuid
-import hashlib
-import json
 
 from langchain_core.documents import Document
 from qdrant_client import QdrantClient, models
 from rank_bm25 import BM25Okapi
 
 from src.app.dependencies import get_settings
+
+logger = logging.getLogger(__name__)
 
 
 def _tokens(text):
@@ -44,53 +47,68 @@ class HybridRetriever:
                 threads=2,
             )
         self.embedder = embedder
-        self._docs = []
-        self._bm25 = None
         self.generation = 0
-        self.refresh()
+        self._prefix = f"{self.settings.qdrant_collection}__desk_"
+        self._alias = self._prefix + "active"
+        self._active = next(
+            (
+                alias.collection_name
+                for alias in self.client.get_aliases().aliases
+                if alias.alias_name == self._alias
+            ),
+            None,
+        )
+        if self._active is None and self.client.collection_exists(
+            self.settings.qdrant_collection
+        ):
+            self._active = self.settings.qdrant_collection
+        docs = self._read_collection(self._active) if self._active is not None else []
+        self._docs, self._bm25, self.corpus_sha256 = self._prepare_snapshot(docs)
 
-    def refresh(self):
-        self._docs = []
-        if self.client.collection_exists(self.settings.qdrant_collection):
-            offset = None
-            while True:
-                rows, offset = self.client.scroll(
-                    self.settings.qdrant_collection,
-                    limit=256,
-                    offset=offset,
-                    with_payload=True,
-                )
-                if any(
-                    r.payload.get("embedding_model") != self.settings.embedding_model
-                    for r in rows
-                ):
+    def _read_collection(self, name):
+        docs = []
+        offset = None
+        while True:
+            rows, offset = self.client.scroll(
+                name, limit=256, offset=offset, with_payload=True
+            )
+            for row in rows:
+                if row.payload.get("embedding_model") != self.settings.embedding_model:
                     raise ValueError(
                         "Embedding model mismatch; select a new collection or rebuild the index"
                     )
-                self._docs.extend(
+                docs.append(
                     Document(
-                        page_content=r.payload["text"], metadata=r.payload["metadata"]
+                        page_content=row.payload["text"],
+                        metadata=row.payload["metadata"],
                     )
-                    for r in rows
                 )
-                if offset is None:
-                    break
-        self._docs.sort(key=lambda d: d.metadata["chunk_id"])
-        self.corpus_sha256 = hashlib.sha256(
+            if offset is None:
+                return docs
+
+    @staticmethod
+    def _prepare_snapshot(docs):
+        docs = sorted(docs, key=lambda d: d.metadata["chunk_id"])
+        fingerprint = hashlib.sha256(
             json.dumps(
                 [
                     (d.metadata["chunk_id"], d.metadata.get("source_sha256"))
-                    for d in self._docs
+                    for d in docs
                 ],
                 separators=(",", ":"),
             ).encode()
         ).hexdigest()
-        self._bm25 = (
-            BM25Okapi([_tokens(d.page_content) for d in self._docs])
-            if self._docs
-            else None
-        )
-        self.generation += 1
+        bm25 = BM25Okapi([_tokens(d.page_content) for d in docs]) if docs else None
+        return docs, bm25, fingerprint
+
+    def _discard_collection(self, name):
+        try:
+            if not self.client.delete_collection(name):
+                logger.warning("Qdrant did not remove collection %s", name)
+        except Exception:
+            logger.warning(
+                "Unable to remove inactive collection %s", name, exc_info=True
+            )
 
     def add_documents(self, docs):
         if not docs:
@@ -99,14 +117,6 @@ class HybridRetriever:
             vectors = list(self.embedder.embed([d.page_content for d in docs]))
             if len(vectors) != len(docs):
                 raise ValueError("Embedding count does not match document count")
-            if not self.client.collection_exists(self.settings.qdrant_collection):
-                self.client.create_collection(
-                    self.settings.qdrant_collection,
-                    vectors_config=models.VectorParams(
-                        size=len(vectors[0]), distance=models.Distance.COSINE
-                    ),
-                )
-            # Replace the selected corpus, removing stale chunks from modified sources.
             points = [
                 models.PointStruct(
                     id=str(uuid.uuid5(uuid.NAMESPACE_URL, d.metadata["chunk_id"])),
@@ -117,20 +127,63 @@ class HybridRetriever:
                         "embedding_model": self.settings.embedding_model,
                     },
                 )
-                for d, v in zip(docs, vectors)
+                for d, v in zip(docs, vectors, strict=True)
             ]
-            self.client.upsert(
-                self.settings.qdrant_collection, points=points, wait=True
-            )
-            keep = [p.id for p in points]
-            self.client.delete(
-                self.settings.qdrant_collection,
-                points_selector=models.FilterSelector(
-                    filter=models.Filter(must_not=[models.HasIdCondition(has_id=keep)])
+            if len({point.id for point in points}) != len(points):
+                raise ValueError("Duplicate chunk identities")
+
+            staged = self._prefix + uuid.uuid4().hex[:16]
+            created = self.client.create_collection(
+                staged,
+                vectors_config=models.VectorParams(
+                    size=len(vectors[0]), distance=models.Distance.COSINE
                 ),
-                wait=True,
             )
-            self.refresh()
+            if not created:
+                raise RuntimeError("Qdrant did not create the staging collection")
+            try:
+                for start in range(0, len(points), 256):
+                    self.client.upsert(
+                        staged, points=points[start : start + 256], wait=True
+                    )
+                stored = self._read_collection(staged)
+                expected = {
+                    d.metadata["chunk_id"]: (d.page_content, d.metadata) for d in docs
+                }
+                actual = {
+                    d.metadata["chunk_id"]: (d.page_content, d.metadata) for d in stored
+                }
+                if len(stored) != len(docs) or actual != expected:
+                    raise RuntimeError(
+                        "Staged collection does not match the requested corpus"
+                    )
+                snapshot = self._prepare_snapshot(stored)
+            except Exception:
+                self._discard_collection(staged)
+                raise
+
+            # A timeout during activation is ambiguous. Leave both copies intact
+            # so a restart can follow the stored alias without losing either index.
+            previous = self._active
+            activated = self.client.update_collection_aliases(
+                [
+                    models.DeleteAliasOperation(
+                        delete_alias=models.DeleteAlias(alias_name=self._alias)
+                    ),
+                    models.CreateAliasOperation(
+                        create_alias=models.CreateAlias(
+                            collection_name=staged, alias_name=self._alias
+                        )
+                    ),
+                ]
+            )
+            if not activated:
+                raise RuntimeError("Qdrant did not confirm index activation")
+            self._active = staged
+            self._docs, self._bm25, self.corpus_sha256 = snapshot
+            self.generation += 1
+            if previous is not None and previous.startswith(self._prefix):
+                self._discard_collection(previous)
 
     def search(self, query, k=10, alpha=None):
         with self.lock:
@@ -138,7 +191,7 @@ class HybridRetriever:
                 return []
             vector = next(iter(self.embedder.query_embed(query))).tolist()
             hits = self.client.query_points(
-                self.settings.qdrant_collection,
+                self._active,
                 query=vector,
                 limit=k,
                 with_payload=True,
